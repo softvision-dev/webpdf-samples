@@ -59,8 +59,19 @@ echo "Document ID: $documentId\n";
 // Convert File to PDF (POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
 $convertUrl = $baseURL."rest/converter/".$response->documentId;
-$converterOptions = '{"converter":{}}';
-$response = getClient($convertUrl, true, $headerInfo, $converterOptions);
+$converterOptions = [
+    'converter' => [
+        'pages' => "1-6, 10",
+        'embedFonts' => true,
+        'pdfa' => [
+            'convert' => [
+                'level' => '3b',
+            ],
+        ],
+        'compression' => true,
+    ],
+];
+$response = getClient($convertUrl, true, $headerInfo, json_encode($converterOptions));
 $response = json_decode($response);
 echo "Web service call successful\n";
 
