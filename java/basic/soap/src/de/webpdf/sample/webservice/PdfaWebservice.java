@@ -1,24 +1,25 @@
 package de.webpdf.sample.webservice;
 
-import de.webpdf.sample.stubs.converter.*;
+import de.webpdf.sample.stubs.pdfa.*;
 
 import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 
-public class ConverterWebservice extends AbstractWebservice<ConverterService, Converter> {
+public class PdfaWebservice extends AbstractWebservice<PdfaService, Pdfa> {
 
-    public ConverterWebservice(URL serverURL, URI sourceFile) throws IOException {
+    public PdfaWebservice(URL serverURL, URI sourceFile) throws IOException {
         super(serverURL, sourceFile);
+
     }
 
     @Override
     void initialize() throws IOException {
-        URL url = new URL(this.serverURL.toString() + "/webPDF/soap/converter?wsdl");
-        QName qname = new QName("http://schema.webpdf.de/1.0/soap/converter", "ConverterService");
-        this.service = new ConverterService(url, qname);
-        this.port = this.service.getConverterPort(this.mtomFeature);
+        URL url = new URL(this.serverURL + "/webPDF/soap/pdfa?wsdl");
+        QName qName = new QName("http://schema.webpdf.de/1.0/soap/pdfa", "PdfaService");
+        this.service = new PdfaService(url, qName);
+        this.port = this.service.getPdfaPort(this.mtomFeature);
     }
 
     @Override
@@ -26,15 +27,11 @@ public class ConverterWebservice extends AbstractWebservice<ConverterService, Co
 
         // build the parameter for the operation
         Operation operation = new Operation();
-        operation.setConverter(new ConverterType());
-        operation.getConverter().setEmbedFonts(true);
-        operation.getConverter().setCompression(true);
-        operation.getConverter().setPages("1-5,10");
-
-        // call the PDF/A conversion after document conversion
-        operation.getConverter().setPdfa(new PdfaType());
-        operation.getConverter().getPdfa().setConvert(new PdfaType.Convert());
-        operation.getConverter().getPdfa().getConvert().setLevel("3b");
+        operation.setPdfa(new PdfaType());
+        operation.getPdfa().setConvert(new PdfaType.Convert());
+        operation.getPdfa().getConvert().setLevel("1b");
+        operation.getPdfa().getConvert().setErrorReport(PdfaErrorReportType.MESSAGE);
+        operation.getPdfa().getConvert().setImageQuality(100);
 
         // set some additional information
         operation.setBilling(new BillingType());
@@ -53,5 +50,8 @@ public class ConverterWebservice extends AbstractWebservice<ConverterService, Co
             System.out.println("Message: " + ex.getFaultInfo().getErrorMessage());
             System.out.println("Stack trace: " + ex.getFaultInfo().getStackTrace());
         }
+
     }
+
+
 }

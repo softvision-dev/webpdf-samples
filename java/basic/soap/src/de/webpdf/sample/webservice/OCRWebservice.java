@@ -1,24 +1,24 @@
 package de.webpdf.sample.webservice;
 
-import de.webpdf.sample.stubs.converter.*;
+import de.webpdf.sample.stubs.ocr.*;
 
 import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 
-public class ConverterWebservice extends AbstractWebservice<ConverterService, Converter> {
+public class OCRWebservice extends AbstractWebservice<OCRService, OCR> {
 
-    public ConverterWebservice(URL serverURL, URI sourceFile) throws IOException {
+    public OCRWebservice(URL serverURL, URI sourceFile) throws IOException {
         super(serverURL, sourceFile);
     }
 
     @Override
     void initialize() throws IOException {
-        URL url = new URL(this.serverURL.toString() + "/webPDF/soap/converter?wsdl");
-        QName qname = new QName("http://schema.webpdf.de/1.0/soap/converter", "ConverterService");
-        this.service = new ConverterService(url, qname);
-        this.port = this.service.getConverterPort(this.mtomFeature);
+        URL url = new URL(this.serverURL.toString() + "/webPDF/soap/ocr?wsdl");
+        QName qName = new QName("http://schema.webpdf.de/1.0/soap/ocr", "OCRService");
+        this.service = new OCRService(url, qName);
+        this.port = this.service.getOCRPort(this.mtomFeature);
     }
 
     @Override
@@ -26,15 +26,17 @@ public class ConverterWebservice extends AbstractWebservice<ConverterService, Co
 
         // build the parameter for the operation
         Operation operation = new Operation();
-        operation.setConverter(new ConverterType());
-        operation.getConverter().setEmbedFonts(true);
-        operation.getConverter().setCompression(true);
-        operation.getConverter().setPages("1-5,10");
-
-        // call the PDF/A conversion after document conversion
-        operation.getConverter().setPdfa(new PdfaType());
-        operation.getConverter().getPdfa().setConvert(new PdfaType.Convert());
-        operation.getConverter().getPdfa().getConvert().setLevel("3b");
+        operation.setOcr(new OcrType());
+        operation.getOcr().setLanguage(OcrLanguageType.ENG);
+        operation.getOcr().setOutputFormat(OcrOutputType.PDF);
+        operation.getOcr().setCheckResolution(false);
+        operation.getOcr().setForceEachPage(true);
+        operation.getOcr().setImageDpi(300);
+        // set OcrPageType
+        operation.getOcr().setPage(new OcrPageType());
+        operation.getOcr().getPage().setHeight(297);
+        operation.getOcr().getPage().setWidth(210);
+        operation.getOcr().getPage().setMetrics(MetricsType.MM);
 
         // set some additional information
         operation.setBilling(new BillingType());
@@ -53,5 +55,6 @@ public class ConverterWebservice extends AbstractWebservice<ConverterService, Co
             System.out.println("Message: " + ex.getFaultInfo().getErrorMessage());
             System.out.println("Stack trace: " + ex.getFaultInfo().getStackTrace());
         }
+
     }
 }

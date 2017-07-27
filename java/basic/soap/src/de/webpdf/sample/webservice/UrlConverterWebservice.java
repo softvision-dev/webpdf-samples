@@ -9,8 +9,8 @@ import java.net.URL;
 
 public class UrlConverterWebservice extends AbstractWebservice<URLConverterService, URLConverter> {
 
-    public UrlConverterWebservice(URL baseURL, URI sourceURL) throws IOException {
-        super(baseURL, sourceURL);
+    public UrlConverterWebservice(URL serverURL, URI sourceURL) throws IOException {
+        super(serverURL, sourceURL);
     }
 
     @Override
