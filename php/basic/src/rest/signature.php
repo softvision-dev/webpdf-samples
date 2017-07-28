@@ -1,7 +1,8 @@
 <?php
 $baseURL = 'http://localhost:8080/webPDF/';
 $resultFile = '../../result/output-rest.pdf';
-$sourceFile = realpath('../../files/lorem-ipsum.docx');
+$sourceFile = realpath('../../files/ocr.pdf');
+$imageSourceFile = realpath('../../files/logo.png');
 
 function getClient($url, $post = false, $token = null, $data = null)
 {
@@ -56,22 +57,44 @@ $response = json_decode($response);
 $documentId = $response->documentId;
 echo "Document ID: $documentId\n";
 
-// Convert File to PDF (POST)
+// encode sign image
+$imageData = base64_encode(file_get_contents($imageSourceFile));
+
+// Sign PDF (POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
-$convertUrl = $baseURL . "rest/converter/" . $response->documentId;
-$converterOptions = [
-    'converter' => [
-        'pages' => "1-6, 10",
-        'embedFonts' => true,
-        'pdfa' => [
-            'convert' => [
-                'level' => '3b',
-            ],
-        ],
-        'compression' => true,
-    ],
+$signatureUrl = $baseURL . "rest/signature/" . $response->documentId;
+$signatureOptions = [
+    'signature' => [
+        'add' => [
+            'keyName' => 'Generic self-signed certificate',
+            'appearance' => [
+                'page' => 1,
+                'name' => 'John Doe',
+                'image' => [
+                    'position' => 'center',
+                    'opacity' => 30,
+                    'data' => [
+                        'value' => $imageData
+                    ]
+                ],
+                'identifierElements' => [
+                    'showCommonName' => true,
+                    'showCountry' => true,
+                    'showName' => true
+                ],
+                'position' => [
+                    'x' => 0,
+                    'y' => 0,
+                    'width' => 100,
+                    'height' => 100,
+                    'coordinates' => 'user',
+                    'metrics' => 'mm'
+                ]
+            ]
+        ]
+    ]
 ];
-$response = getClient($convertUrl, true, $headerInfo, json_encode($converterOptions));
+$response = getClient($signatureUrl, true, $headerInfo, json_encode($signatureOptions));
 $response = json_decode($response);
 echo "Web service call successful\n";
 

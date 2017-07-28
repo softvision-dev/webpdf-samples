@@ -1,7 +1,7 @@
 <?php
 $baseURL = 'http://localhost:8080/webPDF/';
 $resultFile = '../../result/output-rest.pdf';
-$sourceFile = realpath('../../files/lorem-ipsum.docx');
+$sourceFile = realpath('../../files/ocr.pdf');
 
 function getClient($url, $post = false, $token = null, $data = null)
 {
@@ -56,22 +56,26 @@ $response = json_decode($response);
 $documentId = $response->documentId;
 echo "Document ID: $documentId\n";
 
-// Convert File to PDF (POST)
+// Create barcode in PDF (POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
-$convertUrl = $baseURL . "rest/converter/" . $response->documentId;
-$converterOptions = [
-    'converter' => [
-        'pages' => "1-6, 10",
-        'embedFonts' => true,
-        'pdfa' => [
-            'convert' => [
-                'level' => '3b',
-            ],
-        ],
-        'compression' => true,
+$barcodeUrl = $baseURL . "rest/barcode/" . $response->documentId;
+$barcodeOptions = [
+    'barcode' => [
+        'add' => [
+            'aztec' => [[
+                'value' => 'https://www.webpdf.de',
+                'pages' => '1',
+                'position' => [
+                    'x' => 5,
+                    'y' => 5,
+                    'width' => 23,
+                    'height' => 23
+                ]
+            ]]
+        ]
     ],
 ];
-$response = getClient($convertUrl, true, $headerInfo, json_encode($converterOptions));
+$response = getClient($barcodeUrl, true, $headerInfo, json_encode($barcodeOptions));
 $response = json_decode($response);
 echo "Web service call successful\n";
 

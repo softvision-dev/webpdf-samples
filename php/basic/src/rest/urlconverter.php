@@ -1,7 +1,7 @@
 <?php
 $baseURL = 'http://localhost:8080/webPDF/';
 $resultFile = '../../result/output-rest.pdf';
-$sourceFile = realpath('../../files/lorem-ipsum.docx');
+$inputURL = 'https://www.webpdf.de';
 
 function getClient($url, $post = false, $token = null, $data = null)
 {
@@ -37,7 +37,7 @@ function getClient($url, $post = false, $token = null, $data = null)
     return $response;
 }
 
-echo("Using web service with file '$sourceFile'\n");
+echo("Using web service with URL '$inputURL'\n");
 
 // Login on Server (GET)
 $loginUrl = $baseURL . "rest/authentication/user/login";
@@ -46,32 +46,15 @@ $response = json_decode($response);
 $token = $response->token;
 echo "Login successful: $token\n";
 
-// Upload document (POST)
-$uploadUrl = $baseURL . "rest/documents";
-$headerInfo = ["Token: $token"];
-
-$postFields = ["filedata" => curl_file_create($sourceFile)];
-$response = getClient($uploadUrl, true, $headerInfo, $postFields);
-$response = json_decode($response);
-$documentId = $response->documentId;
-echo "Document ID: $documentId\n";
-
 // Convert File to PDF (POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
-$convertUrl = $baseURL . "rest/converter/" . $response->documentId;
-$converterOptions = [
-    'converter' => [
-        'pages' => "1-6, 10",
-        'embedFonts' => true,
-        'pdfa' => [
-            'convert' => [
-                'level' => '3b',
-            ],
-        ],
-        'compression' => true,
-    ],
+$urlConverterUrl = $baseURL . "rest/urlconverter";
+$urlConverterOptions = [
+    'urlconverter' => [
+        'url' => $inputURL
+    ]
 ];
-$response = getClient($convertUrl, true, $headerInfo, json_encode($converterOptions));
+$response = getClient($urlConverterUrl, true, $headerInfo, json_encode($urlConverterOptions));
 $response = json_decode($response);
 echo "Web service call successful\n";
 

@@ -1,6 +1,6 @@
 <?php
 
-$inputFile = '../../files/lorem-ipsum.docx';
+$inputFile = '../../files/ocr.pdf';
 $inputFileURL = "file://" . realpath($inputFile);
 $resultFile = '../../result/output-soap.pdf';
 
@@ -9,10 +9,10 @@ if (!file_exists($inputFile)) {
     exit;
 }
 
-// creating soap client for converter service
+// creating soap client for barcode service
 try {
     $client = new SoapClient(
-        "http://localhost:8080/webPDF/soap/converter?wsdl", [
+        "http://localhost:8080/webPDF/soap/barcode?wsdl", [
             'soap_version' => SOAP_1_2,
             'exceptions' => true,
             'trace' => true,
@@ -29,20 +29,24 @@ try {
     exit;
 }
 
-// converting local file with converter service
+// generating barcode for local file with barcode service
 try {
-    echo("Using web service 'converter' with local file '" . $inputFile . "'\n");
+    echo("Using web service 'barcode' with local file '" . $inputFile . "'\n");
     $parameters = [
         'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
+            'barcode' => [
+                'add' => [
+                    'aztec' => [[
+                        'value' => 'https://www.webpdf.de',
+                        'pages' => '1',
+                        'position' => [
+                            'x' => 5,
+                            'y' => 5,
+                            'width' => 23,
+                            'height' => 23
+                        ]
+                    ]]
+                ]
             ],
         ],
         'fileContent' => file_get_contents($inputFile),
@@ -62,21 +66,25 @@ try {
 
 echo "----------\n";
 
-// converting URL resource with converter service
+// generating barcode for URL resource with barcode service
 try {
-    echo("Using web service 'converter' with file URL '" . $inputFileURL . "'\n");
+    echo("Using web service 'barcode' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
         'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
+            'barcode' => [
+                'add' => [
+                    'aztec' => [[
+                        'value' => 'https://www.webpdf.de',
+                        'pages' => '1',
+                        'position' => [
+                            'x' => 5,
+                            'y' => 5,
+                            'width' => 23,
+                            'height' => 23
+                        ]
+                    ]]
+                ]
             ],
         ],
         "fileURL" => $inputFileURL,

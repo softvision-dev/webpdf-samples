@@ -1,6 +1,6 @@
 <?php
 
-$inputFile = '../../files/lorem-ipsum.docx';
+$inputFile = '../../files/ocr.pdf';
 $inputFileURL = "file://" . realpath($inputFile);
 $resultFile = '../../result/output-soap.pdf';
 
@@ -9,10 +9,10 @@ if (!file_exists($inputFile)) {
     exit;
 }
 
-// creating soap client for converter service
+// creating soap client for pdfa service
 try {
     $client = new SoapClient(
-        "http://localhost:8080/webPDF/soap/converter?wsdl", [
+        "http://localhost:8080/webPDF/soap/pdfa?wsdl", [
             'soap_version' => SOAP_1_2,
             'exceptions' => true,
             'trace' => true,
@@ -29,23 +29,18 @@ try {
     exit;
 }
 
-// converting local file with converter service
+// converting local file with pdfa service
 try {
-    echo("Using web service 'converter' with local file '" . $inputFile . "'\n");
+    echo("Using web service 'pdfa' with local file '" . $inputFile . "'\n");
     $parameters = [
         'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
-            ],
+            'pdfa' => [
+                'convert' => [
+                    'level' => '1b',
+                ]
+            ]
         ],
-        'fileContent' => file_get_contents($inputFile),
+        'fileContent' => file_get_contents($inputFile)
     ];
 
     $response = $client->execute($parameters);
@@ -62,22 +57,17 @@ try {
 
 echo "----------\n";
 
-// converting URL resource with converter service
+// converting URL resource with pdfa service
 try {
     echo("Using web service 'converter' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
         'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
-            ],
+            'pdfa' => [
+                'convert' => [
+                    'level' => '1b',
+                ]
+            ]
         ],
         "fileURL" => $inputFileURL,
     ];

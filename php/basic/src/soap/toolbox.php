@@ -1,7 +1,8 @@
 <?php
 
-$inputFile = '../../files/lorem-ipsum.docx';
+$inputFile = '../../files/ocr.pdf';
 $inputFileURL = "file://" . realpath($inputFile);
+$mergeSourceFile = '../../files/lorem-ipsum.pdf';
 $resultFile = '../../result/output-soap.pdf';
 
 if (!file_exists($inputFile)) {
@@ -9,10 +10,10 @@ if (!file_exists($inputFile)) {
     exit;
 }
 
-// creating soap client for converter service
+// creating soap client for toolbox service
 try {
     $client = new SoapClient(
-        "http://localhost:8080/webPDF/soap/converter?wsdl", [
+        "http://localhost:8080/webPDF/soap/toolbox?wsdl", [
             'soap_version' => SOAP_1_2,
             'exceptions' => true,
             'trace' => true,
@@ -29,21 +30,20 @@ try {
     exit;
 }
 
-// converting local file with converter service
+
+// merging local file and other pdf file with toolbox service
 try {
-    echo("Using web service 'converter' with local file '" . $inputFile . "'\n");
+    echo("Using web service 'toolbox' with local file '" . $inputFile . "'\n");
     $parameters = [
         'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
-            ],
+            'merge' => [
+                'page' => 2,
+                'sourceIsZip' => false,
+                'data' => [
+                    '_' => file_get_contents($mergeSourceFile),
+                    'format' => 'pdf'
+                ]
+            ]
         ],
         'fileContent' => file_get_contents($inputFile),
     ];
@@ -62,22 +62,20 @@ try {
 
 echo "----------\n";
 
-// converting URL resource with converter service
+// merging URL resource and other pdf file with toolbox service
 try {
-    echo("Using web service 'converter' with file URL '" . $inputFileURL . "'\n");
+    echo("Using web service 'toolbox' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
         'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
-            ],
+            'merge' => [
+                'page' => 2,
+                'sourceIsZip' => false,
+                'data' => [
+                    '_' => file_get_contents($mergeSourceFile),
+                    'format' => 'pdf'
+                ]
+            ]
         ],
         "fileURL" => $inputFileURL,
     ];
