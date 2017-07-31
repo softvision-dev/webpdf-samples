@@ -25,17 +25,17 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="codabar" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ean8" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="aztec" type="{http://schema.webpdf.de/1.0/operation}AztecBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="codabar" type="{http://schema.webpdf.de/1.0/operation}CodabarBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="code128" type="{http://schema.webpdf.de/1.0/operation}Code128BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="code39" type="{http://schema.webpdf.de/1.0/operation}Code39BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="datamatrix" type="{http://schema.webpdf.de/1.0/operation}DataMatrixBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ean13" type="{http://schema.webpdf.de/1.0/operation}Ean13BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="ean8" type="{http://schema.webpdf.de/1.0/operation}Ean8BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="itf" type="{http://schema.webpdf.de/1.0/operation}ItfBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
  *                   &lt;element name="pdf417" type="{http://schema.webpdf.de/1.0/operation}Pdf417BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
  *                   &lt;element name="qrcode" type="{http://schema.webpdf.de/1.0/operation}QrBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="itf" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="upca" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="code128" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="aztec" type="{http://schema.webpdf.de/1.0/operation}AztecBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="ean13" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="datamatrix" type="{http://schema.webpdf.de/1.0/operation}DataMatrixBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
- *                   &lt;element name="code39" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="upca" type="{http://schema.webpdf.de/1.0/operation}UpcaBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -131,17 +131,17 @@ public class BarcodeType {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="codabar" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ean8" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="aztec" type="{http://schema.webpdf.de/1.0/operation}AztecBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="codabar" type="{http://schema.webpdf.de/1.0/operation}CodabarBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="code128" type="{http://schema.webpdf.de/1.0/operation}Code128BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="code39" type="{http://schema.webpdf.de/1.0/operation}Code39BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="datamatrix" type="{http://schema.webpdf.de/1.0/operation}DataMatrixBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ean13" type="{http://schema.webpdf.de/1.0/operation}Ean13BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="ean8" type="{http://schema.webpdf.de/1.0/operation}Ean8BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="itf" type="{http://schema.webpdf.de/1.0/operation}ItfBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
      *         &lt;element name="pdf417" type="{http://schema.webpdf.de/1.0/operation}Pdf417BarcodeType" maxOccurs="unbounded" minOccurs="0"/>
      *         &lt;element name="qrcode" type="{http://schema.webpdf.de/1.0/operation}QrBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="itf" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="upca" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="code128" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="aztec" type="{http://schema.webpdf.de/1.0/operation}AztecBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="ean13" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="datamatrix" type="{http://schema.webpdf.de/1.0/operation}DataMatrixBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
-     *         &lt;element name="code39" type="{http://schema.webpdf.de/1.0/operation}BaseBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="upca" type="{http://schema.webpdf.de/1.0/operation}UpcaBarcodeType" maxOccurs="unbounded" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -152,42 +152,71 @@ public class BarcodeType {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
+        "aztec",
         "codabar",
+        "code128",
+        "code39",
+        "datamatrix",
+        "ean13",
         "ean8",
+        "itf",
         "pdf417",
         "qrcode",
-        "itf",
-        "upca",
-        "code128",
-        "aztec",
-        "ean13",
-        "datamatrix",
-        "code39"
+        "upca"
     })
     public static class Add {
 
         @XmlElement(nillable = true)
-        protected List<BaseBarcodeType> codabar;
+        protected List<AztecBarcodeType> aztec;
         @XmlElement(nillable = true)
-        protected List<BaseBarcodeType> ean8;
+        protected List<CodabarBarcodeType> codabar;
+        @XmlElement(nillable = true)
+        protected List<Code128BarcodeType> code128;
+        @XmlElement(nillable = true)
+        protected List<Code39BarcodeType> code39;
+        @XmlElement(nillable = true)
+        protected List<DataMatrixBarcodeType> datamatrix;
+        @XmlElement(nillable = true)
+        protected List<Ean13BarcodeType> ean13;
+        @XmlElement(nillable = true)
+        protected List<Ean8BarcodeType> ean8;
+        @XmlElement(nillable = true)
+        protected List<ItfBarcodeType> itf;
         @XmlElement(nillable = true)
         protected List<Pdf417BarcodeType> pdf417;
         @XmlElement(nillable = true)
         protected List<QrBarcodeType> qrcode;
         @XmlElement(nillable = true)
-        protected List<BaseBarcodeType> itf;
-        @XmlElement(nillable = true)
-        protected List<BaseBarcodeType> upca;
-        @XmlElement(nillable = true)
-        protected List<BaseBarcodeType> code128;
-        @XmlElement(nillable = true)
-        protected List<AztecBarcodeType> aztec;
-        @XmlElement(nillable = true)
-        protected List<BaseBarcodeType> ean13;
-        @XmlElement(nillable = true)
-        protected List<DataMatrixBarcodeType> datamatrix;
-        @XmlElement(nillable = true)
-        protected List<BaseBarcodeType> code39;
+        protected List<UpcaBarcodeType> upca;
+
+        /**
+         * Gets the value of the aztec property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the aztec property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getAztec().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link AztecBarcodeType }
+         * 
+         * 
+         */
+        public List<AztecBarcodeType> getAztec() {
+            if (aztec == null) {
+                aztec = new ArrayList<AztecBarcodeType>();
+            }
+            return this.aztec;
+        }
 
         /**
          * Gets the value of the codabar property.
@@ -207,15 +236,131 @@ public class BarcodeType {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link BaseBarcodeType }
+         * {@link CodabarBarcodeType }
          * 
          * 
          */
-        public List<BaseBarcodeType> getCodabar() {
+        public List<CodabarBarcodeType> getCodabar() {
             if (codabar == null) {
-                codabar = new ArrayList<BaseBarcodeType>();
+                codabar = new ArrayList<CodabarBarcodeType>();
             }
             return this.codabar;
+        }
+
+        /**
+         * Gets the value of the code128 property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the code128 property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getCode128().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link Code128BarcodeType }
+         * 
+         * 
+         */
+        public List<Code128BarcodeType> getCode128() {
+            if (code128 == null) {
+                code128 = new ArrayList<Code128BarcodeType>();
+            }
+            return this.code128;
+        }
+
+        /**
+         * Gets the value of the code39 property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the code39 property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getCode39().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link Code39BarcodeType }
+         * 
+         * 
+         */
+        public List<Code39BarcodeType> getCode39() {
+            if (code39 == null) {
+                code39 = new ArrayList<Code39BarcodeType>();
+            }
+            return this.code39;
+        }
+
+        /**
+         * Gets the value of the datamatrix property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the datamatrix property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getDatamatrix().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link DataMatrixBarcodeType }
+         * 
+         * 
+         */
+        public List<DataMatrixBarcodeType> getDatamatrix() {
+            if (datamatrix == null) {
+                datamatrix = new ArrayList<DataMatrixBarcodeType>();
+            }
+            return this.datamatrix;
+        }
+
+        /**
+         * Gets the value of the ean13 property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the ean13 property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getEan13().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link Ean13BarcodeType }
+         * 
+         * 
+         */
+        public List<Ean13BarcodeType> getEan13() {
+            if (ean13 == null) {
+                ean13 = new ArrayList<Ean13BarcodeType>();
+            }
+            return this.ean13;
         }
 
         /**
@@ -236,15 +381,44 @@ public class BarcodeType {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link BaseBarcodeType }
+         * {@link Ean8BarcodeType }
          * 
          * 
          */
-        public List<BaseBarcodeType> getEan8() {
+        public List<Ean8BarcodeType> getEan8() {
             if (ean8 == null) {
-                ean8 = new ArrayList<BaseBarcodeType>();
+                ean8 = new ArrayList<Ean8BarcodeType>();
             }
             return this.ean8;
+        }
+
+        /**
+         * Gets the value of the itf property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the itf property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getItf().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link ItfBarcodeType }
+         * 
+         * 
+         */
+        public List<ItfBarcodeType> getItf() {
+            if (itf == null) {
+                itf = new ArrayList<ItfBarcodeType>();
+            }
+            return this.itf;
         }
 
         /**
@@ -306,35 +480,6 @@ public class BarcodeType {
         }
 
         /**
-         * Gets the value of the itf property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the itf property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getItf().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link BaseBarcodeType }
-         * 
-         * 
-         */
-        public List<BaseBarcodeType> getItf() {
-            if (itf == null) {
-                itf = new ArrayList<BaseBarcodeType>();
-            }
-            return this.itf;
-        }
-
-        /**
          * Gets the value of the upca property.
          * 
          * <p>
@@ -352,160 +497,15 @@ public class BarcodeType {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link BaseBarcodeType }
+         * {@link UpcaBarcodeType }
          * 
          * 
          */
-        public List<BaseBarcodeType> getUpca() {
+        public List<UpcaBarcodeType> getUpca() {
             if (upca == null) {
-                upca = new ArrayList<BaseBarcodeType>();
+                upca = new ArrayList<UpcaBarcodeType>();
             }
             return this.upca;
-        }
-
-        /**
-         * Gets the value of the code128 property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the code128 property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getCode128().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link BaseBarcodeType }
-         * 
-         * 
-         */
-        public List<BaseBarcodeType> getCode128() {
-            if (code128 == null) {
-                code128 = new ArrayList<BaseBarcodeType>();
-            }
-            return this.code128;
-        }
-
-        /**
-         * Gets the value of the aztec property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the aztec property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getAztec().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link AztecBarcodeType }
-         * 
-         * 
-         */
-        public List<AztecBarcodeType> getAztec() {
-            if (aztec == null) {
-                aztec = new ArrayList<AztecBarcodeType>();
-            }
-            return this.aztec;
-        }
-
-        /**
-         * Gets the value of the ean13 property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the ean13 property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getEan13().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link BaseBarcodeType }
-         * 
-         * 
-         */
-        public List<BaseBarcodeType> getEan13() {
-            if (ean13 == null) {
-                ean13 = new ArrayList<BaseBarcodeType>();
-            }
-            return this.ean13;
-        }
-
-        /**
-         * Gets the value of the datamatrix property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the datamatrix property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getDatamatrix().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link DataMatrixBarcodeType }
-         * 
-         * 
-         */
-        public List<DataMatrixBarcodeType> getDatamatrix() {
-            if (datamatrix == null) {
-                datamatrix = new ArrayList<DataMatrixBarcodeType>();
-            }
-            return this.datamatrix;
-        }
-
-        /**
-         * Gets the value of the code39 property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the code39 property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getCode39().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link BaseBarcodeType }
-         * 
-         * 
-         */
-        public List<BaseBarcodeType> getCode39() {
-            if (code39 == null) {
-                code39 = new ArrayList<BaseBarcodeType>();
-            }
-            return this.code39;
         }
 
     }

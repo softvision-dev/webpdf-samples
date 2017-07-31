@@ -30,22 +30,33 @@ public class ToolboxWebservice extends AbstractWebservice<ToolboxService, Toolbo
         Operation operation = new Operation();
 
         MergeType mergeType = new MergeType();
-
-        mergeType.setPage(2);
+        mergeType.setPage(1);
         mergeType.setSourceIsZip(false);
+        mergeType.setMode(MergeModeType.AFTER_PAGE);
 
         // set merge file data
         mergeType.setData(new MergeFileDataType());
         mergeType.getData().setFormat(FileDataFormatType.PDF);
 
-        // add merge type as one operation to the toolbox operation list
-        operation.getAnnotationOrAttachmentOrDelete().add(mergeType);
         try {
-            mergeType.getData().setValue(Files.readAllBytes(Paths.get("./files/lorem-ipsum.pdf")));
+            mergeType.getData().setValue(Files.readAllBytes(Paths.get("./files/merge.pdf")));
         } catch (IOException ex) {
-            System.out.println("Unable to add merge file data to params!");
-            System.out.println(ex.getMessage());
+            System.out.println("Unable to add merge file data to params: " + ex.getMessage());
         }
+
+        // add merge operation to the toolbox operation list
+        operation.getAnnotationOrAttachmentOrDelete().add(mergeType);
+
+        // add rotate operation to the toolbox operation list
+        RotateType rotateType = new RotateType();
+        rotateType.setPages("1-5");
+        rotateType.setDegrees(90);
+        operation.getAnnotationOrAttachmentOrDelete().add(rotateType);
+
+        // add rotate operation to the toolbox operation list
+        DeleteType deleteType = new DeleteType();
+        deleteType.setPages("5-8");
+        operation.getAnnotationOrAttachmentOrDelete().add(deleteType);
 
         // execute web service
         try {

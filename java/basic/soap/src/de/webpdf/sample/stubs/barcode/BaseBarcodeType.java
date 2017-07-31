@@ -37,8 +37,15 @@ import javax.xml.bind.annotation.XmlType;
     "position"
 })
 @XmlSeeAlso({
+    Code39BarcodeType.class,
+    Code128BarcodeType.class,
+    CodabarBarcodeType.class,
+    Ean8BarcodeType.class,
     DataMatrixBarcodeType.class,
+    ItfBarcodeType.class,
+    UpcaBarcodeType.class,
     Pdf417BarcodeType.class,
+    Ean13BarcodeType.class,
     QrBarcodeType.class,
     AztecBarcodeType.class
 })

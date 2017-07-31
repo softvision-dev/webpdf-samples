@@ -34,35 +34,40 @@ public class SignatureWebservice extends AbstractWebservice<SignatureService, Si
         operation.getSignature().setAdd(new SignatureType.Add());
 
         operation.getSignature().getAdd().setCertificationLevel(CertificationLevelType.NO_CHANGES);
-        operation.getSignature().getAdd().setContact("John Doe Company");
+        operation.getSignature().getAdd().setContact("John Doe");
         operation.getSignature().getAdd().setKeyName("Generic self-signed certificate");
 
-        // set appearance parameters
+        // set signature parameters
         operation.getSignature().getAdd().setAppearance(new SignatureType.Add.Appearance());
         operation.getSignature().getAdd().getAppearance().setPage(1);
-        operation.getSignature().getAdd().getAppearance().setName("John Doe");
+        operation.getSignature().getAdd().getAppearance().setName("John Doe, Company");
 
         SignatureIdentifierType signatureIdentifierType = new SignatureIdentifierType();
         signatureIdentifierType.setShowCommonName(true);
-        signatureIdentifierType.setShowOrganisationName(true);
+        signatureIdentifierType.setShowOrganisationName(false);
         signatureIdentifierType.setShowSignedBy(true);
+        signatureIdentifierType.setShowCountry(false);
+        signatureIdentifierType.setShowMail(false);
+        signatureIdentifierType.setShowOrganisationUnit(false);
         operation.getSignature().getAdd().getAppearance().setIdentifierElements(signatureIdentifierType);
 
+        // set signature position and size
         SignaturePositionType signaturePositionType = new SignaturePositionType();
-        signaturePositionType.setX(5.0F);
-        signaturePositionType.setY(5.0F);
-        signaturePositionType.setWidth(50.0F);
-        signaturePositionType.setHeight(50.0F);
+        signaturePositionType.setX(5.0f);
+        signaturePositionType.setY(5.0f);
+        signaturePositionType.setWidth(80.0f);
+        signaturePositionType.setHeight(15.0f);
         operation.getSignature().getAdd().getAppearance().setPosition(signaturePositionType);
+
+        SignatureImageType signatureImageType = new SignatureImageType();
+        signatureImageType.setPosition(SignatureImagePositionType.LEFT);
 
         // set image for signature
         try {
-            SignatureImageType signatureImageType = new SignatureImageType();
             signatureImageType.setData(Files.readAllBytes(Paths.get("./files/logo.png")));
             operation.getSignature().getAdd().getAppearance().setImage(signatureImageType);
         } catch (IOException ex) {
-            System.out.println(String.format("Unable to add %s to parameter data!", SignatureImageType.class.getSimpleName()));
-            System.out.println(ex.getMessage());
+            System.out.println("Unable to add image to signature: " + ex.getMessage());
         }
 
         // execute web service

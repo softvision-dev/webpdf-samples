@@ -27,26 +27,42 @@ public class BarcodeWebservice extends AbstractWebservice<BarcodeService, Barcod
         // build the parameter for the operation
         Operation operation = new Operation();
 
-        BarcodeType barcodeType = new BarcodeType();
-        BarcodeType.Add add = new BarcodeType.Add();
-        // build an desired barcode type
-        AztecBarcodeType aztecBarcodeType = new AztecBarcodeType();
+        operation.setBarcode(new BarcodeType());
+        operation.getBarcode().setAdd(new BarcodeType.Add());
+
+        // build a desired barcode type
+        QrBarcodeType qrBarcodeType = new QrBarcodeType();
+
         // set the position and the size for the barcode type
         RectangleType position = new RectangleType();
-        position.setX(5.0F);
-        position.setY(5.0F);
-        position.setHeight(23.0F);
-        position.setWidth(23.0F);
-        aztecBarcodeType.setPosition(position);
-        // set the barcode content value
-        aztecBarcodeType.setValue("https://www.webpdf.de");
-        // set the page for the barcode type
-        aztecBarcodeType.setPages("1");
-        // add barcode type(aztec) to aztec barcode types
-        add.getAztec().add(aztecBarcodeType);
-        barcodeType.setAdd(add);
+        position.setX(2.0f);
+        position.setY(2.0f);
+        position.setHeight(20.0f);
+        position.setWidth(20.0f);
 
-        operation.setBarcode(barcodeType);
+        qrBarcodeType.setPosition(position);
+        qrBarcodeType.setPages("1-3");
+
+        // set the barcode content value
+        qrBarcodeType.setValue("https://www.webpdf.de");
+
+        // add barcode type
+        operation.getBarcode().getAdd().getQrcode().add(qrBarcodeType);
+
+        // create a second barcode (EAN8)
+        Ean8BarcodeType ean8BarcodeType = new Ean8BarcodeType();
+        position = new RectangleType();
+        position.setX(190.0f);
+        position.setY(2.0f);
+        position.setHeight(40.0f);
+        position.setWidth(10.0f);
+        ean8BarcodeType.setPosition(position);
+
+        ean8BarcodeType.setValue("90311017");
+        ean8BarcodeType.setPages("*");
+        ean8BarcodeType.setRotation(90);
+
+        operation.getBarcode().getAdd().getEan8().add(ean8BarcodeType);
 
         // execute web service
         try {

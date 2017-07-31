@@ -29,9 +29,9 @@ public class PdfaWebservice extends AbstractWebservice<PdfaService, Pdfa> {
         Operation operation = new Operation();
         operation.setPdfa(new PdfaType());
         operation.getPdfa().setConvert(new PdfaType.Convert());
-        operation.getPdfa().getConvert().setLevel("1b");
+        operation.getPdfa().getConvert().setLevel("3b");
         operation.getPdfa().getConvert().setErrorReport(PdfaErrorReportType.MESSAGE);
-        operation.getPdfa().getConvert().setImageQuality(100);
+        operation.getPdfa().getConvert().setImageQuality(90);
 
         // set some additional information
         operation.setBilling(new BillingType());

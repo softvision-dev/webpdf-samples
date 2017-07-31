@@ -95,6 +95,38 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Code39BarcodeType }
+     * 
+     */
+    public Code39BarcodeType createCode39BarcodeType() {
+        return new Code39BarcodeType();
+    }
+
+    /**
+     * Create an instance of {@link Code128BarcodeType }
+     * 
+     */
+    public Code128BarcodeType createCode128BarcodeType() {
+        return new Code128BarcodeType();
+    }
+
+    /**
+     * Create an instance of {@link CodabarBarcodeType }
+     * 
+     */
+    public CodabarBarcodeType createCodabarBarcodeType() {
+        return new CodabarBarcodeType();
+    }
+
+    /**
+     * Create an instance of {@link Ean8BarcodeType }
+     * 
+     */
+    public Ean8BarcodeType createEan8BarcodeType() {
+        return new Ean8BarcodeType();
+    }
+
+    /**
      * Create an instance of {@link DataMatrixBarcodeType }
      * 
      */
@@ -103,11 +135,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ItfBarcodeType }
+     * 
+     */
+    public ItfBarcodeType createItfBarcodeType() {
+        return new ItfBarcodeType();
+    }
+
+    /**
      * Create an instance of {@link RectangleType }
      * 
      */
     public RectangleType createRectangleType() {
         return new RectangleType();
+    }
+
+    /**
+     * Create an instance of {@link UpcaBarcodeType }
+     * 
+     */
+    public UpcaBarcodeType createUpcaBarcodeType() {
+        return new UpcaBarcodeType();
     }
 
     /**
@@ -124,6 +172,14 @@ public class ObjectFactory {
      */
     public Pdf417BarcodeType createPdf417BarcodeType() {
         return new Pdf417BarcodeType();
+    }
+
+    /**
+     * Create an instance of {@link Ean13BarcodeType }
+     * 
+     */
+    public Ean13BarcodeType createEan13BarcodeType() {
+        return new Ean13BarcodeType();
     }
 
     /**

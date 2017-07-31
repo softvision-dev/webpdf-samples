@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 
-public class OCRWebservice extends AbstractWebservice<OCRService, OCR> {
+public class OcrWebservice extends AbstractWebservice<OCRService, OCR> {
 
-    public OCRWebservice(URL serverURL, URI sourceFile) throws IOException {
+    public OcrWebservice(URL serverURL, URI sourceFile) throws IOException {
         super(serverURL, sourceFile);
     }
 
@@ -30,19 +30,13 @@ public class OCRWebservice extends AbstractWebservice<OCRService, OCR> {
         operation.getOcr().setLanguage(OcrLanguageType.ENG);
         operation.getOcr().setOutputFormat(OcrOutputType.PDF);
         operation.getOcr().setCheckResolution(false);
-        operation.getOcr().setForceEachPage(true);
-        operation.getOcr().setImageDpi(300);
-        // set OcrPageType
-        operation.getOcr().setPage(new OcrPageType());
-        operation.getOcr().getPage().setHeight(297);
-        operation.getOcr().getPage().setWidth(210);
-        operation.getOcr().getPage().setMetrics(MetricsType.MM);
+        operation.getOcr().setImageDpi(200);
 
-        // set some additional information
-        operation.setBilling(new BillingType());
-        operation.getBilling().setUserName("John Doe");
-        operation.getBilling().setApplicationName("webPDF Sample Application");
-        operation.getBilling().setCustomerCode("ABC123");
+        // set page size to A5
+        operation.getOcr().setPage(new OcrPageType());
+        operation.getOcr().getPage().setHeight(210);
+        operation.getOcr().getPage().setWidth(148);
+        operation.getOcr().getPage().setMetrics(MetricsType.MM);
 
         // execute web service
         try {

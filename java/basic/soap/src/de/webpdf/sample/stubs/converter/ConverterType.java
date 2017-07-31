@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;attribute name="embedFonts" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *       &lt;attribute name="accessPassword" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="fileExtension" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="maxRecursion" type="{http://www.w3.org/2001/XMLSchema}int" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -73,6 +74,8 @@ public class ConverterType {
     protected String accessPassword;
     @XmlAttribute(name = "fileExtension")
     protected String fileExtension;
+    @XmlAttribute(name = "maxRecursion")
+    protected Integer maxRecursion;
 
     /**
      * Gets the value of the page property.
@@ -480,6 +483,30 @@ public class ConverterType {
      */
     public void setFileExtension(String value) {
         this.fileExtension = value;
+    }
+
+    /**
+     * Gets the value of the maxRecursion property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getMaxRecursion() {
+        return maxRecursion;
+    }
+
+    /**
+     * Sets the value of the maxRecursion property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setMaxRecursion(Integer value) {
+        this.maxRecursion = value;
     }
 
 }

@@ -98,7 +98,7 @@ public class Main {
      * @throws IOException web service exception
      */
     private void callPdfa() throws IOException {
-        File sourceFile = new File("./files/ocr.pdf");
+        File sourceFile = new File("./files/lorem-ipsum.pdf");
 
         PdfaWebservice pdfaWebservice = new PdfaWebservice(serverURL, sourceFile.toURI());
         pdfaWebservice.setServerProtected(true);
@@ -112,7 +112,7 @@ public class Main {
      * @throws IOException web service exception
      */
     private void callToolbox() throws IOException {
-        File sourceFile = new File("./files/ocr.pdf");
+        File sourceFile = new File("./files/lorem-ipsum.pdf");
 
         ToolboxWebservice toolboxWebservice = new ToolboxWebservice(serverURL, sourceFile.toURI());
         toolboxWebservice.setServerProtected(true);
@@ -126,7 +126,7 @@ public class Main {
      * @throws IOException web service exception
      */
     private void callSignature() throws IOException {
-        File sourceFile = new File("./files/ocr.pdf");
+        File sourceFile = new File("./files/lorem-ipsum.pdf");
 
         SignatureWebservice signatureWebservice = new SignatureWebservice(serverURL, sourceFile.toURI());
         signatureWebservice.setServerProtected(true);
@@ -140,9 +140,9 @@ public class Main {
      * @throws IOException web service exception
      */
     private void callOCR() throws IOException {
-        File sourceFile = new File("./files/ocr.pdf");
+        File sourceFile = new File("./files/ocr.png");
 
-        OCRWebservice ocrWebservice = new OCRWebservice(serverURL, sourceFile.toURI());
+        OcrWebservice ocrWebservice = new OcrWebservice(serverURL, sourceFile.toURI());
         ocrWebservice.setServerProtected(true);
         ocrWebservice.setUseAuthorization(true);
         ocrWebservice.execute(targetFile);
@@ -154,7 +154,7 @@ public class Main {
      * @throws IOException web service exception
      */
     private void callBarcode() throws IOException {
-        File sourceFile = new File("./files/ocr.pdf");
+        File sourceFile = new File("./files/lorem-ipsum.pdf");
 
         BarcodeWebservice barcodeWebservice = new BarcodeWebservice(serverURL, sourceFile.toURI());
         barcodeWebservice.setServerProtected(true);
