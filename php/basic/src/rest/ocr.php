@@ -62,7 +62,14 @@ $ocrUrl = $baseURL . "rest/ocr/" . $response->documentId;
 $ocrOptions = [
     'ocr' => [
         'language' => 'eng',
-        'outputFormat' => 'pdf'
+        'outputFormat' => 'pdf',
+        'checkResolution' => false,
+        'imageDpi' => 200,
+        'page' => [
+            'height' => 210,
+            'width' => 148,
+            'metrics' => 'mm'
+        ]
     ],
 ];
 $response = getClient($ocrUrl, true, $headerInfo, json_encode($ocrOptions));

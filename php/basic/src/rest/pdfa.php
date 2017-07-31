@@ -1,7 +1,7 @@
 <?php
 $baseURL = 'http://localhost:8080/webPDF/';
 $resultFile = '../../result/output-rest.pdf';
-$sourceFile = realpath('../../files/ocr.pdf');
+$sourceFile = realpath('../../files/lorem-ipsum.pdf');
 
 function getClient($url, $post = false, $token = null, $data = null)
 {
@@ -62,9 +62,16 @@ $pdfaUrl = $baseURL . "rest/pdfa/" . $response->documentId;
 $pdfaOptions = [
     'pdfa' => [
         'convert' => [
-            'level' => '1b',
+            'level' => '3b',
+            'errorReport' => 'message',
+            'imageQuality' => '90'
         ]
-    ]
+    ],
+    'billing' => [
+        'userName' => 'John Doe',
+        'applicationName' => 'webPDF Sample Application',
+        'customerCode' => 'ABC123'
+    ],
 ];
 $response = getClient($pdfaUrl, true, $headerInfo, json_encode($pdfaOptions));
 $response = json_decode($response);

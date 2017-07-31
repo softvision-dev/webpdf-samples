@@ -1,6 +1,6 @@
 <?php
 
-$inputFile = '../../files/ocr.pdf';
+$inputFile = '../../files/lorem-ipsum.pdf';
 $inputFileURL = "file://" . realpath($inputFile);
 $imageSourceFile = realpath('../../files/logo.png');
 $resultFile = '../../result/output-soap.pdf';
@@ -33,39 +33,44 @@ try {
 //sign image
 $imageData = file_get_contents($imageSourceFile);
 
+$operationParameters = [
+    'signature' => [
+        'add' => [
+            'certificationLevel' => 'noChanges',
+            'contact' => 'John Doe',
+            'keyName' => 'Generic self-signed certificate',
+            'appearance' => [
+                'page' => 1,
+                'name' => 'John Doe, Company',
+                'identifierElements' => [
+                    'showCommonName' => true,
+                    'showOrganisationName' => false,
+                    'showSignedBy' => true,
+                    'showCountry' => false,
+                    'showMail' => false,
+                    'showOrganisationUnit' => false,
+                ],
+                'position' => [
+                    'x' => 5,
+                    'y' => 5,
+                    'width' => 80,
+                    'height' => 15
+                ],
+                'image' => [
+                    'position' => 'center',
+                    'data' => $imageData
+                ],
+
+            ]
+        ]
+    ],
+];
+
 // sign local pdf with signature service
 try {
     echo("Using web service 'signature' with local file '" . $inputFile . "'\n");
     $parameters = [
-        'operation' => [
-            'signature' => [
-                'add' => [
-                    'keyName' => 'Generic self-signed certificate',
-                    'appearance' => [
-                        'page' => 1,
-                        'name' => 'John Doe',
-                        'image' => [
-                            'position' => 'center',
-                            'opacity' => 30,
-                            'data' => $imageData
-                        ],
-                        'identifierElements' => [
-                            'showCommonName' => true,
-                            'showCountry' => true,
-                            'showName' => true
-                        ],
-                        'position' => [
-                            'x' => 0,
-                            'y' => 0,
-                            'width' => 100,
-                            'height' => 100,
-                            'coordinates' => 'user',
-                            'metrics' => 'mm'
-                        ]
-                    ]
-                ]
-            ],
-        ],
+        'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
     ];
 
@@ -88,36 +93,7 @@ try {
     echo("Using web service 'signature' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
-        'operation' => [
-            'signature' => [
-                'add' => [
-                    'keyName' => 'Generic self-signed certificate',
-                    'appearance' => [
-                        'page' => 1,
-                        'name' => 'John Doe',
-                        'image' => [
-                            'position' => 'center',
-                            'opacity' => 30,
-                            'data' => $imageData
-
-                        ],
-                        'identifierElements' => [
-                            'showCommonName' => true,
-                            'showCountry' => true,
-                            'showName' => true
-                        ],
-                        'position' => [
-                            'x' => 0,
-                            'y' => 0,
-                            'width' => 100,
-                            'height' => 100,
-                            'coordinates' => 'user',
-                            'metrics' => 'mm'
-                        ]
-                    ]
-                ]
-            ]
-        ],
+        'operation' => $operationParameters,
         "fileURL" => $inputFileURL,
     ];
 

@@ -1,7 +1,7 @@
 <?php
 $baseURL = 'http://localhost:8080/webPDF/';
 $resultFile = '../../result/output-rest.pdf';
-$sourceFile = realpath('../../files/ocr.pdf');
+$sourceFile = realpath('../../files/lorem-ipsum.pdf');
 
 function getClient($url, $post = false, $token = null, $data = null)
 {
@@ -62,17 +62,28 @@ $barcodeUrl = $baseURL . "rest/barcode/" . $response->documentId;
 $barcodeOptions = [
     'barcode' => [
         'add' => [
-            'aztec' => [[
-                'value' => 'https://www.webpdf.de',
-                'pages' => '1',
+            'qrcode' => [[
                 'position' => [
-                    'x' => 5,
-                    'y' => 5,
-                    'width' => 23,
-                    'height' => 23
-                ]
+                    'x' => 2,
+                    'y' => 2,
+                    'width' => 20,
+                    'height' => 20
+                ],
+                'pages' => '1-3',
+                'value' => 'https://www.webpdf.de',
+            ]],
+            'ean8' => [[
+                'position' => [
+                    'x' => 190,
+                    'y' => 2,
+                    'width' => 10,
+                    'height' => 40
+                ],
+                'value' => '90311017',
+                'pages' => '*',
+                'rotation' => 90
             ]]
-        ]
+        ],
     ],
 ];
 $response = getClient($barcodeUrl, true, $headerInfo, json_encode($barcodeOptions));

@@ -61,14 +61,19 @@ $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"]
 $convertUrl = $baseURL . "rest/converter/" . $response->documentId;
 $converterOptions = [
     'converter' => [
-        'pages' => "1-6, 10",
+        'pages' => "1-5, 10",
         'embedFonts' => true,
+        'compression' => true,
         'pdfa' => [
             'convert' => [
                 'level' => '3b',
             ],
         ],
-        'compression' => true,
+    ],
+    'billing' => [
+        'userName' => 'John Doe',
+        'applicationName' => 'webPDF Sample Application',
+        'customerCode' => 'ABC123'
     ],
 ];
 $response = getClient($convertUrl, true, $headerInfo, json_encode($converterOptions));

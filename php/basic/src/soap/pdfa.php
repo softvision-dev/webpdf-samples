@@ -1,6 +1,6 @@
 <?php
 
-$inputFile = '../../files/ocr.pdf';
+$inputFile = '../../files/lorem-ipsum.pdf';
 $inputFileURL = "file://" . realpath($inputFile);
 $resultFile = '../../result/output-soap.pdf';
 
@@ -29,17 +29,26 @@ try {
     exit;
 }
 
+$operationParameters = [
+    'pdfa' => [
+        'convert' => [
+            'level' => '3b',
+            'errorReport' => 'message',
+            'imageQuality' => '90'
+        ]
+    ],
+    'billing' => [
+        'userName' => 'John Doe',
+        'applicationName' => 'webPDF Sample Application',
+        'customerCode' => 'ABC123'
+    ],
+];
+
 // converting local file with pdfa service
 try {
     echo("Using web service 'pdfa' with local file '" . $inputFile . "'\n");
     $parameters = [
-        'operation' => [
-            'pdfa' => [
-                'convert' => [
-                    'level' => '1b',
-                ]
-            ]
-        ],
+        'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile)
     ];
 
@@ -62,13 +71,7 @@ try {
     echo("Using web service 'converter' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
-        'operation' => [
-            'pdfa' => [
-                'convert' => [
-                    'level' => '1b',
-                ]
-            ]
-        ],
+        'operation' => $operationParameters,
         "fileURL" => $inputFileURL,
     ];
 

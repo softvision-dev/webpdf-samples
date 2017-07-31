@@ -1,6 +1,6 @@
 <?php
 
-$inputFile = '../../files/ocr.pdf';
+$inputFile = '../../files/lorem-ipsum.pdf';
 $inputFileURL = "file://" . realpath($inputFile);
 $resultFile = '../../result/output-soap.pdf';
 
@@ -29,26 +29,39 @@ try {
     exit;
 }
 
+$operationParameters = [
+    'barcode' => [
+        'add' => [
+            'qrcode' => [[
+                'position' => [
+                    'x' => 2,
+                    'y' => 2,
+                    'width' => 20,
+                    'height' => 20
+                ],
+                'pages' => '1-3',
+                'value' => 'https://www.webpdf.de',
+            ]],
+            'ean8' => [[
+                'position' => [
+                    'x' => 190,
+                    'y' => 2,
+                    'width' => 10,
+                    'height' => 40
+                ],
+                'value' => '90311017',
+                'pages' => '*',
+                'rotation' => 90
+            ]]
+        ]
+    ],
+];
+
 // generating barcode for local file with barcode service
 try {
     echo("Using web service 'barcode' with local file '" . $inputFile . "'\n");
     $parameters = [
-        'operation' => [
-            'barcode' => [
-                'add' => [
-                    'aztec' => [[
-                        'value' => 'https://www.webpdf.de',
-                        'pages' => '1',
-                        'position' => [
-                            'x' => 5,
-                            'y' => 5,
-                            'width' => 23,
-                            'height' => 23
-                        ]
-                    ]]
-                ]
-            ],
-        ],
+        'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
     ];
 
@@ -71,22 +84,7 @@ try {
     echo("Using web service 'barcode' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
-        'operation' => [
-            'barcode' => [
-                'add' => [
-                    'aztec' => [[
-                        'value' => 'https://www.webpdf.de',
-                        'pages' => '1',
-                        'position' => [
-                            'x' => 5,
-                            'y' => 5,
-                            'width' => 23,
-                            'height' => 23
-                        ]
-                    ]]
-                ]
-            ],
-        ],
+        'operation' => $operationParameters,
         "fileURL" => $inputFileURL,
     ];
 

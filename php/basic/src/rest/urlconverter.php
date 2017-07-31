@@ -46,7 +46,7 @@ $response = json_decode($response);
 $token = $response->token;
 echo "Login successful: $token\n";
 
-// Convert File to PDF (POST)
+// Convert url resource to PDF (POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
 $urlConverterUrl = $baseURL . "rest/urlconverter";
 $urlConverterOptions = [

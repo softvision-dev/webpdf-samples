@@ -1,8 +1,8 @@
 <?php
 
-$inputFile = '../../files/ocr.pdf';
+$inputFile = '../../files/lorem-ipsum.pdf';
 $inputFileURL = "file://" . realpath($inputFile);
-$mergeSourceFile = '../../files/lorem-ipsum.pdf';
+$mergeSourceFile = '../../files/merge.pdf';
 $resultFile = '../../result/output-soap.pdf';
 
 if (!file_exists($inputFile)) {
@@ -30,21 +30,30 @@ try {
     exit;
 }
 
+$operationParameters = [
+    'merge' => [
+        'page' => 1,
+        'sourceIsZip' => false,
+        'mode' => 'afterPage',
+        'data' => [
+            '_' => file_get_contents($mergeSourceFile),
+            'format' => 'pdf'
+        ]
+    ],
+    'rotate' => [
+        'pages' => '1-5',
+        'degrees' => 90
+    ],
+    'delete' => [
+        'pages' => '5-8'
+    ]
+];
 
-// merging local file and other pdf file with toolbox service
+// merging local file and other pdf file with toolbox service + rotation + deletion
 try {
     echo("Using web service 'toolbox' with local file '" . $inputFile . "'\n");
     $parameters = [
-        'operation' => [
-            'merge' => [
-                'page' => 2,
-                'sourceIsZip' => false,
-                'data' => [
-                    '_' => file_get_contents($mergeSourceFile),
-                    'format' => 'pdf'
-                ]
-            ]
-        ],
+        'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
     ];
 
@@ -62,21 +71,12 @@ try {
 
 echo "----------\n";
 
-// merging URL resource and other pdf file with toolbox service
+// merging URL resource and other pdf file with toolbox service + rotation + deletion
 try {
     echo("Using web service 'toolbox' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
-        'operation' => [
-            'merge' => [
-                'page' => 2,
-                'sourceIsZip' => false,
-                'data' => [
-                    '_' => file_get_contents($mergeSourceFile),
-                    'format' => 'pdf'
-                ]
-            ]
-        ],
+        'operation' => $operationParameters,
         "fileURL" => $inputFileURL,
     ];
 

@@ -29,22 +29,29 @@ try {
     exit;
 }
 
+$operationParameters=[
+    'converter' => [
+        'pages' => "1-5, 10",
+        'embedFonts' => true,
+        'compression' => true,
+        'pdfa' => [
+            'convert' => [
+                'level' => '3b',
+            ],
+        ],
+    ],
+    'billing' => [
+        'userName' => 'John Doe',
+        'applicationName' => 'webPDF Sample Application',
+        'customerCode'=>'ABC123'
+    ],
+];
+
 // converting local file with converter service
 try {
     echo("Using web service 'converter' with local file '" . $inputFile . "'\n");
     $parameters = [
-        'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
-            ],
-        ],
+        'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
     ];
 
@@ -67,18 +74,7 @@ try {
     echo("Using web service 'converter' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
-        'operation' => [
-            'converter' => [
-                'pages' => "1-6, 10",
-                'embedFonts' => true,
-                'pdfa' => [
-                    'convert' => [
-                        'level' => '3b',
-                    ],
-                ],
-                'compression' => true,
-            ],
-        ],
+        'operation' => $operationParameters,
         "fileURL" => $inputFileURL,
     ];
 

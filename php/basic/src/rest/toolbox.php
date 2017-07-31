@@ -1,8 +1,8 @@
 <?php
 $baseURL = 'http://localhost:8080/webPDF/';
 $resultFile = '../../result/output-rest.pdf';
-$sourceFile = realpath('../../files/ocr.pdf');
-$mergeFile = realpath('../../files/lorem-ipsum.pdf');
+$sourceFile = realpath('../../files/lorem-ipsum.pdf');
+$mergeFile = realpath('../../files/merge.pdf');
 
 function getClient($url, $post = false, $token = null, $data = null)
 {
@@ -60,19 +60,27 @@ echo "Document ID: $documentId\n";
 // encode merge file
 $mergeData = base64_encode(file_get_contents($mergeFile));
 
-// Merge .pdf files (POST)
+// Merge .pdf files + rotation + deletion(POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
 $toolboxUrl = $baseURL . "rest/toolbox/" . $response->documentId;
-$toolboxOptions = ['toolbox' => [[
-    'merge' => [
-        'page' => 2,
+$toolboxOptions = ['toolbox' => [
+    ['merge' => [
+        'page' => 1,
         'sourceIsZip' => false,
+        'mode' => 'afterPage',
         'data' => [
-            'format' => 'pdf',
-            'value' => $mergeData
+            'value' => $mergeData,
+            'format' => 'pdf'
         ]
-    ]
-]]
+    ]],
+    ['rotate' => [
+        'pages' => '1-5',
+        'degrees' => 90
+    ]],
+    ['delete' => [
+        'pages' => '5-8'
+    ]]
+]
 ];
 $response = getClient($toolboxUrl, true, $headerInfo, json_encode($toolboxOptions));
 $response = json_decode($response);

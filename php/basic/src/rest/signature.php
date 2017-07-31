@@ -66,33 +66,36 @@ $signatureUrl = $baseURL . "rest/signature/" . $response->documentId;
 $signatureOptions = [
     'signature' => [
         'add' => [
+            'certificationLevel' => 'noChanges',
+            'contact' => 'John Doe',
             'keyName' => 'Generic self-signed certificate',
             'appearance' => [
                 'page' => 1,
-                'name' => 'John Doe',
+                'name' => 'John Doe, Company',
+                'identifierElements' => [
+                    'showCommonName' => true,
+                    'showOrganisationName' => false,
+                    'showSignedBy' => true,
+                    'showCountry' => false,
+                    'showMail' => false,
+                    'showOrganisationUnit' => false,
+                ],
+                'position' => [
+                    'x' => 5,
+                    'y' => 5,
+                    'width' => 80,
+                    'height' => 15
+                ],
                 'image' => [
                     'position' => 'center',
-                    'opacity' => 30,
                     'data' => [
                         'value' => $imageData
                     ]
                 ],
-                'identifierElements' => [
-                    'showCommonName' => true,
-                    'showCountry' => true,
-                    'showName' => true
-                ],
-                'position' => [
-                    'x' => 0,
-                    'y' => 0,
-                    'width' => 100,
-                    'height' => 100,
-                    'coordinates' => 'user',
-                    'metrics' => 'mm'
-                ]
+
             ]
         ]
-    ]
+    ],
 ];
 $response = getClient($signatureUrl, true, $headerInfo, json_encode($signatureOptions));
 $response = json_decode($response);

@@ -29,16 +29,25 @@ try {
     exit;
 }
 
+$operationParameters = [
+    'ocr' => [
+        'language' => 'eng',
+        'outputFormat' => 'pdf',
+        'checkResolution' => false,
+        'imageDpi' => 200,
+        'page' => [
+            'height' => 210,
+            'width' => 148,
+            'metrics' => 'mm'
+        ]
+    ],
+];
+
 // recognizing text in local file with ocr service
 try {
     echo("Using web service 'ocr' with local file '" . $inputFile . "'\n");
     $parameters = [
-        'operation' => [
-            'ocr' => [
-                'language' => 'eng',
-                'outputFormat' => 'pdf'
-            ],
-        ],
+        'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
     ];
 
@@ -61,12 +70,7 @@ try {
     echo("Using web service 'ocr' with file URL '" . $inputFileURL . "'\n");
 
     $parameters = [
-        'operation' => [
-            'ocr' => [
-                'language' => 'eng',
-                'outputFormat' => 'pdf'
-            ],
-        ],
+        'operation' => $operationParameters,
         "fileURL" => $inputFileURL,
     ];
 
