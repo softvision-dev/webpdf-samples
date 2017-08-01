@@ -3,6 +3,7 @@
 $inputFile = '../../files/lorem-ipsum.docx';
 $inputFileURL = "file://" . realpath($inputFile);
 $resultFile = '../../result/output-soap.pdf';
+$resultFileURL = '../../result/output-url-soap.pdf';
 
 if (!file_exists($inputFile)) {
     echo "Input file '" . $inputFile . "' does not exist";
@@ -57,7 +58,7 @@ try {
 
     $response = $client->execute($parameters);
     file_put_contents($resultFile, $response->return);
-    echo "Output file '" . $resultFile . "' created\n";
+    echo "Output file '" .$resultFile . "' created\n";
 
 } catch (Exception $e) {
     if ($e->detail) {
@@ -79,8 +80,8 @@ try {
     ];
 
     $response = $client->execute($parameters);
-    file_put_contents($resultFile, $response->return);
-    echo "Output file $resultFile created\n";
+    file_put_contents($resultFileURL, $response->return);
+    echo "Output file $resultFileURL created\n";
 
 } catch (SoapFault $e) {
     if ($e->detail) {

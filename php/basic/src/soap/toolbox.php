@@ -1,12 +1,13 @@
 <?php
 
 $inputFile = '../../files/lorem-ipsum.pdf';
-$inputFileURL = "file://" . realpath($inputFile);
+$inputFileURL = "file://".realpath($inputFile);
 $mergeSourceFile = '../../files/merge.pdf';
 $resultFile = '../../result/output-soap.pdf';
+$resultFileURL = '../../result/output-url-soap.pdf';
 
 if (!file_exists($inputFile)) {
-    echo "Input file '" . $inputFile . "' does not exist";
+    echo "Input file '".$inputFile."' does not exist";
     exit;
 }
 
@@ -37,21 +38,21 @@ $operationParameters = [
         'mode' => 'afterPage',
         'data' => [
             '_' => file_get_contents($mergeSourceFile),
-            'format' => 'pdf'
-        ]
+            'format' => 'pdf',
+        ],
     ],
     'rotate' => [
         'pages' => '1-5',
-        'degrees' => 90
+        'degrees' => 90,
     ],
     'delete' => [
-        'pages' => '5-8'
-    ]
+        'pages' => '5-8',
+    ],
 ];
 
 // merging local file and other pdf file with toolbox service + rotation + deletion
 try {
-    echo("Using web service 'toolbox' with local file '" . $inputFile . "'\n");
+    echo("Using web service 'toolbox' with local file '".$inputFile."'\n");
     $parameters = [
         'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
@@ -59,7 +60,7 @@ try {
 
     $response = $client->execute($parameters);
     file_put_contents($resultFile, $response->return);
-    echo "Output file '" . $resultFile . "' created\n";
+    echo "Output file '".$resultFile."' created\n";
 
 } catch (Exception $e) {
     if ($e->detail) {
@@ -73,7 +74,7 @@ echo "----------\n";
 
 // merging URL resource and other pdf file with toolbox service + rotation + deletion
 try {
-    echo("Using web service 'toolbox' with file URL '" . $inputFileURL . "'\n");
+    echo("Using web service 'toolbox' with file URL '".$inputFileURL."'\n");
 
     $parameters = [
         'operation' => $operationParameters,
@@ -81,8 +82,8 @@ try {
     ];
 
     $response = $client->execute($parameters);
-    file_put_contents($resultFile, $response->return);
-    echo "Output file $resultFile created\n";
+    file_put_contents($resultFileURL, $response->return);
+    echo "Output file $resultFileURL created\n";
 
 } catch (SoapFault $e) {
     if ($e->detail) {

@@ -40,14 +40,14 @@ function getClient($url, $post = false, $token = null, $data = null)
 echo("Using web service with file '$sourceFile'\n");
 
 // Login on Server (GET)
-$loginUrl = $baseURL . "rest/authentication/user/login";
+$loginUrl = $baseURL."rest/authentication/user/login";
 $response = getClient($loginUrl);
 $response = json_decode($response);
 $token = $response->token;
 echo "Login successful: $token\n";
 
 // Upload document (POST)
-$uploadUrl = $baseURL . "rest/documents";
+$uploadUrl = $baseURL."rest/documents";
 $headerInfo = ["Token: $token"];
 
 $postFields = ["filedata" => curl_file_create($sourceFile)];
@@ -58,19 +58,19 @@ echo "Document ID: $documentId\n";
 
 // Convert pdf File to PDF/A (POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
-$pdfaUrl = $baseURL . "rest/pdfa/" . $response->documentId;
+$pdfaUrl = $baseURL."rest/pdfa/".$response->documentId;
 $pdfaOptions = [
     'pdfa' => [
         'convert' => [
             'level' => '3b',
             'errorReport' => 'message',
-            'imageQuality' => '90'
-        ]
+            'imageQuality' => '90',
+        ],
     ],
     'billing' => [
         'userName' => 'John Doe',
         'applicationName' => 'webPDF Sample Application',
-        'customerCode' => 'ABC123'
+        'customerCode' => 'ABC123',
     ],
 ];
 $response = getClient($pdfaUrl, true, $headerInfo, json_encode($pdfaOptions));
@@ -78,14 +78,14 @@ $response = json_decode($response);
 echo "Web service call successful\n";
 
 // Download the PDF
-$downloadUrl = $baseURL . "rest/documents/" . $response->documentId;
+$downloadUrl = $baseURL."rest/documents/".$response->documentId;
 $headerInfo = ["Token: $token"];
 $response = getClient($downloadUrl, false, $headerInfo);
 file_put_contents($resultFile, $response);
 echo "Download to file '$resultFile' successful\n";
 
 // Logout on Server (GET)
-$logoutUrl = $baseURL . "rest/authentication/user/logout";
+$logoutUrl = $baseURL."rest/authentication/user/logout";
 $headerInfo = ["Token: $token"];
 $response = getClient($logoutUrl, false, $headerInfo);
 $response = json_decode($response);

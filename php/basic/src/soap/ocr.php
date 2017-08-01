@@ -1,11 +1,12 @@
 <?php
 
-$inputFile = '../../files/ocr.pdf';
-$inputFileURL = "file://" . realpath($inputFile);
+$inputFile = '../../files/ocr.png';
+$inputFileURL = "file://".realpath($inputFile);
 $resultFile = '../../result/output-soap.pdf';
+$resultFileURL = '../../result/output-url-soap.pdf';
 
 if (!file_exists($inputFile)) {
-    echo "Input file '" . $inputFile . "' does not exist";
+    echo "Input file '".$inputFile."' does not exist";
     exit;
 }
 
@@ -38,14 +39,14 @@ $operationParameters = [
         'page' => [
             'height' => 210,
             'width' => 148,
-            'metrics' => 'mm'
-        ]
+            'metrics' => 'mm',
+        ],
     ],
 ];
 
 // recognizing text in local file with ocr service
 try {
-    echo("Using web service 'ocr' with local file '" . $inputFile . "'\n");
+    echo("Using web service 'ocr' with local file '".$inputFile."'\n");
     $parameters = [
         'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
@@ -53,7 +54,7 @@ try {
 
     $response = $client->execute($parameters);
     file_put_contents($resultFile, $response->return);
-    echo "Output file '" . $resultFile . "' created\n";
+    echo "Output file '".$resultFile."' created\n";
 
 } catch (Exception $e) {
     if ($e->detail) {
@@ -67,7 +68,7 @@ echo "----------\n";
 
 // // recognizing text in url resource file with ocr service
 try {
-    echo("Using web service 'ocr' with file URL '" . $inputFileURL . "'\n");
+    echo("Using web service 'ocr' with file URL '".$inputFileURL."'\n");
 
     $parameters = [
         'operation' => $operationParameters,
@@ -75,8 +76,8 @@ try {
     ];
 
     $response = $client->execute($parameters);
-    file_put_contents($resultFile, $response->return);
-    echo "Output file $resultFile created\n";
+    file_put_contents($resultFileURL, $response->return);
+    echo "Output file $resultFileURL created\n";
 
 } catch (SoapFault $e) {
     if ($e->detail) {

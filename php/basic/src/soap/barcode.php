@@ -1,11 +1,12 @@
 <?php
 
 $inputFile = '../../files/lorem-ipsum.pdf';
-$inputFileURL = "file://" . realpath($inputFile);
+$inputFileURL = "file://".realpath($inputFile);
 $resultFile = '../../result/output-soap.pdf';
+$resultFileURL = '../../result/output-url-soap.pdf';
 
 if (!file_exists($inputFile)) {
-    echo "Input file '" . $inputFile . "' does not exist";
+    echo "Input file '".$inputFile."' does not exist";
     exit;
 }
 
@@ -32,34 +33,38 @@ try {
 $operationParameters = [
     'barcode' => [
         'add' => [
-            'qrcode' => [[
-                'position' => [
-                    'x' => 2,
-                    'y' => 2,
-                    'width' => 20,
-                    'height' => 20
+            'qrcode' => [
+                [
+                    'position' => [
+                        'x' => 2,
+                        'y' => 2,
+                        'width' => 20,
+                        'height' => 20,
+                    ],
+                    'pages' => '1-3',
+                    'value' => 'https://www.webpdf.de',
                 ],
-                'pages' => '1-3',
-                'value' => 'https://www.webpdf.de',
-            ]],
-            'ean8' => [[
-                'position' => [
-                    'x' => 190,
-                    'y' => 2,
-                    'width' => 10,
-                    'height' => 40
+            ],
+            'ean8' => [
+                [
+                    'position' => [
+                        'x' => 190,
+                        'y' => 2,
+                        'width' => 10,
+                        'height' => 40,
+                    ],
+                    'value' => '90311017',
+                    'pages' => '*',
+                    'rotation' => 90,
                 ],
-                'value' => '90311017',
-                'pages' => '*',
-                'rotation' => 90
-            ]]
-        ]
+            ],
+        ],
     ],
 ];
 
 // generating barcode for local file with barcode service
 try {
-    echo("Using web service 'barcode' with local file '" . $inputFile . "'\n");
+    echo("Using web service 'barcode' with local file '".$inputFile."'\n");
     $parameters = [
         'operation' => $operationParameters,
         'fileContent' => file_get_contents($inputFile),
@@ -67,7 +72,7 @@ try {
 
     $response = $client->execute($parameters);
     file_put_contents($resultFile, $response->return);
-    echo "Output file '" . $resultFile . "' created\n";
+    echo "Output file '".$resultFile."' created\n";
 
 } catch (Exception $e) {
     if ($e->detail) {
@@ -81,7 +86,7 @@ echo "----------\n";
 
 // generating barcode for URL resource with barcode service
 try {
-    echo("Using web service 'barcode' with file URL '" . $inputFileURL . "'\n");
+    echo("Using web service 'barcode' with file URL '".$inputFileURL."'\n");
 
     $parameters = [
         'operation' => $operationParameters,
@@ -89,8 +94,8 @@ try {
     ];
 
     $response = $client->execute($parameters);
-    file_put_contents($resultFile, $response->return);
-    echo "Output file $resultFile created\n";
+    file_put_contents($resultFileURL, $response->return);
+    echo "Output file $resultFileURL created\n";
 
 } catch (SoapFault $e) {
     if ($e->detail) {

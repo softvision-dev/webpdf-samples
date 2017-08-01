@@ -3,7 +3,6 @@
 $inputURL = 'https://www.webpdf.de';
 $resultFile = '../../result/output-soap.pdf';
 
-
 // creating soap client for urlconverter service
 try {
     $client = new SoapClient(
@@ -27,14 +26,14 @@ try {
 
 // converting URL resource with urlconverter service
 try {
-    echo("Using web service 'urlconverter' with URL '" . $inputURL . "'\n");
+    echo("Using web service 'urlconverter' with URL '".$inputURL."'\n");
 
     $parameters = [
         'operation' => [
             'urlconverter' => [
-                'url' => $inputURL
-            ]
-        ]
+                'url' => $inputURL,
+            ],
+        ],
     ];
 
     $response = $client->execute($parameters);

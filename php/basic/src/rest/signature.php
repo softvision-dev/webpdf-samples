@@ -1,7 +1,7 @@
 <?php
 $baseURL = 'http://localhost:8080/webPDF/';
 $resultFile = '../../result/output-rest.pdf';
-$sourceFile = realpath('../../files/ocr.pdf');
+$sourceFile = realpath('../../files/lorem-ipsum.pdf');
 $imageSourceFile = realpath('../../files/logo.png');
 
 function getClient($url, $post = false, $token = null, $data = null)
@@ -41,14 +41,14 @@ function getClient($url, $post = false, $token = null, $data = null)
 echo("Using web service with file '$sourceFile'\n");
 
 // Login on Server (GET)
-$loginUrl = $baseURL . "rest/authentication/user/login";
+$loginUrl = $baseURL."rest/authentication/user/login";
 $response = getClient($loginUrl);
 $response = json_decode($response);
 $token = $response->token;
 echo "Login successful: $token\n";
 
 // Upload document (POST)
-$uploadUrl = $baseURL . "rest/documents";
+$uploadUrl = $baseURL."rest/documents";
 $headerInfo = ["Token: $token"];
 
 $postFields = ["filedata" => curl_file_create($sourceFile)];
@@ -62,7 +62,7 @@ $imageData = base64_encode(file_get_contents($imageSourceFile));
 
 // Sign PDF (POST)
 $headerInfo = ["Token: $token", "Content-Type: application/json; charset=utf-8"];
-$signatureUrl = $baseURL . "rest/signature/" . $response->documentId;
+$signatureUrl = $baseURL."rest/signature/".$response->documentId;
 $signatureOptions = [
     'signature' => [
         'add' => [
@@ -84,17 +84,17 @@ $signatureOptions = [
                     'x' => 5,
                     'y' => 5,
                     'width' => 80,
-                    'height' => 15
+                    'height' => 15,
                 ],
                 'image' => [
-                    'position' => 'center',
+                    'position' => 'left',
                     'data' => [
-                        'value' => $imageData
-                    ]
+                        'value' => $imageData,
+                    ],
                 ],
 
-            ]
-        ]
+            ],
+        ],
     ],
 ];
 $response = getClient($signatureUrl, true, $headerInfo, json_encode($signatureOptions));
@@ -102,14 +102,14 @@ $response = json_decode($response);
 echo "Web service call successful\n";
 
 // Download the PDF
-$downloadUrl = $baseURL . "rest/documents/" . $response->documentId;
+$downloadUrl = $baseURL."rest/documents/".$response->documentId;
 $headerInfo = ["Token: $token"];
 $response = getClient($downloadUrl, false, $headerInfo);
 file_put_contents($resultFile, $response);
 echo "Download to file '$resultFile' successful\n";
 
 // Logout on Server (GET)
-$logoutUrl = $baseURL . "rest/authentication/user/logout";
+$logoutUrl = $baseURL."rest/authentication/user/logout";
 $headerInfo = ["Token: $token"];
 $response = getClient($logoutUrl, false, $headerInfo);
 $response = json_decode($response);
