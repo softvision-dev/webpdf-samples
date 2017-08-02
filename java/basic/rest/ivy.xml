@@ -1,0 +1,25 @@
+<ivy-module version="2.0">
+    <info organisation="org.apache" module="rest"/>
+    <dependencies>
+        <!--<dependency org="commons-lang" name="commons-lang" rev="2.0"/>-->
+        <!--<dependency org="commons-cli" name="commons-cli" rev="1.0"/>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency org="org.apache.httpcomponents" name="httpclient" rev="4.5.3"/>
+
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency org="com.google.code.gson" name="gson" rev="2.8.1"/>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc -->
+        <!--<dependency org="org.apache.httpcomponents" name="fluent-hc" rev="4.5.3"/>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
+        <dependency org="org.apache.httpcomponents" name="httpmime" rev="4.5.3"/>
+
+        <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-xjc -->
+        <dependency org="org.glassfish.jaxb" name="jaxb-xjc" rev="2.3.0-b170127.1453"/>
+
+        <override org="javax.xml.bind" rev="2.3.0-b170201.1204"/>
+
+    </dependencies>
+</ivy-module>

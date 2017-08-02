@@ -1,0 +1,80 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="rest" basedir="." default="resolve-libs">
+
+    <!--
+    =================================
+       target: resolve
+    =================================
+    -->
+    <target name="resolve-libs" description="--> retrieve dependencies with ivy into lib folder">
+        <property name="ivy.default.ivy.user.dir" value="${basedir}/lib"/>
+        <ivy:retrieve/>
+    </target>
+
+    <!--
+    =================================
+       target: clean
+    =================================
+    -->
+    <target name="clean-libs" description="--> clean lib folder">
+        <delete dir="${basedir}/lib">
+            <fileset>
+                <include name="*.jar"/>
+                <exclude name="ivy-2.4.0.jar"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <!--
+      =================================
+         target: schemas
+      =================================
+      -->
+    <target name="schemas" description="--> download schemas files and build JAXB classes">
+
+        <taskdef name="xjc" classname="com.sun.tools.xjc.XJC2Task">
+            <classpath>
+                <fileset dir="${basedir}/lib/" includes="*.jar"/>
+            </classpath>
+        </taskdef>
+
+        <delete dir="${basedir}/schemas"/>
+        <mkdir dir="${basedir}/schemas"/>
+
+        <property name="baseSchemaURL" value="http://schema.webpdf.de/1.0/operation/"/>
+
+        <get dest="${basedir}/schemas">
+            <url url="${baseSchemaURL}operation.xsd"/>
+            <url url="${baseSchemaURL}operation-common.xsd"/>
+            <url url="${baseSchemaURL}operation-pdfa.xsd"/>
+            <url url="${baseSchemaURL}operation-signature.xsd"/>
+            <url url="${baseSchemaURL}operation-converter.xsd"/>
+            <url url="${baseSchemaURL}operation-barcode.xsd"/>
+            <url url="${baseSchemaURL}operation-ocr.xsd"/>
+            <url url="${baseSchemaURL}operation-urlconverter.xsd"/>
+            <url url="${baseSchemaURL}operation-attachment.xsd"/>
+            <url url="${baseSchemaURL}operation-annotation.xsd"/>
+            <url url="${baseSchemaURL}operation-split.xsd"/>
+            <url url="${baseSchemaURL}operation-merge.xsd"/>
+            <url url="${baseSchemaURL}operation-security.xsd"/>
+            <url url="${baseSchemaURL}operation-image.xsd"/>
+            <url url="${baseSchemaURL}operation-description.xsd"/>
+            <url url="${baseSchemaURL}operation-rotate.xsd"/>
+            <url url="${baseSchemaURL}operation-options.xsd"/>
+            <url url="${baseSchemaURL}operation-forms.xsd"/>
+            <url url="${baseSchemaURL}operation-watermark.xsd"/>
+            <url url="${baseSchemaURL}operation-extraction.xsd"/>
+            <url url="${baseSchemaURL}operation-xmp.xsd"/>
+            <url url="${baseSchemaURL}operation-print.xsd"/>
+            <url url="${baseSchemaURL}operation-delete.xsd"/>
+        </get>
+
+        <xjc destdir="${basedir}/src"
+             removeOldOutput="yes" extension="true"
+             package="de.webpdf.sample.schema.operation">
+            <arg value="-no-header"/>
+            <schema dir="${basedir}/schemas" includes="operation.xsd"/>
+        </xjc>
+
+    </target>
+
+</project>
