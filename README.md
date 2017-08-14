@@ -2,7 +2,7 @@
 This repository contains sample projects for different programming languages to use the SOAP 
 and REST web services of the webPDF server.
 
-![Home Image](https://www.webpdf.de/fileadmin/templates/global/images/logo.png)
+![webPDF Logo](images/logo.png)
 
 [webPDF](https://www.webpdf.de) is a commercial multi-platform server solution for creating and processing 
 PDF documents. All samples require a running webPDF installation. A demo version as Windows installation 
@@ -25,7 +25,7 @@ You can clone this repository with 'Git' to your local system to get all sample 
 Another way to use these samples without using 'Git' is to download the zip file containing the 
 current version (using the following link or by clicking the "Download ZIP" button on the repo page).
 
-[Download the samples as ZIP](https://github.com/softvision-dev/webpdf-samples/archive/master.zip)
+[Download the samples as ZIP](archive/master.zip)
 
 ## Usage
 The Java and PHP samples are build with the [IntelliJ IDEA](https://www.jetbrains.com/idea) IDE. 
@@ -34,7 +34,7 @@ You can directly open and run the projects from inside the IDE. For other IDEs y
 ## Contributing
 Contributions are **welcome**. We are always looking for improvements or further programs for other 
 programming languages or environments. We accept contributions via 'Pull Requests' 
-on [Github](https://github.com/softvision-dev).
+on [Github](pulls/).
 
 ## License
 Please, see the [license](LICENSE) file for more information.
