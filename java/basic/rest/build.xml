@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="rest" basedir="." default="resolve-libs">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="main" basedir="." default="resolve-libs">
 
     <!--
     =================================
