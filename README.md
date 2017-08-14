@@ -25,7 +25,7 @@ You can clone this repository with 'Git' to your local system to get all sample 
 Another way to use these samples without using 'Git' is to download the zip file containing the 
 current version (using the following link or by clicking the "Download ZIP" button on the repo page).
 
-[Download the samples as ZIP](/archive/master.zip)
+[Download the samples as ZIP](https://github.com/softvision-dev/webpdf-samples/archive/master.zip)
 
 ## Usage
 The Java and PHP samples are build with the [IntelliJ IDEA](https://www.jetbrains.com/idea) IDE. 
@@ -34,7 +34,7 @@ You can directly open and run the projects from inside the IDE. For other IDEs y
 ## Contributing
 Contributions are **welcome**. We are always looking for improvements or further programs for other 
 programming languages or environments. We accept contributions via 'Pull Requests' 
-on [Github](/pulls/).
+on [GitHub](https://github.com/softvision-dev/webpdf-samples/pulls/).
 
 ## License
 Please, see the [license](LICENSE) file for more information.
