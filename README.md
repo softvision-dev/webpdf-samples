@@ -19,6 +19,9 @@ The repository contains language-specific directories that contain the samples.
 
 - PHP
     * [Basic sample](php/basic/)
+    
+- C#
+    * [Basic SOAP sample](c#/basic/soap/)
 
 ## Installation
 You can clone this repository with 'Git' to your local system to get all sample projects. 
@@ -29,6 +32,9 @@ current version (using the following link or by clicking the "Download ZIP" butt
 
 ## Usage
 The Java and PHP samples are build with the [IntelliJ IDEA](https://www.jetbrains.com/idea) IDE. 
+You can directly open and run the projects from inside the IDE. For other IDEs you have to import the projects.
+
+The C# samples are build with the [Visual Studio 2015](https://www.visualstudio.com/de/vs/) IDE.
 You can directly open and run the projects from inside the IDE. For other IDEs you have to import the projects.
 
 ## Contributing
