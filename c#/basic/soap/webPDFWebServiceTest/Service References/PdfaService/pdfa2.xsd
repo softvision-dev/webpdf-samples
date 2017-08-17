@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schema.webpdf.de/1.0/operation" elementFormDefault="qualified" targetNamespace="http://schema.webpdf.de/1.0/operation" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="operation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="billing" type="tns:BillingType" />
+        <xs:element minOccurs="0" name="password" type="tns:PdfPasswordType" />
+        <xs:element name="pdfa" type="tns:PdfaType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BillingType">
+    <xs:sequence />
+    <xs:attribute name="customerCode" type="xs:string" />
+    <xs:attribute name="userName" type="xs:string" />
+    <xs:attribute name="applicationName" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="PdfPasswordType">
+    <xs:sequence />
+    <xs:attribute name="permission" type="xs:string" />
+    <xs:attribute name="open" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="PdfaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="convert">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="zugferd" type="tns:ZugferdType" />
+          </xs:sequence>
+          <xs:attribute name="level" type="tns:PdfaLevelType" />
+          <xs:attribute name="imageQuality" type="xs:int" />
+          <xs:attribute name="errorReport" type="tns:PdfaErrorReportType" />
+          <xs:attribute name="successReport" type="tns:PdfaSuccessReportType" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="analyze">
+        <xs:complexType>
+          <xs:sequence />
+          <xs:attribute name="level" type="tns:PdfaLevelType" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ZugferdType">
+    <xs:sequence>
+      <xs:element name="xmlFile" type="tns:ZugferdFileDataType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ZugferdFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:simpleType name="PdfaLevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1a" />
+      <xs:enumeration value="1b" />
+      <xs:enumeration value="2a" />
+      <xs:enumeration value="2b" />
+      <xs:enumeration value="2u" />
+      <xs:enumeration value="3a" />
+      <xs:enumeration value="3b" />
+      <xs:enumeration value="3u" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PdfaErrorReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="file" />
+      <xs:enumeration value="message" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PdfaSuccessReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="zip" />
+      <xs:enumeration value="linked" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

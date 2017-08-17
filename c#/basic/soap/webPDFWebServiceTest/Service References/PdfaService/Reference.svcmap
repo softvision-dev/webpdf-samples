@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a7e9f6c5-3815-434e-b76b-f0896d2c72da" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/webPDF/soap/pdfa?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PdfaService.wsdl" MetadataType="Wsdl" ID="e86fda2d-f656-466e-8494-6cfec00c1ccb" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/pdfa?wsdl" />
+    <MetadataFile FileName="pdfa.xsd" MetadataType="Schema" ID="187335e8-f9ab-4d11-a780-741baccf67eb" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/pdfa?xsd=3" />
+    <MetadataFile FileName="pdfa1.xsd" MetadataType="Schema" ID="04f694f9-6338-430d-b92a-784a175d3316" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/pdfa?xsd=1" />
+    <MetadataFile FileName="pdfa2.xsd" MetadataType="Schema" ID="a4468345-ab69-4270-9570-ae87c397a9b1" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/pdfa?xsd=2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

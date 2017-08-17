@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="139231c9-1374-4998-9c7f-eaddc00e8e2e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/webPDF/soap/converter?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="converter.xsd" MetadataType="Schema" ID="6e3d0747-6c92-4ecc-8c06-5539b48b4ef7" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/converter?xsd=1" />
+    <MetadataFile FileName="converter1.xsd" MetadataType="Schema" ID="e544cef1-7d21-4478-a832-cf2cc99ed50d" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/converter?xsd=3" />
+    <MetadataFile FileName="converter2.xsd" MetadataType="Schema" ID="683fd3db-34ae-4fdd-9f64-4d9b3367d683" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/converter?xsd=2" />
+    <MetadataFile FileName="ConverterService.wsdl" MetadataType="Wsdl" ID="4d9292ec-c539-4fef-b83f-392d431a6a56" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/converter?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

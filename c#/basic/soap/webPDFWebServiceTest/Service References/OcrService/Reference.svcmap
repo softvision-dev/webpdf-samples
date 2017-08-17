@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6664d675-6d86-4a00-8a03-adc4c5c30056" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/webPDF/soap/ocr?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OCRService.wsdl" MetadataType="Wsdl" ID="ea3cca26-882e-4612-99d0-03fc70c81466" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/ocr?wsdl" />
+    <MetadataFile FileName="ocr.xsd" MetadataType="Schema" ID="a3a3b88a-81e6-4060-a960-131fa406a6d3" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/ocr?xsd=3" />
+    <MetadataFile FileName="ocr1.xsd" MetadataType="Schema" ID="59659555-dc86-4069-9728-b44eff6a70d0" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/ocr?xsd=2" />
+    <MetadataFile FileName="ocr2.xsd" MetadataType="Schema" ID="ee9f7479-430b-40a3-abfe-19c54b35b290" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/ocr?xsd=1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

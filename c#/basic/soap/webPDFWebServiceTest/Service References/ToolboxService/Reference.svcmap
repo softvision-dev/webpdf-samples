@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7d401d01-db62-4a6a-a2a1-a20d9275e97a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/webPDF/soap/toolbox?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ToolboxService.wsdl" MetadataType="Wsdl" ID="d3b5016e-6bbb-47db-8cb5-2eb33c52bdd3" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/toolbox?wsdl" />
+    <MetadataFile FileName="toolbox.xsd" MetadataType="Schema" ID="364bc2ed-2ea3-4be0-bf45-de15123ee395" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/toolbox?xsd=2" />
+    <MetadataFile FileName="toolbox1.xsd" MetadataType="Schema" ID="08b8f00c-6aab-44e6-93d0-59334dc1b060" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/toolbox?xsd=3" />
+    <MetadataFile FileName="toolbox2.xsd" MetadataType="Schema" ID="e875764d-610e-4ba3-b51b-902437524dc6" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/toolbox?xsd=1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4A495782-F57D-46BB-8ACA-7AD3F7C51AC7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>webPDFWebServiceTest</RootNamespace>
+    <AssemblyName>webPDFWebServiceTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBarcode.Designer.cs">
+      <DependentUpon>FormBarcode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUrlConverter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUrlConverter.Designer.cs">
+      <DependentUpon>FormUrlConverter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOcr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOcr.Designer.cs">
+      <DependentUpon>FormOcr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormToolbox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormToolbox.Designer.cs">
+      <DependentUpon>FormToolbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSignature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSignature.Designer.cs">
+      <DependentUpon>FormSignature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPdfa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPdfa.Designer.cs">
+      <DependentUpon>FormPdfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConverter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConverter.Designer.cs">
+      <DependentUpon>FormConverter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\BarcodeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ConverterService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OcrService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PdfaService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SignatureService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ToolboxService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UrlConverterService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormBarcode.resx">
+      <DependentUpon>FormBarcode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUrlConverter.resx">
+      <DependentUpon>FormUrlConverter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOcr.resx">
+      <DependentUpon>FormOcr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormToolbox.resx">
+      <DependentUpon>FormToolbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSignature.resx">
+      <DependentUpon>FormSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPdfa.resx">
+      <DependentUpon>FormPdfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConverter.resx">
+      <DependentUpon>FormConverter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\BarcodeService\barcode.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BarcodeService\barcode1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BarcodeService\barcode2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BarcodeService\BarcodeService.wsdl" />
+    <None Include="Service References\ConverterService\converter.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConverterService\converter1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConverterService\converter2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConverterService\ConverterService.wsdl" />
+    <None Include="Service References\OcrService\ocr.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OcrService\ocr1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OcrService\ocr2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OcrService\OCRService.wsdl" />
+    <None Include="Service References\PdfaService\pdfa.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PdfaService\pdfa1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PdfaService\pdfa2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PdfaService\PdfaService.wsdl" />
+    <None Include="Service References\SignatureService\signature.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SignatureService\signature1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SignatureService\signature2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SignatureService\SignatureService.wsdl" />
+    <None Include="Service References\ToolboxService\toolbox.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ToolboxService\toolbox1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ToolboxService\toolbox2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ToolboxService\ToolboxService.wsdl" />
+    <None Include="Service References\UrlConverterService\urlconverter.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UrlConverterService\urlconverter1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UrlConverterService\urlconverter2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UrlConverterService\URLConverterService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BarcodeService\" />
+    <WCFMetadataStorage Include="Service References\ConverterService\" />
+    <WCFMetadataStorage Include="Service References\OcrService\" />
+    <WCFMetadataStorage Include="Service References\PdfaService\" />
+    <WCFMetadataStorage Include="Service References\SignatureService\" />
+    <WCFMetadataStorage Include="Service References\ToolboxService\" />
+    <WCFMetadataStorage Include="Service References\UrlConverterService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConverterService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConverterService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConverterService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PdfaService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PdfaService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\PdfaService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SignatureService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SignatureService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\SignatureService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ToolboxService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ToolboxService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ToolboxService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OcrService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OcrService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OcrService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BarcodeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BarcodeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\BarcodeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UrlConverterService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UrlConverterService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UrlConverterService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e8a4af99-1c95-4d41-aa45-a6d3066fa0da" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/webPDF/soap/barcode?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="barcode.xsd" MetadataType="Schema" ID="23d3ab4d-496a-4a33-ad47-fe5e1484652a" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/barcode?xsd=1" />
+    <MetadataFile FileName="barcode1.xsd" MetadataType="Schema" ID="d1bc54bf-478a-4d75-a8fe-b29fdc9e5143" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/barcode?xsd=3" />
+    <MetadataFile FileName="barcode2.xsd" MetadataType="Schema" ID="e7b4784f-cb53-451d-afc5-772b67b0926d" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/barcode?xsd=2" />
+    <MetadataFile FileName="BarcodeService.wsdl" MetadataType="Wsdl" ID="0738bd07-fc50-4b21-8bd4-2bcf6ccc0733" SourceId="1" SourceUrl="http://localhost:8080/webPDF/soap/barcode?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

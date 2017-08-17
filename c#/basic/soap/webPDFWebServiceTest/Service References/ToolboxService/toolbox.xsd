@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schema.webpdf.de/1.0/operation" elementFormDefault="qualified" targetNamespace="http://schema.webpdf.de/1.0/operation" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="operation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="billing" type="tns:BillingType" />
+        <xs:element minOccurs="0" name="password" type="tns:PdfPasswordType" />
+        <xs:choice maxOccurs="unbounded">
+          <xs:element name="annotation" type="tns:AnnotationType" />
+          <xs:element name="attachment" type="tns:AttachmentType" />
+          <xs:element name="delete" type="tns:DeleteType" />
+          <xs:element name="description" type="tns:DescriptionType" />
+          <xs:element name="extraction" type="tns:ExtractionType" />
+          <xs:element name="forms" type="tns:FormsType" />
+          <xs:element name="image" type="tns:ImageType" />
+          <xs:element name="merge" type="tns:MergeType" />
+          <xs:element name="options" type="tns:OptionsType" />
+          <xs:element name="print" type="tns:PrintType" />
+          <xs:element name="rotate" type="tns:RotateType" />
+          <xs:element name="security" type="tns:SecurityType" />
+          <xs:element name="split" type="tns:SplitType" />
+          <xs:element name="watermark" type="tns:WatermarkType" />
+          <xs:element name="xmp" type="tns:XmpType" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BillingType">
+    <xs:sequence />
+    <xs:attribute name="customerCode" type="xs:string" />
+    <xs:attribute name="userName" type="xs:string" />
+    <xs:attribute name="applicationName" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="PdfPasswordType">
+    <xs:sequence />
+    <xs:attribute name="permission" type="xs:string" />
+    <xs:attribute name="open" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="AnnotationType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="text" nillable="true" type="tns:TextAnnotationType" />
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="markup" nillable="true" type="tns:MarkupAnnotationType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BaseToolboxType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="TextAnnotationType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseAnnotationType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="position" type="tns:RectangleType" />
+        </xs:sequence>
+        <xs:attribute name="icon" type="tns:TextAnnotationIconsType" />
+        <xs:attribute name="initialOpen" type="xs:boolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BaseAnnotationType">
+    <xs:sequence />
+    <xs:attribute name="creator" type="xs:string" />
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="subject" type="xs:string" />
+    <xs:attribute name="contents" type="xs:string" />
+    <xs:attribute name="intents" type="xs:string" />
+    <xs:attribute name="page" type="xs:int" />
+    <xs:attribute name="color" type="xs:string" />
+    <xs:attribute name="opacity" type="xs:int" />
+    <xs:attribute name="locked" type="xs:boolean" />
+    <xs:attribute name="printable" type="xs:boolean" />
+    <xs:attribute name="rotatable" type="xs:boolean" />
+    <xs:attribute name="viewable" type="xs:boolean" />
+    <xs:attribute name="writable" type="xs:boolean" />
+    <xs:attribute name="zoomable" type="xs:boolean" />
+    <xs:attribute name="invisible" type="xs:boolean" />
+    <xs:attribute name="hidden" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="RectangleType">
+    <xs:sequence />
+    <xs:attribute name="width" type="xs:float" />
+    <xs:attribute name="height" type="xs:float" />
+    <xs:attribute name="x" type="xs:float" />
+    <xs:attribute name="y" type="xs:float" />
+    <xs:attribute name="metrics" type="tns:MetricsType" />
+    <xs:attribute name="coordinates" type="tns:CoordinatesType" />
+  </xs:complexType>
+  <xs:complexType name="MarkupAnnotationType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseAnnotationType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="pathElement" nillable="true" type="tns:RectangleType" />
+        </xs:sequence>
+        <xs:attribute name="markupType" type="tns:MarkupsAnnotationType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AttachmentType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="add">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="file" nillable="true" type="tns:FileAttachmentType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="remove">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="selection" nillable="true" type="tns:SelectionAttachmentType" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="extract">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="selection" nillable="true" type="tns:SelectionAttachmentType" />
+              </xs:sequence>
+              <xs:attribute name="folderNameTemplate" type="xs:string" />
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FileAttachmentType">
+    <xs:all>
+      <xs:element name="data" type="tns:AttachmentFileDataType" />
+      <xs:element minOccurs="0" name="annotation" type="tns:FileAnnotationType" />
+    </xs:all>
+    <xs:attribute name="fileName" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="AttachmentFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:complexType name="FileAnnotationType">
+    <xs:sequence>
+      <xs:element name="point" type="tns:PointType" />
+    </xs:sequence>
+    <xs:attribute name="opacity" type="xs:int" />
+    <xs:attribute name="color" type="xs:string" />
+    <xs:attribute name="page" type="xs:int" />
+    <xs:attribute name="lockedPosition" type="xs:boolean" />
+    <xs:attribute name="popupText" type="xs:string" />
+    <xs:attribute name="icon" type="tns:IconsType" />
+  </xs:complexType>
+  <xs:complexType name="PointType">
+    <xs:sequence />
+    <xs:attribute name="x" type="xs:float" />
+    <xs:attribute name="y" type="xs:float" />
+    <xs:attribute name="metrics" type="tns:MetricsType" />
+    <xs:attribute name="coordinates" type="tns:CoordinatesType" />
+  </xs:complexType>
+  <xs:complexType name="SelectionAttachmentType">
+    <xs:sequence />
+    <xs:attribute name="pages" type="xs:string" />
+    <xs:attribute name="fileMask" type="xs:string" />
+    <xs:attribute name="context" type="tns:ContextType" />
+  </xs:complexType>
+  <xs:complexType name="SplitType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence />
+        <xs:attribute name="mode" type="tns:SplitModeType" />
+        <xs:attribute name="pages" type="xs:string" />
+        <xs:attribute name="startPage" type="xs:int" />
+        <xs:attribute name="fileNameTemplate" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MergeType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element name="data" type="tns:MergeFileDataType" />
+        </xs:sequence>
+        <xs:attribute name="mode" type="tns:MergeModeType" />
+        <xs:attribute name="page" type="xs:int" />
+        <xs:attribute name="sourceIsZip" type="xs:boolean" />
+        <xs:attribute name="outlineName" type="xs:string" />
+        <xs:attribute name="resetMetadata" type="xs:boolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MergeFileDataType">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+        <xs:attribute name="format" type="tns:FileDataFormatType" />
+        <xs:attribute name="outlineName" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SecurityType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="decrypt" type="tns:DecryptType" />
+          <xs:element minOccurs="0" name="encrypt" type="tns:EncryptType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DecryptType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="EncryptType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="password">
+        <xs:complexType>
+          <xs:sequence />
+          <xs:attribute name="encryptionKey" type="tns:PdfEncryptionKeyType" />
+          <xs:attribute name="permission" type="xs:string" />
+          <xs:attribute name="open" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="canAssemble" type="xs:boolean" />
+    <xs:attribute name="canExtractContent" type="xs:boolean" />
+    <xs:attribute name="canExtractForAccessibility" type="xs:boolean" />
+    <xs:attribute name="canFillInForm" type="xs:boolean" />
+    <xs:attribute name="canModify" type="xs:boolean" />
+    <xs:attribute name="canModifyAnnotations" type="xs:boolean" />
+    <xs:attribute name="canPrint" type="xs:boolean" />
+    <xs:attribute name="canPrintHighRes" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="ImageType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="png" type="tns:PngType" />
+          <xs:element minOccurs="0" name="tiff" type="tns:TiffType" />
+          <xs:element minOccurs="0" name="jpeg" type="tns:JpegType" />
+          <xs:element minOccurs="0" name="gif" type="tns:GifType" />
+          <xs:element minOccurs="0" name="bmp" type="tns:BmpType" />
+        </xs:sequence>
+        <xs:attribute name="pages" type="xs:string" />
+        <xs:attribute name="fileNameTemplate" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PngType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ImageBaseType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ImageBaseType">
+    <xs:sequence />
+    <xs:attribute name="dpi" type="xs:int" />
+    <xs:attribute name="width" type="xs:int" />
+    <xs:attribute name="height" type="xs:int" />
+    <xs:attribute name="metrics" type="tns:MetricsType" />
+  </xs:complexType>
+  <xs:complexType name="TiffType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ImageBaseType">
+        <xs:sequence />
+        <xs:attribute name="multipage" type="xs:boolean" />
+        <xs:attribute name="compression" type="tns:TiffCompressionType" />
+        <xs:attribute name="jpegQuality" type="xs:int" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="JpegType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ImageBaseType">
+        <xs:sequence />
+        <xs:attribute name="jpegQuality" type="xs:int" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GifType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ImageBaseType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BmpType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ImageBaseType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DescriptionType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence />
+        <xs:attribute name="title" type="xs:string" />
+        <xs:attribute name="author" type="xs:string" />
+        <xs:attribute name="creator" type="xs:string" />
+        <xs:attribute name="keywords" type="xs:string" />
+        <xs:attribute name="producer" type="xs:string" />
+        <xs:attribute name="subject" type="xs:string" />
+        <xs:attribute name="allowEmptyValues" type="xs:boolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="RotateType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence />
+        <xs:attribute name="pages" type="xs:string" />
+        <xs:attribute name="degrees" type="xs:int" />
+        <xs:attribute name="pageOrientation" type="tns:PageOrientationType" />
+        <xs:attribute name="pageGroup" type="tns:PageGroupType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OptionsType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence />
+        <xs:attribute name="pageLayout" type="tns:PageLayoutType" />
+        <xs:attribute name="initialView" type="tns:InitialViewType" />
+        <xs:attribute name="magnification" type="tns:MagnificationType" />
+        <xs:attribute name="magnificationZoom" type="xs:int" />
+        <xs:attribute name="initialPage" type="xs:int" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FormsType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="import" type="tns:FormsImportType" />
+          <xs:element minOccurs="0" name="export" type="tns:FormsExportType" />
+          <xs:element minOccurs="0" name="flatten" type="tns:FormsFlattenType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FormsImportType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FormsBaseType">
+        <xs:sequence>
+          <xs:element name="data" type="tns:FormsFileDataType" />
+        </xs:sequence>
+        <xs:attribute name="flatten" type="xs:boolean" />
+        <xs:attribute name="format" type="tns:FormsFormatType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FormsBaseType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:simpleType name="FormsFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:complexType name="FormsExportType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FormsBaseType">
+        <xs:sequence />
+        <xs:attribute name="format" type="tns:FormsFormatType" />
+        <xs:attribute name="fdfFileName" type="xs:string" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="FormsFlattenType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FormsBaseType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WatermarkType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="text" type="tns:WatermarkTextType" />
+          <xs:element minOccurs="0" name="image" type="tns:WatermarkImageType" />
+        </xs:sequence>
+        <xs:attribute name="pages" type="xs:string" />
+        <xs:attribute name="angle" type="xs:int" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WatermarkTextType">
+    <xs:all>
+      <xs:element minOccurs="0" name="font" type="tns:WatermarkFontType" />
+      <xs:element minOccurs="0" name="position" type="tns:WatermarkPositionType" />
+    </xs:all>
+    <xs:attribute name="text" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="WatermarkFontType">
+    <xs:sequence />
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="outline" type="xs:boolean" />
+    <xs:attribute name="bold" type="xs:boolean" />
+    <xs:attribute name="italic" type="xs:boolean" />
+    <xs:attribute name="size" type="xs:int" />
+    <xs:attribute name="opacity" type="xs:int" />
+    <xs:attribute name="color" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="WatermarkPositionType">
+    <xs:sequence />
+    <xs:attribute name="x" type="xs:int" />
+    <xs:attribute name="y" type="xs:int" />
+    <xs:attribute name="width" type="xs:int" />
+    <xs:attribute name="height" type="xs:int" />
+    <xs:attribute name="position" type="tns:WatermarkPositionModeType" />
+    <xs:attribute name="aspectRatio" type="xs:boolean" />
+    <xs:attribute name="metrics" type="tns:MetricsType" />
+  </xs:complexType>
+  <xs:complexType name="WatermarkImageType">
+    <xs:all>
+      <xs:element name="data" type="tns:WatermarkFileDataType" />
+      <xs:element minOccurs="0" name="position" type="tns:WatermarkPositionType" />
+    </xs:all>
+    <xs:attribute name="scale" type="xs:int" />
+    <xs:attribute name="opacity" type="xs:int" />
+  </xs:complexType>
+  <xs:simpleType name="WatermarkFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:complexType name="ExtractionType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="text" type="tns:ExtractionTextType" />
+          <xs:element minOccurs="0" name="links" type="tns:ExtractionLinksType" />
+          <xs:element minOccurs="0" name="words" type="tns:ExtractionWordsType" />
+          <xs:element minOccurs="0" name="info" type="tns:ExtractionInfoType" />
+          <xs:element minOccurs="0" name="paragraphs" type="tns:ExtractionParagraphsType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExtractionTextType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseExtractionType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BaseExtractionType">
+    <xs:sequence />
+    <xs:attribute name="pages" type="xs:string" />
+    <xs:attribute name="fileFormat" type="tns:ExtractionFileFormatType" />
+  </xs:complexType>
+  <xs:complexType name="ExtractionLinksType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseExtractionType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="text">
+            <xs:complexType>
+              <xs:sequence />
+              <xs:attribute name="fromText" type="xs:boolean" />
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExtractionInfoType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseExtractionType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExtractionWordsType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseExtractionType">
+        <xs:sequence />
+        <xs:attribute name="removePunctuation" type="xs:boolean" />
+        <xs:attribute name="delimitAfterPunctuation" type="xs:boolean" />
+        <xs:attribute name="extendedSequenceCharacters" type="xs:boolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ExtractionParagraphsType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseExtractionType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="XmpType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence>
+          <xs:element name="namespace" type="tns:XmpNamespaceType" />
+          <xs:element name="data" type="tns:XmpFileDataType" />
+        </xs:sequence>
+        <xs:attribute name="dataFormat" type="tns:XmpDataFormatType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="XmpNamespaceType">
+    <xs:sequence />
+    <xs:attribute name="namespaceName" type="xs:string" />
+    <xs:attribute name="namespacePrefix" type="xs:string" />
+    <xs:attribute name="namespaceURI" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="XmpFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:complexType name="PrintType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence />
+        <xs:attribute name="printerName" type="xs:string" />
+        <xs:attribute name="pages" type="xs:string" />
+        <xs:attribute name="jobName" type="xs:string" />
+        <xs:attribute name="copies" type="xs:int" />
+        <xs:attribute name="autoRotate" type="xs:boolean" />
+        <xs:attribute name="shrinkToMargins" type="xs:boolean" />
+        <xs:attribute name="expandToMargins" type="xs:boolean" />
+        <xs:attribute name="centerInPage" type="xs:boolean" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DeleteType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseToolboxType">
+        <xs:sequence />
+        <xs:attribute name="pages" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MetricsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="px" />
+      <xs:enumeration value="mm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CoordinatesType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pdf" />
+      <xs:enumeration value="user" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TextAnnotationIconsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="comment" />
+      <xs:enumeration value="key" />
+      <xs:enumeration value="note" />
+      <xs:enumeration value="help" />
+      <xs:enumeration value="newParagraph" />
+      <xs:enumeration value="paragraph" />
+      <xs:enumeration value="insert" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MarkupsAnnotationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="highlight" />
+      <xs:enumeration value="underline" />
+      <xs:enumeration value="strikeOut" />
+      <xs:enumeration value="squiggly" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IconsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="graph" />
+      <xs:enumeration value="paperclip" />
+      <xs:enumeration value="pushPin" />
+      <xs:enumeration value="tag" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContextType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="page" />
+      <xs:enumeration value="document" />
+      <xs:enumeration value="all" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SplitModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="last" />
+      <xs:enumeration value="first" />
+      <xs:enumeration value="list" />
+      <xs:enumeration value="single" />
+      <xs:enumeration value="each" />
+      <xs:enumeration value="group" />
+      <xs:enumeration value="burst" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FileDataFormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pdf" />
+      <xs:enumeration value="zip" />
+      <xs:enumeration value="id" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MergeModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="atTheEnd" />
+      <xs:enumeration value="atTheBeginning" />
+      <xs:enumeration value="afterPage" />
+      <xs:enumeration value="beforePage" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PdfEncryptionKeyType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RC4_40" />
+      <xs:enumeration value="RC4_128" />
+      <xs:enumeration value="AES_128" />
+      <xs:enumeration value="AES_256" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TiffCompressionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="rle" />
+      <xs:enumeration value="deflate" />
+      <xs:enumeration value="group3" />
+      <xs:enumeration value="group4" />
+      <xs:enumeration value="jpeg" />
+      <xs:enumeration value="lzw" />
+      <xs:enumeration value="packbits" />
+      <xs:enumeration value="zlib" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PageOrientationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="any" />
+      <xs:enumeration value="portrait" />
+      <xs:enumeration value="landscape" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PageGroupType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="all" />
+      <xs:enumeration value="even" />
+      <xs:enumeration value="odd" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PageLayoutType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="singlePage" />
+      <xs:enumeration value="singlePageContinous" />
+      <xs:enumeration value="twoPages" />
+      <xs:enumeration value="twoPagesContinous" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InitialViewType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="outlines" />
+      <xs:enumeration value="thumbnails" />
+      <xs:enumeration value="fullscreen" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MagnificationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="fitWidth" />
+      <xs:enumeration value="fitVisible" />
+      <xs:enumeration value="fitHeight" />
+      <xs:enumeration value="fitPage" />
+      <xs:enumeration value="fitActual" />
+      <xs:enumeration value="zoom" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FormsFormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="xml" />
+      <xs:enumeration value="fdf" />
+      <xs:enumeration value="xfdf" />
+      <xs:enumeration value="xdp" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WatermarkPositionModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="custom" />
+      <xs:enumeration value="top_left" />
+      <xs:enumeration value="top_center" />
+      <xs:enumeration value="top_right" />
+      <xs:enumeration value="center_left" />
+      <xs:enumeration value="center_center" />
+      <xs:enumeration value="center_right" />
+      <xs:enumeration value="bottom_left" />
+      <xs:enumeration value="bottom_center" />
+      <xs:enumeration value="bottom_right" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ExtractionFileFormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="text" />
+      <xs:enumeration value="xml" />
+      <xs:enumeration value="json" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="XmpDataFormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="json" />
+      <xs:enumeration value="xml" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

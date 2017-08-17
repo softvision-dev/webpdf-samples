@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schema.webpdf.de/1.0/operation" elementFormDefault="qualified" targetNamespace="http://schema.webpdf.de/1.0/operation" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="operation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="billing" type="tns:BillingType" />
+        <xs:element minOccurs="0" name="password" type="tns:PdfPasswordType" />
+        <xs:element name="signature" type="tns:SignatureType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BillingType">
+    <xs:sequence />
+    <xs:attribute name="customerCode" type="xs:string" />
+    <xs:attribute name="userName" type="xs:string" />
+    <xs:attribute name="applicationName" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="PdfPasswordType">
+    <xs:sequence />
+    <xs:attribute name="permission" type="xs:string" />
+    <xs:attribute name="open" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="SignatureType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="add">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="appearance">
+              <xs:complexType>
+                <xs:all>
+                  <xs:element minOccurs="0" name="position" type="tns:SignaturePositionType" />
+                  <xs:element minOccurs="0" name="image" type="tns:SignatureImageType" />
+                  <xs:element minOccurs="0" name="identifierElements" type="tns:SignatureIdentifierType" />
+                </xs:all>
+                <xs:attribute name="name" type="xs:string" />
+                <xs:attribute name="identifier" type="xs:string" />
+                <xs:attribute name="page" type="xs:int" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="certificationLevel" type="tns:CertificationLevelType" />
+          <xs:attribute name="fieldName" type="xs:string" />
+          <xs:attribute name="keyName" type="xs:string" />
+          <xs:attribute name="keyPassword" type="xs:string" />
+          <xs:attribute name="appendSignature" type="xs:boolean" />
+          <xs:attribute name="location" type="xs:string" />
+          <xs:attribute name="contact" type="xs:string" />
+          <xs:attribute name="reason" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignaturePositionType">
+    <xs:sequence />
+    <xs:attribute name="width" type="xs:float" />
+    <xs:attribute name="height" type="xs:float" />
+    <xs:attribute name="x" type="xs:float" />
+    <xs:attribute name="y" type="xs:float" />
+    <xs:attribute name="metrics" type="tns:MetricsType" />
+    <xs:attribute name="coordinates" type="tns:CoordinatesType" />
+  </xs:complexType>
+  <xs:complexType name="SignatureImageType">
+    <xs:sequence>
+      <xs:element name="data" type="tns:SignatureFileDataType" />
+    </xs:sequence>
+    <xs:attribute name="opacity" type="xs:int" />
+    <xs:attribute name="position" type="tns:SignatureImagePositionType" />
+  </xs:complexType>
+  <xs:simpleType name="SignatureFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:complexType name="SignatureIdentifierType">
+    <xs:sequence />
+    <xs:attribute name="showSignedBy" type="xs:boolean" />
+    <xs:attribute name="showName" type="xs:boolean" />
+    <xs:attribute name="showCommonName" type="xs:boolean" />
+    <xs:attribute name="showOrganisationUnit" type="xs:boolean" />
+    <xs:attribute name="showOrganisationName" type="xs:boolean" />
+    <xs:attribute name="showLocal" type="xs:boolean" />
+    <xs:attribute name="showState" type="xs:boolean" />
+    <xs:attribute name="showCountry" type="xs:boolean" />
+    <xs:attribute name="showMail" type="xs:boolean" />
+    <xs:attribute name="showDate" type="xs:boolean" />
+  </xs:complexType>
+  <xs:simpleType name="MetricsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="px" />
+      <xs:enumeration value="mm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CoordinatesType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pdf" />
+      <xs:enumeration value="user" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SignatureImagePositionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="center" />
+      <xs:enumeration value="left" />
+      <xs:enumeration value="right" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CertificationLevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="noChanges" />
+      <xs:enumeration value="formFillingAndSignatures" />
+      <xs:enumeration value="formFillingAndSignaturesAndAnnotations" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

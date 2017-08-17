@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schema.webpdf.de/1.0/operation" elementFormDefault="qualified" targetNamespace="http://schema.webpdf.de/1.0/operation" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="operation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="billing" type="tns:BillingType" />
+        <xs:element minOccurs="0" name="password" type="tns:PdfPasswordType" />
+        <xs:element name="converter" type="tns:ConverterType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BillingType">
+    <xs:sequence />
+    <xs:attribute name="customerCode" type="xs:string" />
+    <xs:attribute name="userName" type="xs:string" />
+    <xs:attribute name="applicationName" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="PdfPasswordType">
+    <xs:sequence />
+    <xs:attribute name="permission" type="xs:string" />
+    <xs:attribute name="open" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="ConverterType">
+    <xs:all>
+      <xs:element minOccurs="0" name="page" type="tns:PageType" />
+      <xs:element minOccurs="0" name="pdfa" type="tns:PdfaType" />
+      <xs:element minOccurs="0" name="signature" type="tns:SignatureType" />
+      <xs:element minOccurs="0" name="html" type="tns:ConverterHtmlType" />
+      <xs:element minOccurs="0" name="mail" type="tns:ConverterMailType" />
+      <xs:element minOccurs="0" name="officeBridge" type="tns:OfficeBridgeType" />
+      <xs:element minOccurs="0" name="sharePointBridge" type="tns:SharePointBridgeType" />
+      <xs:element minOccurs="0" name="report" type="tns:ConverterReportType" />
+      <xs:element minOccurs="0" name="template" type="tns:ConverterTemplateType" />
+    </xs:all>
+    <xs:attribute name="pages" type="xs:string" />
+    <xs:attribute name="compression" type="xs:boolean" />
+    <xs:attribute name="jpegQuality" type="xs:int" />
+    <xs:attribute name="reduceResolution" type="xs:boolean" />
+    <xs:attribute name="dpi" type="xs:int" />
+    <xs:attribute name="embedFonts" type="xs:boolean" />
+    <xs:attribute name="accessPassword" type="xs:string" />
+    <xs:attribute name="fileExtension" type="xs:string" />
+    <xs:attribute name="maxRecursion" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="PageType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MarginType">
+        <xs:sequence />
+        <xs:attribute name="width" type="xs:int" />
+        <xs:attribute name="height" type="xs:int" />
+        <xs:attribute name="metrics" type="tns:MetricsType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MarginType">
+    <xs:sequence />
+    <xs:attribute name="left" type="xs:int" />
+    <xs:attribute name="right" type="xs:int" />
+    <xs:attribute name="top" type="xs:int" />
+    <xs:attribute name="bottom" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="PdfaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="convert">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="zugferd" type="tns:ZugferdType" />
+          </xs:sequence>
+          <xs:attribute name="level" type="tns:PdfaLevelType" />
+          <xs:attribute name="imageQuality" type="xs:int" />
+          <xs:attribute name="errorReport" type="tns:PdfaErrorReportType" />
+          <xs:attribute name="successReport" type="tns:PdfaSuccessReportType" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="analyze">
+        <xs:complexType>
+          <xs:sequence />
+          <xs:attribute name="level" type="tns:PdfaLevelType" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ZugferdType">
+    <xs:sequence>
+      <xs:element name="xmlFile" type="tns:ZugferdFileDataType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ZugferdFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:complexType name="SignatureType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="add">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="appearance">
+              <xs:complexType>
+                <xs:all>
+                  <xs:element minOccurs="0" name="position" type="tns:SignaturePositionType" />
+                  <xs:element minOccurs="0" name="image" type="tns:SignatureImageType" />
+                  <xs:element minOccurs="0" name="identifierElements" type="tns:SignatureIdentifierType" />
+                </xs:all>
+                <xs:attribute name="name" type="xs:string" />
+                <xs:attribute name="identifier" type="xs:string" />
+                <xs:attribute name="page" type="xs:int" />
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="certificationLevel" type="tns:CertificationLevelType" />
+          <xs:attribute name="fieldName" type="xs:string" />
+          <xs:attribute name="keyName" type="xs:string" />
+          <xs:attribute name="keyPassword" type="xs:string" />
+          <xs:attribute name="appendSignature" type="xs:boolean" />
+          <xs:attribute name="location" type="xs:string" />
+          <xs:attribute name="contact" type="xs:string" />
+          <xs:attribute name="reason" type="xs:string" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignaturePositionType">
+    <xs:sequence />
+    <xs:attribute name="width" type="xs:float" />
+    <xs:attribute name="height" type="xs:float" />
+    <xs:attribute name="x" type="xs:float" />
+    <xs:attribute name="y" type="xs:float" />
+    <xs:attribute name="metrics" type="tns:MetricsType" />
+    <xs:attribute name="coordinates" type="tns:CoordinatesType" />
+  </xs:complexType>
+  <xs:complexType name="SignatureImageType">
+    <xs:sequence>
+      <xs:element name="data" type="tns:SignatureFileDataType" />
+    </xs:sequence>
+    <xs:attribute name="opacity" type="xs:int" />
+    <xs:attribute name="position" type="tns:SignatureImagePositionType" />
+  </xs:complexType>
+  <xs:simpleType name="SignatureFileDataType">
+    <xs:restriction base="xs:base64Binary" />
+  </xs:simpleType>
+  <xs:complexType name="SignatureIdentifierType">
+    <xs:sequence />
+    <xs:attribute name="showSignedBy" type="xs:boolean" />
+    <xs:attribute name="showName" type="xs:boolean" />
+    <xs:attribute name="showCommonName" type="xs:boolean" />
+    <xs:attribute name="showOrganisationUnit" type="xs:boolean" />
+    <xs:attribute name="showOrganisationName" type="xs:boolean" />
+    <xs:attribute name="showLocal" type="xs:boolean" />
+    <xs:attribute name="showState" type="xs:boolean" />
+    <xs:attribute name="showCountry" type="xs:boolean" />
+    <xs:attribute name="showMail" type="xs:boolean" />
+    <xs:attribute name="showDate" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="ConverterHtmlType">
+    <xs:sequence />
+    <xs:attribute name="downloadImages" type="xs:boolean" />
+    <xs:attribute name="adjustFonts" type="xs:boolean" />
+    <xs:attribute name="baseURL" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="ConverterMailType">
+    <xs:sequence />
+    <xs:attribute name="downloadImages" type="xs:boolean" />
+    <xs:attribute name="adjustFonts" type="xs:boolean" />
+    <xs:attribute name="attachmentMode" type="tns:AttachmentModeType" />
+    <xs:attribute name="ignoreMissingBodyChunk" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="OfficeBridgeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="SharePointBridgeType">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="ConverterReportType">
+    <xs:sequence />
+    <xs:attribute name="contentProblems" type="xs:boolean" />
+    <xs:attribute name="fontAliasUsage" type="xs:boolean" />
+    <xs:attribute name="fontIsMissing" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="ConverterTemplateType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:TemplateType">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TemplateType">
+    <xs:sequence />
+    <xs:attribute name="language" type="xs:string" />
+  </xs:complexType>
+  <xs:simpleType name="MetricsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="px" />
+      <xs:enumeration value="mm" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PdfaLevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1a" />
+      <xs:enumeration value="1b" />
+      <xs:enumeration value="2a" />
+      <xs:enumeration value="2b" />
+      <xs:enumeration value="2u" />
+      <xs:enumeration value="3a" />
+      <xs:enumeration value="3b" />
+      <xs:enumeration value="3u" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PdfaErrorReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="file" />
+      <xs:enumeration value="message" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PdfaSuccessReportType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="zip" />
+      <xs:enumeration value="linked" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CoordinatesType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pdf" />
+      <xs:enumeration value="user" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SignatureImagePositionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="center" />
+      <xs:enumeration value="left" />
+      <xs:enumeration value="right" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CertificationLevelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none" />
+      <xs:enumeration value="noChanges" />
+      <xs:enumeration value="formFillingAndSignatures" />
+      <xs:enumeration value="formFillingAndSignaturesAndAnnotations" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AttachmentModeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="embed" />
+      <xs:enumeration value="remove" />
+      <xs:enumeration value="convert" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

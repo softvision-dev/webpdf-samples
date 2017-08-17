@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://schema.webpdf.de/1.0/soap/pdfa" xmlns:ns1="http://schema.webpdf.de/1.0/operation" targetNamespace="http://schema.webpdf.de/1.0/soap/pdfa" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/webPDF/soap/pdfa?xsd=2" namespace="http://schema.webpdf.de/1.0/operation" />
+  <xs:import schemaLocation="http://localhost:8080/webPDF/soap/pdfa?xsd=3" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xs:element name="WebserviceException" nillable="true" type="tns:FaultInfo" />
+  <xs:element name="execute" type="tns:execute" />
+  <xs:element name="executeResponse" type="tns:executeResponse" />
+  <xs:complexType name="execute">
+    <xs:sequence>
+      <xs:element ref="ns1:operation" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="fileContent" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="fileURL" type="xs:anyURI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="executeResponse">
+    <xs:sequence>
+      <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FaultInfo">
+    <xs:sequence>
+      <xs:element name="errorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="errorMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="stackTrace" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

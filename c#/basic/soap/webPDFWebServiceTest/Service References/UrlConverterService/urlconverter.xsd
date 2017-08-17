@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schema.webpdf.de/1.0/operation" elementFormDefault="qualified" targetNamespace="http://schema.webpdf.de/1.0/operation" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="operation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="billing" type="tns:BillingType" />
+        <xs:element minOccurs="0" name="password" type="tns:PdfPasswordType" />
+        <xs:element name="urlconverter" type="tns:UrlConverterType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BillingType">
+    <xs:sequence />
+    <xs:attribute name="customerCode" type="xs:string" />
+    <xs:attribute name="userName" type="xs:string" />
+    <xs:attribute name="applicationName" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="PdfPasswordType">
+    <xs:sequence />
+    <xs:attribute name="permission" type="xs:string" />
+    <xs:attribute name="open" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="UrlConverterType">
+    <xs:all>
+      <xs:element minOccurs="0" name="basicAuth" type="tns:HttpBasicAuthType" />
+      <xs:element minOccurs="0" name="page" type="tns:PageType" />
+      <xs:element minOccurs="0" name="proxy" type="tns:HttpProxyType" />
+    </xs:all>
+    <xs:attribute name="url" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="HttpBasicAuthType">
+    <xs:sequence />
+    <xs:attribute name="userName" type="xs:string" />
+    <xs:attribute name="password" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="PageType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:MarginType">
+        <xs:sequence />
+        <xs:attribute name="width" type="xs:int" />
+        <xs:attribute name="height" type="xs:int" />
+        <xs:attribute name="metrics" type="tns:MetricsType" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MarginType">
+    <xs:sequence />
+    <xs:attribute name="left" type="xs:int" />
+    <xs:attribute name="right" type="xs:int" />
+    <xs:attribute name="top" type="xs:int" />
+    <xs:attribute name="bottom" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="HttpProxyType">
+    <xs:sequence />
+    <xs:attribute name="userName" type="xs:string" />
+    <xs:attribute name="password" type="xs:string" />
+    <xs:attribute name="address" type="xs:string" />
+    <xs:attribute name="port" type="xs:int" />
+  </xs:complexType>
+  <xs:simpleType name="MetricsType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="px" />
+      <xs:enumeration value="mm" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
