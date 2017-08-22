@@ -21,7 +21,7 @@ The repository contains language-specific directories that contain the samples.
     * [Basic sample](php/basic/)
     
 - C#
-    * [Basic SOAP sample](c#/basic/soap/)
+    * [Basic SOAP sample](c%23/basic/soap/)
 
 ## Installation
 You can clone this repository with 'Git' to your local system to get all sample projects. 
