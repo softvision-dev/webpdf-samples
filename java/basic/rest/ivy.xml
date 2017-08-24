@@ -19,6 +19,9 @@
         <!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-xjc -->
         <dependency org="org.glassfish.jaxb" name="jaxb-xjc" rev="2.3.0-b170127.1453"/>
 
+        <!-- https://mvnrepository.com/artifact/org.jvnet.jaxb2_commons/jaxb2-basics-runtime -->
+        <dependency org="org.jvnet.jaxb2_commons" name="jaxb2-basics" rev="1.11.1"/>
+
         <override org="javax.xml.bind" rev="2.3.0-b170201.1204"/>
 
     </dependencies>

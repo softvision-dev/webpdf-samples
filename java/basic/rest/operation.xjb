@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<jaxb:bindings version="2.0"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:simplify="http://jaxb2-commons.dev.java.net/basic/simplify"
+               jaxb:extensionBindingPrefixes="simplify">
+
+    <!-- BarcodeType -->
+    <jaxb:bindings schemaLocation="schemas/operation-barcode.xsd" node="/xs:schema">
+        <jaxb:bindings node="//xs:complexType[@name='BarcodeType']//xs:choice//xs:element[@name='add']//xs:complexType">
+            <simplify:property name="aztecOrCodabarOrCode128">
+                <simplify:as-element-property/>
+            </simplify:property>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <!-- AnnotationType -->
+    <jaxb:bindings schemaLocation="schemas/operation-annotation.xsd" node="/xs:schema">
+        <jaxb:bindings
+                node="//xs:complexType[@name='AnnotationType']//xs:choice//xs:element[@name='add']//xs:complexType">
+            <simplify:property name="textOrMarkup">
+                <simplify:as-element-property/>
+            </simplify:property>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>

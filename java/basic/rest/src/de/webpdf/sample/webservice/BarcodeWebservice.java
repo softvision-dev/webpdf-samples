@@ -46,7 +46,7 @@ public class BarcodeWebservice extends AbstractWebservice {
         qrBarcodeType.setValue("https://www.webpdf.de");
 
         // add barcode type
-        operation.getBarcode().getAdd().getAztecOrCodabarOrCode128().add(qrBarcodeType);
+        operation.getBarcode().getAdd().getQrcode().add(qrBarcodeType);
 
         // create a second barcode (EAN8)
         Ean8BarcodeType ean8BarcodeType = new Ean8BarcodeType();
@@ -61,7 +61,7 @@ public class BarcodeWebservice extends AbstractWebservice {
         ean8BarcodeType.setPages("*");
         ean8BarcodeType.setRotation(90);
 
-        operation.getBarcode().getAdd().getAztecOrCodabarOrCode128().add(ean8BarcodeType);
+        operation.getBarcode().getAdd().getEan8().add(ean8BarcodeType);
 
         String request = this.httpAccept.equals(HttpAccept.XML)
                 ? WebserviceHelper.toXML(operation, Operation.class)

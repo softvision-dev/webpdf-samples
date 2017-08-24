@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -97,44 +95,70 @@ public class AnnotationType
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "textOrMarkup"
+        "text",
+        "markup"
     })
     public static class Add {
 
-        @XmlElements({
-            @XmlElement(name = "text", type = TextAnnotationType.class),
-            @XmlElement(name = "markup", type = MarkupAnnotationType.class)
-        })
-        protected List<BaseAnnotationType> textOrMarkup;
+        protected List<TextAnnotationType> text;
+        protected List<MarkupAnnotationType> markup;
 
         /**
-         * Gets the value of the textOrMarkup property.
+         * Gets the value of the text property.
          * 
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
          * returned list will be present inside the JAXB object.
-         * This is why there is not a <CODE>set</CODE> method for the textOrMarkup property.
+         * This is why there is not a <CODE>set</CODE> method for the text property.
          * 
          * <p>
          * For example, to add a new item, do as follows:
          * <pre>
-         *    getTextOrMarkup().add(newItem);
+         *    getText().add(newItem);
          * </pre>
          * 
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
          * {@link TextAnnotationType }
+         * 
+         * 
+         */
+        public List<TextAnnotationType> getText() {
+            if (text == null) {
+                text = new ArrayList<TextAnnotationType>();
+            }
+            return this.text;
+        }
+
+        /**
+         * Gets the value of the markup property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the markup property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getMarkup().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
          * {@link MarkupAnnotationType }
          * 
          * 
          */
-        public List<BaseAnnotationType> getTextOrMarkup() {
-            if (textOrMarkup == null) {
-                textOrMarkup = new ArrayList<BaseAnnotationType>();
+        public List<MarkupAnnotationType> getMarkup() {
+            if (markup == null) {
+                markup = new ArrayList<MarkupAnnotationType>();
             }
-            return this.textOrMarkup;
+            return this.markup;
         }
 
     }

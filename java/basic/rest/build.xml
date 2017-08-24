@@ -72,7 +72,9 @@
              removeOldOutput="yes" extension="true"
              package="de.webpdf.sample.schema.operation">
             <arg value="-no-header"/>
+            <arg value="-Xsimplify"/>
             <schema dir="${basedir}/schemas" includes="operation.xsd"/>
+            <binding dir="${basedir}" includes="operation.xjb"/>
         </xjc>
 
     </target>

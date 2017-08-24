@@ -16,7 +16,21 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType name="SignaturePositionType"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;attGroup ref="{http://schema.webpdf.de/1.0/operation}RectangleGroup"/&gt;
+ *       &lt;attGroup ref="{http://schema.webpdf.de/1.0/operation}PointGroup"/&gt;
+ *       &lt;attribute name="width" default="50"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}float"&gt;
+ *             &lt;minInclusive value="0"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
+ *       &lt;attribute name="height" default="10"&gt;
+ *         &lt;simpleType&gt;
+ *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}float"&gt;
+ *             &lt;minInclusive value="0"/&gt;
+ *           &lt;/restriction&gt;
+ *         &lt;/simpleType&gt;
+ *       &lt;/attribute&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -51,7 +65,7 @@ public class SignaturePositionType {
      */
     public float getWidth() {
         if (width == null) {
-            return  0.0F;
+            return  50.0F;
         } else {
             return width;
         }
@@ -79,7 +93,7 @@ public class SignaturePositionType {
      */
     public float getHeight() {
         if (height == null) {
-            return  0.0F;
+            return  10.0F;
         } else {
             return height;
         }
