@@ -65,7 +65,7 @@ import javax.xml.bind.annotation.XmlType;
     "ocr",
     "pdfa",
     "signature",
-    "annotationOrAttachmentOrDelete",
+    "toolbox",
     "urlconverter"
 })
 @XmlRootElement(name = "operation")
@@ -95,7 +95,7 @@ public class Operation {
         @XmlElement(name = "watermark", type = WatermarkType.class),
         @XmlElement(name = "xmp", type = XmpType.class)
     })
-    protected List<BaseToolboxType> annotationOrAttachmentOrDelete;
+    protected List<BaseToolboxType> toolbox;
     protected UrlConverterType urlconverter;
 
     /**
@@ -267,18 +267,18 @@ public class Operation {
     }
 
     /**
-     * Gets the value of the annotationOrAttachmentOrDelete property.
+     * Gets the value of the toolbox property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the annotationOrAttachmentOrDelete property.
+     * This is why there is not a <CODE>set</CODE> method for the toolbox property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getAnnotationOrAttachmentOrDelete().add(newItem);
+     *    getToolbox().add(newItem);
      * </pre>
      * 
      * 
@@ -302,11 +302,11 @@ public class Operation {
      * 
      * 
      */
-    public List<BaseToolboxType> getAnnotationOrAttachmentOrDelete() {
-        if (annotationOrAttachmentOrDelete == null) {
-            annotationOrAttachmentOrDelete = new ArrayList<BaseToolboxType>();
+    public List<BaseToolboxType> getToolbox() {
+        if (toolbox == null) {
+            toolbox = new ArrayList<BaseToolboxType>();
         }
-        return this.annotationOrAttachmentOrDelete;
+        return this.toolbox;
     }
 
     /**

@@ -44,18 +44,18 @@ public class ToolboxWebservice extends AbstractWebservice {
         }
 
         // add merge operation to the toolbox operation list
-        operation.getAnnotationOrAttachmentOrDelete().add(mergeType);
+        operation.getToolbox().add(mergeType);
 
         // add rotate operation to the toolbox operation list
         RotateType rotateType = new RotateType();
         rotateType.setPages("1-5");
         rotateType.setDegrees(90);
-        operation.getAnnotationOrAttachmentOrDelete().add(rotateType);
+        operation.getToolbox().add(rotateType);
 
         // add rotate operation to the toolbox operation list
         DeleteType deleteType = new DeleteType();
         deleteType.setPages("5-8");
-        operation.getAnnotationOrAttachmentOrDelete().add(deleteType);
+        operation.getToolbox().add(deleteType);
 
         String request = this.httpAccept.equals(HttpAccept.XML)
                 ? WebserviceHelper.toXML(operation, Operation.class)

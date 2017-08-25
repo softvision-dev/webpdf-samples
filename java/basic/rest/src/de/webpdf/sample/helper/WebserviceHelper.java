@@ -2,6 +2,7 @@ package de.webpdf.sample.helper;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import de.webpdf.sample.schema.operation.BaseToolboxType;
 import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;
 
@@ -32,7 +33,10 @@ public class WebserviceHelper {
     }
 
     public static String toJSON(Object object) {
-        Gson gson = new GsonBuilder().registerTypeAdapterFactory(new EnumAdapterFactory()).create();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(new EnumAdapterFactory())
+                .registerTypeAdapter(BaseToolboxType.class, new BaseToolboxTypeAdapter())
+                .create();
         return gson.toJson(object);
     }
 

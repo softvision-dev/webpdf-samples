@@ -24,4 +24,11 @@
         </jaxb:bindings>
     </jaxb:bindings>
 
+    <jaxb:bindings schemaLocation="schemas/operation.xsd" node="/xs:schema">
+        <!-- Change name for list of toolbox operations -->
+        <jaxb:bindings node="//xs:choice[@id='toolboxId']">
+            <jaxb:property name="toolbox"/>
+        </jaxb:bindings>
+    </jaxb:bindings>
+
 </jaxb:bindings>
