@@ -9,3 +9,4 @@
 /c#/basic/soap/.vs
 /c#/basic/soap/webPDFWebServiceTest/obj
 /c#/basic/soap/webPDFWebServiceTest/bin
+node_modules

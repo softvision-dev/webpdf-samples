@@ -19,6 +19,10 @@ The repository contains language-specific directories that contain the samples.
 
 - PHP
     * [Basic sample](php/basic/)
+
+- JavaScript
+	* [Basic sample](js/basic/)
+	* [Extended sample](js/extended/)
     
 - C#
     * [Basic SOAP sample](c%23/basic/soap/)

@@ -1,0 +1,24 @@
+body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #333; }
+
+h3 {
+  margin-top: 0; }
+
+#filelist {
+  margin-top: 15px;
+  border: 1px solid #ccc; }
+  #filelist tr:nth-child(odd) {
+    background: #f0f0f9; }
+  #filelist td {
+    padding: 5px 10px; }
+
+.box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 15px; }
+
+#log {
+  overflow: auto; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,10 @@
+{
+  "name": "webpdf-samples-extended",
+  "version": "1.0.0",
+  "description": "WebPDF js samples (extended)",
+  "private": true,
+  "devDependencies": {
+    "jquery": "3.2.1",
+    "plupload": "2.3.6"
+  }
+}

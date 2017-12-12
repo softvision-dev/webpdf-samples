@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webPDF Extended Sample</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/plupload/js/plupload.full.min.js"></script>
+
+    <script src="src/app.js"></script>
+    <script src="src/login.js"></script>
+    <script src="src/logout.js"></script>
+    <script src="src/upload.js"></script>
+    <script src="src/convert.js"></script>
+    <script src="src/barcode.js"></script>
+    <script src="src/pdfa.js"></script>
+    <script src="src/delete.js"></script>
+    <script src="src/rotate.js"></script>
+</head>
+<body>
+
+<h2>webPDF Extended Sample</h2>
+
+<div class="box">
+    <h3>Configuration</h3>
+    <label>
+        Server REST URL
+        <input style="min-width: 400px;" type="text" id="serverUrl" value="http://localhost:8080/webPDF/rest/">
+    </label>
+    <button type="button" id="setUrl">set URL</button>
+</div>
+
+<div class="box">
+    <h3>Authorisation</h3>
+    <label>
+        username
+        <input type="text" id="username" value="admin">
+    </label>
+    <label>
+        password
+        <input type="password" id="password" value="admin">
+    </label>
+    <button type="button" id="login">Login</button>
+    <button type="button" id="logout">Logout</button>
+</div>
+
+<div class="box">
+    <h3>Filelist</h3>
+    <div id="uploader"></div>
+    <table id="filelist"></table>
+</div>
+
+<div class="box">
+    <h3>Log</h3>
+    <pre id="log"></pre>
+</div>
+
+
+</body>
+</html>

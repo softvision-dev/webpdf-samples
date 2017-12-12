@@ -1,0 +1,10 @@
+{
+  "name": "webpdf-samples-basic",
+  "version": "1.0.0",
+  "description": "WebPDF js samples (basic)",
+  "private": true,
+  "devDependencies": {
+    "jquery": "3.2.1",
+    "plupload": "2.3.6"
+  }
+}
