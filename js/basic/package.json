@@ -4,7 +4,7 @@
   "description": "WebPDF js samples (basic)",
   "private": true,
   "devDependencies": {
-    "jquery": "3.2.1",
-    "plupload": "2.3.6"
+    "jquery": "^3.5.1",
+    "plupload": "^2.3.6"
   }
 }
