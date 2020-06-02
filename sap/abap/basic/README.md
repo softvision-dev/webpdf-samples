@@ -7,8 +7,7 @@ This sample tutorial shows the use of the SOAP and REST web service from ABAP wi
 >Note: This sample project requires a local running [webPDF server](https://www.webpdf.de) listening on port 8080.
 
 ## Tutorial
-* [HTML version](de/HTML/index.html) (German)
-* [PDF version](de/webPDF_and_SAP.pdf) (German)
+* [PDF](de/webPDF_and_SAP.pdf) (German)
 
 >Note: This sample tutorial uses an SAP developer system as a demo system that was set up according to the blog article https://blogs.sap.com/2019/07/01/as-abap-752-sp04-developer-edition-to-download/. 
 >The article describes in detail how to set up such a demo environment.
