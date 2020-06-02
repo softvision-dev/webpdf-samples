@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns:xsi="http://www.w3.org/2001/XInclude" defaulttopic="introduction">
+  <topicref type="topic" id="436014481109548" build="ALL" modified="2020-05-11T09:02:53.381Z" icon="0" href="introduction">
+    <caption translate="true">Einleitung</caption>
+    <topicref type="topic" id="436192516944034" build="ALL" modified="2020-05-11T09:06:11.577Z" icon="0" href="what-is-webpdf">
+      <caption translate="true">Was ist webPDF?</caption>
+    </topicref>
+  </topicref>
+  <topicref type="topic" id="436012582076732" build="ALL" modified="2020-05-11T09:23:07.645Z" icon="0" href="requirements">
+    <caption translate="true">Voraussetzungen</caption>
+    <topicref type="topic" id="436085926222642" build="ALL" modified="2020-05-11T09:04:26.572Z" icon="0" href="webpdf-installation">
+      <caption translate="true">Installation webPDF</caption>
+    </topicref>
+    <topicref type="topic" id="436081988982976" build="ALL" modified="2020-05-04T10:55:48.515Z" icon="0" href="sap-demo-system">
+      <caption translate="true">SAP Entwickler-System (als Demo-System)</caption>
+    </topicref>
+  </topicref>
+  <topicref type="topic" id="439553354827003" build="ALL" modified="2020-05-11T09:04:45.222Z" icon="0" href="soap-example">
+    <caption translate="true">SOAP-Beispiel</caption>
+    <topicref type="topic" id="439557551447643" build="ALL" modified="2020-05-06T14:34:36.826Z" icon="0">
+      <caption translate="true">Einrichtung</caption>
+      <topicref type="topic" id="436084895770006" build="ALL" modified="2020-05-11T09:05:33.927Z" icon="0" href="setup-service-consumer">
+        <caption translate="true">Einbindung als Service-Consumer</caption>
+      </topicref>
+      <topicref type="topic" id="436354028601171" build="ALL" modified="2020-05-11T09:05:48.947Z" icon="0" href="create-soap-package">
+        <caption translate="true">Anlegen eines Packet im Object Navigator</caption>
+      </topicref>
+      <topicref type="topic" id="436354938150409" build="ALL" modified="2020-05-11T09:06:01.895Z" icon="0" href="create-enterprise-service">
+        <caption translate="true">Erstellung eines Enterprise Services</caption>
+      </topicref>
+      <topicref type="topic" id="436402501959861" build="ALL" modified="2020-05-11T09:06:31.674Z" icon="0" href="soap-service-configuration">
+        <caption translate="true">Konfiguration des Services über den SOA Manager</caption>
+      </topicref>
+      <topicref type="topic" id="436434593442489" build="ALL" modified="2020-05-11T09:06:43.507Z" icon="0" href="soap-service-activation">
+        <caption translate="true">Aktivierung und einfacher Test des Service</caption>
+      </topicref>
+    </topicref>
+    <topicref type="topic" id="439556421643471" build="ALL" modified="2020-05-11T09:06:48.403Z" icon="2" href="soap-usage">
+      <caption translate="true">Anbindung</caption>
+    </topicref>
+  </topicref>
+  <topicref type="topic" id="439554940396488" build="ALL" modified="2020-05-11T09:07:02.389Z" icon="0" href="rest-example">
+    <caption translate="true">REST-Beispiel</caption>
+    <topicref type="topic" id="439558008476264" build="ALL" modified="2020-05-11T09:07:07.439Z" icon="0" href="rest-usage">
+      <caption translate="true">Anbindung</caption>
+    </topicref>
+  </topicref>
+  <topicref type="topic" id="43620262855133" build="ALL" modified="2020-05-11T09:02:34.652Z" icon="0">
+    <caption translate="true">Anhang</caption>
+    <topicref type="topic" id="439586224519792" build="ALL" modified="2020-05-07T15:40:10.820Z" icon="0" href="soap-abap-code">
+      <caption translate="true">SOAP ABAP Code</caption>
+    </topicref>
+    <topicref type="topic" id="439584939743166" build="ALL" modified="2020-05-07T08:44:33.941Z" icon="0" href="rest-abap-code">
+      <caption translate="true">REST ABAP Code</caption>
+    </topicref>
+    <topicref type="topic" id="436193172794405" build="ALL" modified="2020-05-11T09:07:19.457Z" icon="0" href="links">
+      <caption translate="true">Links</caption>
+    </topicref>
+  </topicref>
+</map>

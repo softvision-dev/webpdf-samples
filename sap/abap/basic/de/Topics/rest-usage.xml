@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Anbindung</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Anbindung</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Starten Sie den SAP Client und starten mit &quot;</text><text styleclass="Command" translate="true">se38</text><text styleclass="Normal" translate="true">&quot; den &quot;ABAP Editor&quot;</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_start.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Zunächst müssen Sie ein neues Programm anlegen. Geben Sie dazu den Namen &quot;</text><text styleclass="Command" translate="true">Z_WEBPDF_REST_CONVERT_FILE</text><text styleclass="Normal" translate="true">&quot; ein und klicken Sie auf &quot;</text><text styleclass="Command" translate="true">Anlegen</text><text styleclass="Normal" translate="true">&quot;. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_create_programm.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">In dem erscheinenden Dialog geben Sie einen Titel ein und wählen unter Typ &quot;</text><text styleclass="Command" translate="true">Ausführbares Programm</text><text styleclass="Normal" translate="true">&quot; aus. Klicken Sie danach dann auf &quot;</text><text styleclass="Command" translate="true">Sichern</text><text styleclass="Normal" translate="true">&quot;</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_create_programm_settings.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Im nächsten Schritt &quot;</text><text styleclass="Command" translate="true">Objektkatalog anlegen</text><text styleclass="Normal" translate="true">&quot; können Sie die Einstellungen beibehalten und dann auf &quot;</text><text styleclass="Command" translate="true">Lokales Objekt</text><text styleclass="Normal" translate="true">&quot; klicken, um die Einstellungen zu übernehmen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_create_programm_settings2.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Es erscheint der &quot;</text><text styleclass="Command" translate="true">ABAP Editor</text><text styleclass="Normal" translate="true">&quot;, in dem Sie jetzt den Code für den Aufruf des &quot;</text><text styleclass="Command" translate="true">Converter Webservice</text><text styleclass="Normal" translate="true">&quot; eingeben.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_empty.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Im Editor geben Sie den Code für den Webservice-Aufruf ein. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Sie finden diesen auf der Seite &quot;</text><link displaytype="text" defaultstyle="true" type="topiclink" href="rest-abap-code" styleclass="Normal" translate="true">Anhang: REST ABAP Code</link><text styleclass="Normal" translate="true">&quot; oder als Anlage in diesem Dokument mit dem Link </text><conditional-text type="IF" value="PDF"/><text styleclass="Normal" translate="true">&quot;</text><link displaytype="text" defaultstyle="true" type="filelink" href="Z_WEBPDF_REST_CONVERT_FILE.txt" styleclass="Normal" translate="true">Source Code</link><text styleclass="Normal" translate="true">&quot;</text><conditional-text type="ELSE"/><text styleclass="Normal" translate="true">&quot;</text><link displaytype="text" defaultstyle="true" type="weblink" href="./../code/Z_WEBPDF_REST_CONVERT_FILE.txt" target="_blank" styleclass="Normal" translate="true">Source Code</link><text styleclass="Normal" translate="true">&quot;</text><conditional-text type="END"/><text styleclass="Normal" translate="true">. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Kopieren Sie den Inhalt aus dem Dokument oder der Datei &quot;Z_WEBPDF_REST_CONVERT_FILE.TXT&quot; als Text in die Zwischenablage und fügen sie den Inhalt dann in dem Editor ein.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" style="font-weight:bold; color:#ff0000;" translate="true">Wichtig:</text><text styleclass="Normal" translate="true"> Sie müssen in dem Code die IP-Adresse des Servers anpassen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_insert.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Aktivieren Sie das Programm im nächsten Schritt, in dem Sie in der Werkzeugleiste auf das entsprechende Symbol klicken: </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_activate.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">In dem nachfolgenden Dialog können Sie die Einstellungen unverändert übernehmen, um das Programm zu aktivieren.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_activate_2.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Damit ist das Anlegen des Programms abgeschlossen und Sie können den Programm über das entsprechende Symbol starten:</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_start.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Wenn die Ausführung startet, fragt das Programm nach der Ausgangsdatei, die in ein PDF konvertiert werden soll. Wählen Sie eine entsprechende Datei von ihrem lokalen Dateisystem.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_file_select.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Bestätigen Sie die Sicherheitsabfrage vom System für den Zugriff auf die Datei.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_access.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Datei wird über den Webservice &quot;Converter&quot; von webPDF konvertiert. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Es erscheint ein Dialog, in dem Sie den Namen für die Ausgabedatei angeben können. Danach wird das PDF-Dokument unter diesem Namen gespeichert und mit dem im System registrierten PDF-Anzeigeprogramm gestartet.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Als Antwort im SAP-Client erhalten Sie eine Auflistung aller durchgeführten REST-Calls mit der HTTP-Methode und dem &quot;Result&quot; (Ergebnis) des Aufrufs.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_code_editor_result.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Wenn alle Operation durchgelaufen sind, wird das konvertierte Dokument als PDF im gleichen Ordner abgelegt. An den originalen Dateinamen wird dabei die Erweiterung &quot;.pdf&quot; angehängt.</text></para>
+    <para styleclass="Normal" style="page-break-before:always;"></para>
+  </body>
+</topic>

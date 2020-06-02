@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Anbindung</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Anbindung</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Starten Sie den SAP Client und starten mit &quot;se38&quot; den &quot;ABAP Editor&quot;</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="rest_start.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Zunächst müssen Sie ein neues Programm anlegen, um den definierten SOAP Proxy aufzurufen. Geben Sie dazu den Namen &quot;</text><text styleclass="Command" translate="true">Z_WEBPDF_SOAP_CONVERT_FILE</text><text styleclass="Normal" translate="true">&quot; ein und klicken Sie auf &quot;Anlegen&quot;. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_create.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Geben Sie in dem nächsten Dialog &quot;</text><text styleclass="Command" translate="true">ABAP: Programmeigenschaften</text><text styleclass="Normal" translate="true">&quot; einen Titel ein und wählen Sie unter Typ &quot;</text><text styleclass="Command" translate="true">Ausführbares Programm</text><text styleclass="Normal" translate="true">&quot;. Klicken Sie danach auf &quot;</text><text styleclass="Command" translate="true">Sichern</text><text styleclass="Normal" translate="true">&quot;, um den Dialog abzuschließen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_description.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">In dem Dialog &quot;</text><text styleclass="Command" translate="true">Objektkatalogeintrag anlegen</text><text styleclass="Normal" translate="true">&quot; können Sie optional ein Paket wählen. In diesem Fall lassen wir den Dialog unverändert. Klicken Sie auf den Schalter &quot;</text><text styleclass="Command" translate="true">Lokales Objekt</text><text styleclass="Normal" translate="true">&quot;, um den Dialog abzuschließen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_object_catalog.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Es erscheint der &quot;leere&quot; Code-Editor mit einem Basis-Code-Fragment.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_editor_empty.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Im Editor geben Sie den Code für den Webservice-Aufruf ein. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Sie finden diesen auf der Seite &quot;</text><link displaytype="text" defaultstyle="true" type="topiclink" href="soap-abap-code" styleclass="Normal" translate="true">Anhang: SOAP ABAP Code</link><text styleclass="Normal" translate="true">&quot; oder als Anlage in diesem Dokument mit dem Link </text><conditional-text type="IF" value="PDF"/><text styleclass="Normal" translate="true">&quot;</text><link displaytype="text" defaultstyle="true" type="filelink" href="Z_WEBPDF_SOAP_CONVERT_FILE.txt" styleclass="Normal" translate="true">Source Code</link><text styleclass="Normal" translate="true">&quot;</text><conditional-text type="ELSE"/><text styleclass="Normal" translate="true">&quot;</text><link displaytype="text" defaultstyle="true" type="weblink" href="./../code/Z_WEBPDF_SOAP_CONVERT_FILE.txt" target="_blank" styleclass="Normal" translate="true">Source Code</link><text styleclass="Normal" translate="true">&quot;</text><conditional-text type="END"/><text styleclass="Normal" translate="true">. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Kopieren Sie den Inhalt aus dem Dokument oder der Datei &quot;Z_WEBPDF_SOAP_CONVERT_FILE.TXT&quot; als Text in die Zwischenablage und fügen sie den Inhalt dann in dem Editor ein.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_editor.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Wenn der Code eingefügt wurde, müssen Sie diesen mit einem Klick auf den entsprechenden Button aktivieren:</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_activate.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">In dem nachfolgenden Dialog müssen Sie die Einstellungen bestätigen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_activate_2.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Danach steht das Programm zur Ausführung bereit. Packen Klicken Sie in der Werkzeugleiste auf das entsprechende Symbol, um das Programm auszuführen:</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_execute.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Wenn das Programm startet, werden Sie zur Auswahl einer entsprechenden Datei aufgefordert. Wählen Sie eine Datei die konvertiert werden soll und klicken Sie dann auf &quot;</text><text styleclass="Command" translate="true">Öffnen</text><text styleclass="Normal" translate="true">&quot;.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_select_file.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Bestätigen Sie noch den Zugriff auf die Datei, um den Aufruf des Webservice &quot;Converter&quot; von webPDF zu starten.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_access_control.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Nach der Ausführung des Webservice erscheint ein Dialog, in dem Sie den Namen für die Ausgabedatei angeben können. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="program_code_target_file.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Danach wird das PDF-Dokument unter diesem Namen gespeichert und mit dem im System registrierten PDF-Anzeigeprogramm gestartet.</text></para>
+    <para styleclass="Normal" style="page-break-before:always;"></para>
+  </body>
+</topic>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Einleitung</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Einleitung</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">In dieser Anleitung soll anhand einfacher Beispiele, die Einbindung der webPDF SOAP- und REST-Webservices in SAP demonstriert werden.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Die hier gezeigten Beispiele sollen den Weg zeigen, wie man die Webservice-Funktionen von webPDF in eine SAP-Umgebung integrieren kann. Die Beispiele stellen dabei keine vollwertige Lösung dar, die direkt in bestimmten SAP-Anwendungen genutzt werden können. Sie dienen lediglich als Grundlage für eigene Entwicklung und sollen das grundsätzliche Vorgehen beschreiben. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Die Beispiele wurden mit einem </text><link displaytype="text" defaultstyle="true" type="topiclink" href="sap-demo-system" styleclass="Normal" translate="true">SAP Demo-System</link><text styleclass="Normal" translate="true"> erstellt und müssen daher ggf. bei der Verwendung in entsprechenden Live-Systemen angepasst werden.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Bei Fragen zu webPDF oder diese Dokument, stehen wir ihnen gerne unter </text><link displaytype="text" defaultstyle="true" type="weblink" href="mailto:&lt;%LINK_CAPTION%&gt;" styleclass="Normal" translate="true">support@softvision.de</link><text styleclass="Normal" translate="true"> zur Verfügung.</text></para>
+    <para styleclass="Normal"></para>
+  </body>
+</topic>

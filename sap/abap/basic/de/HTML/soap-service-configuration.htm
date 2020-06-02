@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Konfiguration des Services über den SOA Manager</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link type="text/css" href="font-awesome.min.css" rel="stylesheet" />
+   <link type="text/css" href="style.css" rel="stylesheet" />
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "soap-service-configuration.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;" id="content">
+
+
+<div id="navigation">                           
+   <script> 
+      function getCookie(cname) {
+         var name = cname + '=';
+         var ca = document.cookie.split(';');
+         for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+         }
+         return '';
+      }
+
+      function setCookie(cname, cvalue, exdays) {
+         var d = new Date();
+         d.setTime(d.getTime() + (exdays*24*60*60*1000));
+         var expires = "expires="+d.toUTCString();
+         document.cookie = cname + "=" + cvalue + "; " + expires +  '; path=/';
+      }
+
+      var cookie = getCookie('webpdf_help_history');
+      if(cookie === '' || parseInt(cookie) === -1) {
+         setCookie('webpdf_help_history', 0, 1);
+      }
+      else{
+         setCookie('webpdf_help_history', parseInt(cookie)+1, 1);
+      }
+
+      function goBack(event) {
+         event.preventDefault();
+         var cookie = parseInt(getCookie('webpdf_help_history'));
+
+         if(cookie > 0){
+            setCookie('webpdf_help_history', cookie-2, 1);
+            window.history.back();
+         }
+      }
+      
+      function goForward(event) {
+         event.preventDefault();
+         window.history.forward();
+      }
+      
+      $(function() {
+         $('#goBack').click(goBack);
+         $('#goForward').click(goForward);
+      });
+   </script>                                   
+   <a href="#" id="goBack" title="Eine Seite zurück"><span class="fa fa-reply"></span></a>             
+   <a href="create-enterprise-service.htm" title="Zurück blättern"><span class="fa fa-arrow-left"></span></a>
+   <a href="application_portal_page.htm" title="Startseite"><span class="fa fa-home"></span></a>
+   <a href="soap-service-activation.htm" title="Vor blättern"><span class="fa fa-arrow-right"></span></a>
+   <a href="#" id="goForward" title="Eine Seite vorwärts"><span class="fa fa-mail-forward"></span></a>  
+</div>
+<div id="topic-header"><h1 class="p_Heading1"><span class="f_Heading1">Konfiguration des Services über den SOA Manager</span></h1>
+</div>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Öffnen Sie den SOA Manager über das Befehlsfeld dem Transaktioncode &quot;/<span class="f_Command">osoamanager</span>&quot;</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><img alt="se80_soamanager_open_1" width="218" height="40" style="margin:0;width:218px;height:40px;border:none" src="se80_soamanager_open_1.png"/></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Wählen Sie aus dem im Browser geöffneten SOA Manager unter &quot;<span class="f_Command">Service-Administration</span>&quot; den Punkt &quot;<span class="f_Command">Web-Service-Konfiguration</span>&quot; aus.</p>
+<p class="p_Normal">&nbsp;</p>
+<div class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="soamanager_menu_1" style="width:90%;max-width:1148px;height:auto;border:none" src="soamanager_menu_1.png"/></div>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">Suchen Sie nach dem von Ihnen zuvor erstellten Consumer-Proxy Objekt, durch Eingabe des Suchbegriffs &quot;<span class="f_Command">CONVERTER</span>&quot; und einem Klick auf den Schalter &quot;<span class="f_Command">Suche</span>&quot;.</p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<div class="p_Normal"><img alt="soamanager_search_1" style="width:90%;max-width:877px;height:auto;border:none" src="soamanager_search_1.png"/></div>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Klicken Sie auf den Eintrag &quot;<span class="f_Command">ZCO_CONVERTER</span>&quot; und wählen Sie danach in dem erscheinenden Dialog unter &quot;<span class="f_Command">Konfiguration</span>&quot;, &quot;<span class="f_Command">Anlegen-&gt;WSDL-basierte Konfiguration</span>&quot; aus.</p>
+<p class="p_Normal">&nbsp;</p>
+<div class="p_Normal"><img alt="soamanager_config_1" style="width:90%;max-width:416px;height:auto;border:none" src="soamanager_config_1.png"/></div>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">Fügen Sie in den folgenden Dialog einen logischen Port-Namen ein (z.B. &quot;<span class="f_Command">ZWEBPDF_LOGICAL_PORT</span>&quot;) und aktivieren Sie die Checkbox &quot;<span class="f_Command">Logischer Port ist Standard</span>&quot;.</p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<div class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="soamanager_config_2" style="width:90%;max-width:833px;height:auto;border:none" src="soamanager_config_2.png"/></div>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">Klicken Sie auf &quot;<span class="f_Command">Weiter</span>&quot; und wählen Sie im nächsten Schritt bei den WSDL-Zugriffseinstellungen &quot;<span class="f_Command">Über HTTP-Zugriff</span>&quot; aus. Danach geben Sie die bekannte URL für das WSDL des Converter-Services an.</p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Command"><span class="f_Command">http://&lt;Adresse&gt;:8080/webPDF/soap/converter?wsdl</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Für &quot;<span class="f_Command">&lt;Adresse&gt;</span>&quot; setzen Sie die IP-Adresse des Servers ein.</p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<div class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="soamanager_config_3" style="width:90%;max-width:582px;height:auto;border:none" src="soamanager_config_3.png"/></div>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Die folgenden Schritte &quot;<span class="f_Command">Binding-Auswahl</span>&quot; und &quot;<span class="f_Command">Consumer-Sicherheit</span>&quot; können Sie jeweils mit &quot;<span class="f_Command">Weiter</span>&quot; überspringen.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><img alt="soamanager_config_3a" width="816" height="299" style="margin:0;width:816px;height:299px;border:none" src="soamanager_config_3a.png"/></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><img alt="soamanager_config_3b" width="584" height="509" style="margin:0;width:584px;height:509px;border:none" src="soamanager_config_3b.png"/></p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;">Im&nbsp;Schritt&nbsp;&quot;<span class="f_Command">HTTP-Einstellungen</span>&quot;&nbsp;können&nbsp;Sie&nbsp;dann&nbsp;Ihre&nbsp;Angaben&nbsp;überprüfen,&nbsp;ohne&nbsp;weiter&nbsp;Eingaben&nbsp;zu&nbsp;machen.</p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;">&nbsp;</p>
+<div class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="soamanager_config_4" style="width:90%;max-width:718px;height:auto;border:none" src="soamanager_config_4.png"/></div>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">In Schritt &quot;<span class="f_Command">SOAP-Protokoll</span>&quot; müssen Sie lediglich darauf achten, dass &quot;<span class="f_Command">Message-ID-Protokoll</span>&quot; auf &quot;<span class="f_Command">ID-Übertragung unterdrücken</span>&quot; steht.</p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;"><img alt="soamanager_config_6" width="817" height="343" style="margin:0;width:817px;height:343px;border:none" src="soamanager_config_6.png"/></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">Klicken Sie auf &quot;<span class="f_Command">Fertig</span>&quot; um die Konfiguration abzuschließen. </p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><img alt="soamanager_config_7" width="1001" height="211" style="margin:0;width:1001px;height:211px;border:none" src="soamanager_config_7.png"/></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Stellen Sie in der darauf folgenden Ansicht sicher, dass der Service konfiguriert und aktiviert ist.</p>
+<p class="p_Normal">&nbsp;</p>
+<div class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="soamanager_config_5" style="width:90%;max-width:1116px;height:auto;border:none" src="soamanager_config_5.png"/></div>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Nun können Sie Ihren Browser schließen und zurück in den SAP Client wechseln.</p>
+
+</td></tr></table>
+
+</body>
+</html>

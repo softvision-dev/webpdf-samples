@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+  "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<head>
+<title>webPDF in SAP einbinden</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />                          
+<link type="text/css" href="layout.css" rel="stylesheet" />
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="helpman_settings.js"></script>
+<script type="text/javascript" src="helpman_navigation.js"></script>
+<script type="text/javascript" src="navigation.js"></script>
+<script type="text/javascript" src="hmcontextids.js"></script>
+</head>
+<body>
+<div id="hmcontentslider">
+  <div id="hmnavbox">
+    <!-- the navigation panel -->
+    <iframe name="hmnavigation" id="hmnavigation" src="hmcontent.htm" seamless="seamless" title="Navigation Pane" frameborder="0"></iframe>
+  </div>
+
+  <div id="hmcontentbox" >
+    <script type="text/javascript">
+      var defaulttopic="introduction.htm";
+      var query = window.location.search.substring(1), hash = window.location.hash, xssTest = /&#39;|&#x27;|&#34;|&#x22;|&quot;|&#61;|&#x3D;|%27|%22|%3d|:|&#58;|&#x3a;|=|%3a|3a;|58;|\/|'|"/i, cntxRX = /contextid=\d*/, cntxMatch = cntxRX.exec(query), cntxSrc = "";
+      if (query != "") {
+        if (typeof(hmGetContextId) != "undefined") {
+          if (cntxMatch != null) {
+	    cntxSrc = hmGetContextId(cntxMatch[0]);
+          };
+          if (cntxSrc != "") {
+            defaulttopic = cntxSrc;
+          } else {
+            if (!xssTest.test(query) && !xssTest.test(hash))
+               defaulttopic = query + hash;
+          }
+        }
+      }
+      document.write('<iframe name="hmcontent" id="hmcontent" src="'+defaulttopic+'" seamless="seamless" title="Content Page" frameborder="0"></iframe>');
+    </script>
+    <noscript>
+      <iframe name="hmcontent" id="hmcontent" src="introduction.htm" seamless="seamless" title="Content Page" frameborder="0"></iframe>
+    </noscript>
+  </div>
+</div>
+</body>
+</html>
+

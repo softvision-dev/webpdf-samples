@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Anlegen eines Packages im Object Navigator(SE80)</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link type="text/css" href="font-awesome.min.css" rel="stylesheet" />
+   <link type="text/css" href="style.css" rel="stylesheet" />
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "create-soap-package.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;" id="content">
+
+
+<div id="navigation">                           
+   <script> 
+      function getCookie(cname) {
+         var name = cname + '=';
+         var ca = document.cookie.split(';');
+         for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+         }
+         return '';
+      }
+
+      function setCookie(cname, cvalue, exdays) {
+         var d = new Date();
+         d.setTime(d.getTime() + (exdays*24*60*60*1000));
+         var expires = "expires="+d.toUTCString();
+         document.cookie = cname + "=" + cvalue + "; " + expires +  '; path=/';
+      }
+
+      var cookie = getCookie('webpdf_help_history');
+      if(cookie === '' || parseInt(cookie) === -1) {
+         setCookie('webpdf_help_history', 0, 1);
+      }
+      else{
+         setCookie('webpdf_help_history', parseInt(cookie)+1, 1);
+      }
+
+      function goBack(event) {
+         event.preventDefault();
+         var cookie = parseInt(getCookie('webpdf_help_history'));
+
+         if(cookie > 0){
+            setCookie('webpdf_help_history', cookie-2, 1);
+            window.history.back();
+         }
+      }
+      
+      function goForward(event) {
+         event.preventDefault();
+         window.history.forward();
+      }
+      
+      $(function() {
+         $('#goBack').click(goBack);
+         $('#goForward').click(goForward);
+      });
+   </script>                                   
+   <a href="#" id="goBack" title="Eine Seite zurück"><span class="fa fa-reply"></span></a>             
+   <a href="setup-service-consumer.htm" title="Zurück blättern"><span class="fa fa-arrow-left"></span></a>
+   <a href="application_portal_page.htm" title="Startseite"><span class="fa fa-home"></span></a>
+   <a href="create-enterprise-service.htm" title="Vor blättern"><span class="fa fa-arrow-right"></span></a>
+   <a href="#" id="goForward" title="Eine Seite vorwärts"><span class="fa fa-mail-forward"></span></a>  
+</div>
+<div id="topic-header"><h1 class="p_Heading1"><span class="f_Heading1">Anlegen eines Packets im Object Manager</span></h1>
+</div>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">Im nächsten Schritt legen Sie ein Package für die notwendigen Komponenten an. Wählen Sie dazu &quot;<span class="f_Command">Paket</span>&quot; in der oberen Auswahl und geben darunter den Paketnamen ein, der verwendet werden soll. </p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">Wir verwenden in diesem Beispiel den Namen &quot;<span class="f_Command">Z_WEBPDF</span>&quot;.</p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="page-break-inside: avoid;">Nach der Bestätigung der Eingabe mit &quot;<span class="f_Command">Enter</span>&quot; kommt noch eine Sicherheitsfrage, die Sie mit &quot;<span class="f_Command">Ja</span>&quot; bestätigen, um das neue Paket zu erstellen.</p>
+<p class="p_Normal" style="page-break-inside: avoid;">&nbsp;</p>
+<div class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="se80_package_create" style="width:90%;max-width:495px;height:auto;border:none" src="se80_package_create.png"/></div>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Im darauf folgendem Dialog können Sie noch eine Beschreibung für das Package angeben. </p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="se80_service_create_description" width="665" height="252" style="margin:0;width:665px;height:252px;border:none" src="se80_service_create_description.png"/></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Im nächsten Dialog muss der &quot;<span class="f_Command">Workbench-Auftrag</span>&quot; ausgewählt werden.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="se80_service_create_auftrag" width="497" height="164" style="margin:0;width:497px;height:164px;border:none" src="se80_service_create_auftrag.png"/></p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;">Wenn&nbsp;kein&nbsp;Auftrag&nbsp;vorhanden&nbsp;ist,&nbsp;dann&nbsp;muss&nbsp;zuvor&nbsp;ein&nbsp;neuer&nbsp;Auftrag&nbsp;erstellt&nbsp;werden&nbsp;(mit&nbsp;dem&nbsp;Button&nbsp;neben&nbsp;Feld&nbsp;&quot;<span class="f_Command">Auftrag</span>&quot;).</p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;">&nbsp;</p>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="se80_service_create_new_auftrag" width="595" height="384" style="margin:0;width:595px;height:384px;border:none" src="se80_service_create_new_auftrag.png"/></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Wenn Sie einen entsprechenden Auftrag angelegt (bzw. ausgewählt) haben, wir das Paket angelegt.</p>
+<p class="p_Normal">&nbsp;</p>
+<div class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;"><img alt="se80_package_exist" style="width:90%;max-width:402px;height:auto;border:none" src="se80_package_exist.png"/></div>
+<p class="p_Normal" style="line-height: 1.0; white-space: nowrap; page-break-inside: avoid;">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

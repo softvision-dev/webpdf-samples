@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html><head>
+   <title>webPDF in SAP einbinden</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+   <!-- This line includes the general project style sheet (not required) -->
+   <link type="text/css" href="default.css" rel="stylesheet" />                      
+   <link type="text/css" href="font-awesome.min.css" rel="stylesheet" />
+   <link type="text/css" href="style.css" rel="stylesheet" />
+
+   <!-- This block defines the styles of the TOC headings, change them as needed -->
+   <style type="text/css">
+       body { background:#FFF; }
+       .navbar   { font-size: 120%; }
+
+       .heading1 { font-family: Arial,Helvetica; font-weight: normal; font-size: 13px; color: #000000; text-decoration: none; }
+       .heading2 { font-family: Arial,Helvetica; font-weight: normal; font-size: 13px; color: #000000; text-decoration: none; }
+       .heading3 { font-family: Arial,Helvetica; font-weight: normal; font-size: 13px; color: #000000; text-decoration: none; }
+       .heading4 { font-family: Arial,Helvetica; font-weight: normal; font-size: 13px; color: #000000; text-decoration: none; }
+       .heading5 { font-family: Arial,Helvetica; font-weight: normal; font-size: 13px; color: #000000; text-decoration: none; }
+       .heading6 { font-family: Arial,Helvetica; font-weight: normal; font-size: 13px; color: #000000; text-decoration: none; }
+
+       .hilight1 { font-family: Arial,Helvetica; font-weight: bold; font-size: 13px; color: #c89b00; text-decoration: none; }
+       .hilight2 { font-family: Arial,Helvetica; font-weight: bold; font-size: 13px; color: #c89b00; text-decoration: none; }
+       .hilight3 { font-family: Arial,Helvetica; font-weight: bold; font-size: 13px; color: #c89b00; text-decoration: none; }
+       .hilight4 { font-family: Arial,Helvetica; font-weight: bold; font-size: 13px; color: #c89b00; text-decoration: none; }
+       .hilight5 { font-family: Arial,Helvetica; font-weight: bold; font-size: 13px; color: #c89b00; text-decoration: none; }
+       .hilight6 { font-family: Arial,Helvetica; font-weight: bold; font-size: 13px; color: #c89b00; text-decoration: none; }
+
+       /* TOC LIST CSS */
+       #toc    { padding: 0; margin: 0 }
+       #toc li { margin-top: 2px }
+       #toc ul { padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0 }
+       /* TOC LIST CSS */                                         
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript">
+     var parentScope = (parent.hmNavigationFrame);
+     if (!parentScope) {
+		      var s = document.createElement("script");
+		      s.setAttribute("type","text/javascript");
+		      s.setAttribute("src", "helpman_navigation.js");
+		      document.getElementsByTagName("head")[0].appendChild(s);
+	    }
+     else {
+       if (initialtocstate != "expandall") parent.hmAddCss(document, "#toc li ul { display: none }");
+     }
+     function loadicons() { var icons = new Array(); for (i=0; i<arguments.length; i++) { icons[i] = new Image(); icons[i].src = arguments[i]; } }
+     function loadtoc() { if (parentScope) parent.loadstate(document.getElementById("toc")); else loadstate(document.getElementById("toc")); }
+     function savetoc() { if (parentScope) parent.savestate(document.getElementById("toc")); else savestate(document.getElementById("toc")); }
+     function clicked(node, event) { deselect(); if (parentScope) parent.hmNodeClicked(node, event); else hmNodeClicked(node, event); }
+     function dblclicked(node) { if (parentScope) parent.hmNodeDblclicked(node); else hmNodeDblclicked(node); }
+     function deselect() { if (window.getSelection) window.getSelection().removeAllRanges(); else if (document.selection) document.selection.empty(); }
+     $(document).ready(function(){
+       loadtoc();
+       $(window).onunload = savetoc;
+     });
+   </script>
+</head>
+<body>
+<p class="navtitle">webPDF in SAP einbinden</p>
+<p class="navbar">
+<b>Inhalt</b>
+
+ | <a href="hmftsearch.htm">Suche</a>
+</p><hr size="1" />
+
+  <!-- Place holder for the TOC - this variable is REQUIRED! -->
+  <ul id="toc" style="list-style-type:none;display:block;padding-left:0">
+<li class="heading1" id="i1" data-bg="webpdf_icon_chapter_closed.png;webpdf_icon_chapter_open.png" style="background:url(webpdf_icon_chapter_open.png) no-repeat;cursor:pointer;padding-left:19px" onclick="return clicked(this,event)"><a class="heading1" id="a1" href="introduction.htm" target="hmcontent"><span class="heading1" id="s1" ondblclick="return dblclicked(this)">1 Einleitung</span></a>
+<ul id="ul1" style="list-style-type:none">
+<li class="heading2" id="i1.1" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a1.1" href="what-is-webpdf.htm" target="hmcontent"><span class="heading2" id="s1.1">1.1 Was ist webPDF?</span></a>
+</li>
+</ul>
+</li>
+<li class="heading1" id="i2" data-bg="webpdf_icon_chapter_closed.png;webpdf_icon_chapter_open.png" style="background:url(webpdf_icon_chapter_open.png) no-repeat;cursor:pointer;padding-left:19px" onclick="return clicked(this,event)"><a class="heading1" id="a2" href="requirements.htm" target="hmcontent"><span class="heading1" id="s2" ondblclick="return dblclicked(this)">2 Voraussetzungen</span></a>
+<ul id="ul2" style="list-style-type:none">
+<li class="heading2" id="i2.1" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a2.1" href="webpdf-installation.htm" target="hmcontent"><span class="heading2" id="s2.1">2.1 Installation webPDF</span></a>
+</li>
+<li class="heading2" id="i2.2" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a2.2" href="sap-demo-system.htm" target="hmcontent"><span class="heading2" id="s2.2">2.2 SAP Entwickler-System (als Demo-System)</span></a>
+</li>
+</ul>
+</li>
+<li class="heading1" id="i3" data-bg="webpdf_icon_chapter_closed.png;webpdf_icon_chapter_open.png" style="background:url(webpdf_icon_chapter_open.png) no-repeat;cursor:pointer;padding-left:19px" onclick="return clicked(this,event)"><a class="heading1" id="a3" href="soap-example.htm" target="hmcontent"><span class="heading1" id="s3" ondblclick="return dblclicked(this)">3 SOAP-Beispiel</span></a>
+<ul id="ul3" style="list-style-type:none">
+<li class="heading2" id="i3.1" data-bg="webpdf_icon_chapter_closed.png;webpdf_icon_chapter_open.png" style="background:url(webpdf_icon_chapter_open.png) no-repeat;cursor:pointer;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a3.1" href=javascript:void(0);><span class="heading2" id="s3.1" ondblclick="return dblclicked(this)">3.1 Einrichtung</span></a>
+<ul id="ul3.1" style="list-style-type:none">
+<li class="heading3" id="i3.1.1" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading3" id="a3.1.1" href="setup-service-consumer.htm" target="hmcontent"><span class="heading3" id="s3.1.1">3.1.1 Einbindung als Service-Consumer</span></a>
+</li>
+<li class="heading3" id="i3.1.2" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading3" id="a3.1.2" href="create-soap-package.htm" target="hmcontent"><span class="heading3" id="s3.1.2">3.1.2 Anlegen eines Packet im Object Navigator</span></a>
+</li>
+<li class="heading3" id="i3.1.3" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading3" id="a3.1.3" href="create-enterprise-service.htm" target="hmcontent"><span class="heading3" id="s3.1.3">3.1.3 Erstellung eines Enterprise Services</span></a>
+</li>
+<li class="heading3" id="i3.1.4" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading3" id="a3.1.4" href="soap-service-configuration.htm" target="hmcontent"><span class="heading3" id="s3.1.4">3.1.4 Konfiguration des Services über den SOA Manager</span></a>
+</li>
+<li class="heading3" id="i3.1.5" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading3" id="a3.1.5" href="soap-service-activation.htm" target="hmcontent"><span class="heading3" id="s3.1.5">3.1.5 Aktivierung und einfacher Test des Service</span></a>
+</li>
+</ul>
+</li>
+<li class="heading2" id="i3.2" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a3.2" href="soap-usage.htm" target="hmcontent"><span class="heading2" id="s3.2">3.2 Anbindung</span></a>
+</li>
+</ul>
+</li>
+<li class="heading1" id="i4" data-bg="webpdf_icon_chapter_closed.png;webpdf_icon_chapter_open.png" style="background:url(webpdf_icon_chapter_open.png) no-repeat;cursor:pointer;padding-left:19px" onclick="return clicked(this,event)"><a class="heading1" id="a4" href="rest-example.htm" target="hmcontent"><span class="heading1" id="s4" ondblclick="return dblclicked(this)">4 REST-Beispiel</span></a>
+<ul id="ul4" style="list-style-type:none">
+<li class="heading2" id="i4.1" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a4.1" href="rest-usage.htm" target="hmcontent"><span class="heading2" id="s4.1">4.1 Anbindung</span></a>
+</li>
+</ul>
+</li>
+<li class="heading1" id="i5" data-bg="webpdf_icon_chapter_closed.png;webpdf_icon_chapter_open.png" style="background:url(webpdf_icon_chapter_open.png) no-repeat;cursor:pointer;padding-left:19px" onclick="return clicked(this,event)"><a class="heading1" id="a5" href=javascript:void(0);><span class="heading1" id="s5" ondblclick="return dblclicked(this)">5 Anhang</span></a>
+<ul id="ul5" style="list-style-type:none">
+<li class="heading2" id="i5.1" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a5.1" href="soap-abap-code.htm" target="hmcontent"><span class="heading2" id="s5.1">5.1 SOAP ABAP Code</span></a>
+</li>
+<li class="heading2" id="i5.2" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a5.2" href="rest-abap-code.htm" target="hmcontent"><span class="heading2" id="s5.2">5.2 REST ABAP Code</span></a>
+</li>
+<li class="heading2" id="i5.3" style="background:url(webpdf_icon_topic.png) no-repeat;padding-left:19px" onclick="return clicked(this,event)"><a class="heading2" id="a5.3" href="links.htm" target="hmcontent"><span class="heading2" id="s5.3">5.3 Links</span></a>
+</li>
+</ul>
+</li>
+</ul>
+<script type="text/javascript">loadicons('webpdf_icon_chapter_open.png','webpdf_icon_chapter_closed.png','webpdf_icon_topic.png');</script>
+
+<hr size="1" /><p style="font-size: 8pt">© 2020 SoftVision Development GmbH, Fulda, Deutschland</p>
+</body>
+</html>

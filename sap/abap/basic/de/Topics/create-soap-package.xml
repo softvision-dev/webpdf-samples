@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Anlegen eines Packages im Object Navigator(SE80)</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Anlegen eines Packets im Object Manager</text></para>
+    </header>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Im nächsten Schritt legen Sie ein Package für die notwendigen Komponenten an. Wählen Sie dazu &quot;</text><text styleclass="Command" translate="true">Paket</text><text styleclass="Normal" translate="true">&quot; in der oberen Auswahl und geben darunter den Paketnamen ein, der verwendet werden soll. </text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Wir verwenden in diesem Beispiel den Namen &quot;</text><text styleclass="Command" translate="true">Z_WEBPDF</text><text styleclass="Normal" translate="true">&quot;.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Nach der Bestätigung der Eingabe mit &quot;</text><text styleclass="Command" translate="true">Enter</text><text styleclass="Normal" translate="true">&quot; kommt noch eine Sicherheitsfrage, die Sie mit &quot;</text><text styleclass="Command" translate="true">Ja</text><text styleclass="Normal" translate="true">&quot; bestätigen, um das neue Paket zu erstellen.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_package_create.PNG" scale="-90.00%" width="495" height="355" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Im darauf folgendem Dialog können Sie noch eine Beschreibung für das Package angeben. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_service_create_description.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Im nächsten Dialog muss der &quot;</text><text styleclass="Command" translate="true">Workbench-Auftrag</text><text styleclass="Normal" translate="true">&quot; ausgewählt werden.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_service_create_auftrag.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><text styleclass="Normal" translate="true">Wenn kein Auftrag vorhanden ist, dann muss zuvor ein neuer Auftrag erstellt werden (mit dem Button neben Feld &quot;</text><text styleclass="Command" translate="true">Auftrag</text><text styleclass="Normal" translate="true">&quot;).</text></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_service_create_new_auftrag.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Wenn Sie einen entsprechenden Auftrag angelegt (bzw. ausgewählt) haben, wir das Paket angelegt.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_package_exist.PNG" scale="-90.00%" width="402" height="176" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"></para>
+  </body>
+</topic>

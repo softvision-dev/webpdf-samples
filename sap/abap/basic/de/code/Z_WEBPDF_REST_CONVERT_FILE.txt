@@ -1,0 +1,509 @@
+*&---------------------------------------------------------------------*
+*& Report Z_WEBPDF_REST_CONVERT_FILE
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT Z_WEBPDF_REST_CONVERT_FILE.
+
+* Web service Options
+
+* Please check the webPDF server IP:
+DATA lv_webpdf_url      TYPE string VALUE 'http://192.168.1.31:8080'.
+* REST converter service: the parameters are passed to the JSON structures.
+  DATA lv_ws_parameters   TYPE string VALUE '{"converter":{"embedFonts":false,"jpegQuality":90,"pages":"*","page":{"metrics":"mm","width":210,"height":297,"top":20,"right":20,"bottom":20,"left":20}}}'.
+* User name and password:
+  DATA lv_username        TYPE string VALUE 'user'.
+  DATA lv_password        TYPE string VALUE 'user'.
+
+* REST classes
+  DATA lo_http_client     TYPE REF TO if_http_client.
+  DATA lo_rest_client     TYPE REF TO cl_rest_http_client.
+  DATA lo_json            TYPE REF TO /ui2/cl_json.
+
+* REST help variables
+  DATA lo_request         TYPE REF TO if_rest_entity.
+  DATA lo_rest_multi      TYPE REF TO if_rest_multipart_entity.
+  DATA lv_rest_url        TYPE string.
+  DATA lo_response        TYPE REF TO if_rest_entity.
+  DATA lv_json_response   TYPE string.
+  DATA lv_http_status     TYPE string.
+
+* Token and DocumentID for webPDF session
+  DATA lv_token           TYPE string.
+  DATA lv_docID           TYPE string.
+
+* Fileopen Dialog
+  DATA it_file_table      TYPE filetable.
+  DATA is_file_table      TYPE file_table.
+  DATA rc                 TYPE i.
+
+* Files and Downloads
+  DATA lv_filename_path   TYPE string.
+  DATA lv_filename_full   TYPE string.
+  DATA lv_filename        TYPE string.
+  DATA lv_dirlen          TYPE i.
+  DATA lt_data_tab        TYPE TABLE OF x255.
+  DATA lv_bin_size        TYPE i.
+  DATA lv_xstring_docx    TYPE xstring.
+  DATA lv_xstring_pdf     TYPE xstring.
+  DATA lt_data_tab_save   TYPE TABLE OF x255.
+  DATA lv_bin_size_save   TYPE i.
+
+* JSON->ABAP: Login
+  TYPES: BEGIN OF ty_login,
+    token TYPE string,
+  END OF ty_login.
+  DATA ls_login TYPE ty_login.
+
+* JSON->ABAP: Info
+  TYPES: BEGIN OF ty_info,
+    documentId TYPE string,
+    fileSize TYPE i,
+    fileName TYPE string,
+  END OF ty_info.
+  DATA ls_info TYPE ty_info.
+
+TRY.
+
+* --- OPEN DIALOG --------------------------------------------------------------------------------------------------------------
+
+  cl_gui_frontend_services=>FILE_OPEN_DIALOG(
+*    exporting
+*      WINDOW_TITLE            =     " Titel des Datei-Öffnen Dialogs
+*      DEFAULT_EXTENSION       =     " Vorschlagserweiterung
+*      DEFAULT_FILENAME        =     " Vorschlagsdateiname
+*      FILE_FILTER             =     " Filterstring für Dateierweiterung
+*      WITH_ENCODING           =     " file encoding
+*      INITIAL_DIRECTORY       =     " Ausgangsverzeichnis
+*      MULTISELECTION          =     " Mehrfachselektion möglich
+  changing
+    " Tabelle, die selektierte Dateien enthält
+    FILE_TABLE              = it_file_table
+    " Rückgabewert: Anzahl Dateien oder -1 falls Fehler auftritt
+    RC                      = rc
+*    USER_ACTION             =     " Benutzeraktion( s. Kl.konstanten ACTION_OK, ACTION_CANCEL)
+*    FILE_ENCODING           =
+  exceptions
+    FILE_OPEN_DIALOG_FAILED = 1
+    CNTL_ERROR              = 2
+    ERROR_NO_GUI            = 3
+    NOT_SUPPORTED_BY_GUI    = 4
+    OTHERS                  = 5
+  ).
+  if sy-subrc <> 0.
+   message id sy-msgid type sy-msgty number sy-msgno
+              with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  endif.
+
+* Only one file selected?
+  IF rc <> 1.
+    EXIT.
+  ENDIF.
+
+* Get file name
+  LOOP AT it_file_table INTO is_file_table.
+    MOVE is_file_table-filename TO lv_filename_full.
+  ENDLOOP.
+
+* --- INIT --------------------------------------------------------------------------------------------------------------
+
+* Create HTTP client instance
+  CALL METHOD cl_http_client=>CREATE_BY_URL
+    exporting
+      URL                =     lv_webpdf_url
+*      PROXY_HOST         =     " logische Destination (Wird bei Funktionsaufruf angegeben)
+*      PROXY_SERVICE      =     " Portnummer
+*      SSL_ID             =     " SSL Identität
+*      SAP_USERNAME       =     " R/3-System, Anmeldename des Benutzers
+*      SAP_CLIENT         =     " R/3-System, Mandantennummer aus Anmeldung
+    importing
+      CLIENT             =     lo_http_client
+    exceptions
+      ARGUMENT_NOT_FOUND = 1
+      PLUGIN_NOT_ACTIVE  = 2
+      INTERNAL_ERROR     = 3
+      OTHERS             = 4
+    .
+  if sy-subrc <> 0.
+   message id sy-msgid type sy-msgty number sy-msgno
+              with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  endif.
+
+  lo_http_client->propertytype_logon_popup = lo_http_client->co_disabled.
+  CALL METHOD lo_http_client->AUTHENTICATE
+    exporting
+*      PROXY_AUTHENTICATION = ' '    " Proxy-Logon (= 'X')
+*      CLIENT               =     " R/3-System, Mandantennummer aus Anmeldung
+      USERNAME             =     lv_username
+      PASSWORD             =     lv_password
+*      LANGUAGE             =     " R/3-System, aktuelle Sprache
+    .
+
+* Create REST client instance
+  CREATE OBJECT LO_REST_CLIENT
+    exporting
+      IO_HTTP_CLIENT = lo_http_client.
+    .
+
+* Class to convert a JSON structure to an ABAP object
+  CREATE OBJECT lo_json.
+
+* --- LOGIN --------------------------------------------------------------------------------------------------------------
+* GET: /webPDF/rest/authentication/user/login
+  lv_rest_url = lv_webpdf_url && '/webPDF/rest/authentication/user/login'.
+  WRITE: / '1. LOGIN', /5(7) 'GET:', lv_rest_url.
+
+* URL
+  cl_http_utility=>SET_REQUEST_URI(
+    exporting
+      REQUEST = lo_http_client->request    " HTTP Framework (iHTTP) HTTP Request
+      URI     = lv_rest_url    " URI-String (in Form von /path?query-string)
+  ).
+
+
+* HTTP GET
+  lo_rest_client->if_rest_client~get( ).
+
+* HTTP response
+  lo_response = lo_rest_client->if_rest_client~get_response_entity( ).
+
+* HTTP return status
+  lv_http_status = lo_response->get_header_field( '~status_code' ).
+
+* HTTP JSON return string
+  lv_json_response = lo_response->get_string_data( ).
+
+* Get token
+  lo_json->DESERIALIZE( exporting JSON = lv_json_response changing DATA = ls_login ).
+  lv_token = ls_login-TOKEN.
+
+  WRITE: /5 'Result (Token):', lv_token.
+
+* --- FILE --------------------------------------------------------------------------------------------------------------
+* load file from client
+  CALL FUNCTION 'GUI_UPLOAD'
+    exporting
+      filename   = lv_filename_full
+      filetype   = 'BIN'
+    importing
+      filelength = lv_bin_size
+*     HEADER     =
+    tables
+      data_tab   = lt_data_tab.
+
+* get xstring
+  CALL FUNCTION 'SCMS_BINARY_TO_XSTRING'
+    exporting
+      input_length = lv_bin_size
+    importing
+      buffer       = lv_xstring_docx
+    tables
+      binary_tab   = lt_data_tab.
+
+* get filename and path
+  lv_filename = lv_filename_full.
+  WHILE lv_filename CA ':\/'.
+    ADD 1 TO sy-fdpos.
+    ADD sy-fdpos TO lv_dirlen.
+    SHIFT lv_filename LEFT BY sy-fdpos PLACES.
+  ENDWHILE.
+  lv_filename_path = lv_filename_full+0(lv_dirlen).
+
+* --- UPLOAD --------------------------------------------------------------------------------------------------------------
+* POST: /webPDF/rest/documents
+  lv_rest_url = lv_webpdf_url && '/webPDF/rest/documents'.
+  WRITE: / '2. UPLOAD', /5(7) 'POST:', lv_rest_url.
+
+* Create a multipart
+  lo_rest_multi ?= lo_rest_client->if_rest_client~create_request_entity(
+                          iv_multipart = abap_true
+                      ).
+* Set ContentType
+  lo_rest_multi->set_header_field(
+    exporting
+      iv_name  = if_http_header_fields=>content_type
+      iv_value = if_rest_media_type=>gc_multipart_form_data
+  ).
+
+* Create a Multipart Entity
+  lo_rest_multi->create_entity(
+    exporting
+      iv_multipart               = abap_false
+    RECEIVING
+      ro_entity                  = lo_request       " REST Entity
+  ).
+
+* Content-Disposition: form-data; name="filedata"
+  lo_request->set_header_field(
+    exporting
+      iv_name  = if_http_header_fields=>content_disposition
+      iv_value = 'form-data; name="filedata"'
+  ).
+
+* Binary Data
+  lo_request->SET_BINARY_DATA( lv_xstring_docx ).
+
+* Header
+  CALL METHOD lo_rest_client->if_rest_client~set_request_header
+    exporting
+      iv_name  = 'token'
+      iv_value = lv_token.
+  CALL METHOD lo_rest_client->if_rest_client~set_request_header
+    exporting
+      iv_name  = 'accept'
+      iv_value = 'application/json'. "Set your header .
+
+* URL
+  cl_http_utility=>SET_REQUEST_URI(
+    exporting
+      REQUEST = lo_http_client->request    " HTTP Framework (iHTTP) HTTP Request
+      URI     = lv_rest_url    " URI-String (in Form von /path?query-string)
+  ).
+
+* POST
+  lo_rest_client->if_rest_resource~post( lo_rest_multi ).
+
+* Collect response
+  lo_response = lo_rest_client->if_rest_client~get_response_entity( ).
+
+* HTTP return status
+  lv_http_status = lo_response->get_header_field( '~status_code' ).
+
+* Return redirect url
+  lv_rest_url = lo_response->get_header_field( IV_NAME = 'Location' ).
+
+  WRITE: /5 'Result (Redirect url):', lv_rest_url.
+
+* --- 303 Redirect --------------------------------------------------------------------------------------------------------------
+* GET: Redirect URL: /webPDF/rest/converter/{docID}/Info
+  WRITE: / '3. 303 Redirect', /5(7) 'GET:', lv_rest_url.
+
+* URL
+  cl_http_utility=>SET_REQUEST_URI(
+    exporting
+      REQUEST = lo_http_client->request    " HTTP Framework (iHTTP) HTTP Request
+      URI     = lv_rest_url    " URI-String (in Form von /path?query-string)
+  ).
+
+* HTTP GET
+  lo_rest_client->if_rest_client~get( ).
+
+* HTTP response
+  lo_response = lo_rest_client->if_rest_client~get_response_entity( ).
+
+* HTTP return status
+  lv_http_status = lo_response->get_header_field( '~status_code' ).
+
+* HTTP JSON return string
+  lv_json_response = lo_response->get_string_data( ).
+
+* Read JSON
+  lo_json->DESERIALIZE( exporting JSON = lv_json_response changing DATA = ls_info ).
+  lv_docID = ls_info-DOCUMENTID.
+
+  WRITE: /5 'Result (DocID):', lv_docID.
+
+* --- CONVERT --------------------------------------------------------------------------------------------------------------
+* POST: /webPDF/rest/converter/{docID}
+  lv_rest_url = lv_webpdf_url && '/webPDF/rest/converter/' && lv_docID.
+  WRITE: / '4. CONVERT', /5(7) 'POST:', lv_rest_url.
+
+* Clear request entity
+  lo_rest_client->REFRESH_REQUEST( ).
+
+* Set token
+  CALL METHOD lo_rest_client->if_rest_client~set_request_header
+    exporting
+      iv_name  = 'token'
+      iv_value = lv_token.
+
+* Create Request Entity
+  lo_request = lo_rest_client->if_rest_client~create_request_entity( ).
+  lo_request->set_content_type( iv_media_type = if_rest_media_type=>GC_APPL_JSON ).
+
+* Converter Properties
+  lo_request->SET_STRING_DATA( lv_ws_parameters ).
+
+* URL
+  cl_http_utility=>set_request_uri(
+    exporting
+      request = lo_http_client->request    " HTTP Framework (iHTTP) HTTP Request
+      uri     = lv_rest_url                    " URI String (in the Form of /path?query-string)
+  ).
+
+* POST
+  lo_rest_client->if_rest_resource~post( lo_request ).
+
+* Collect response
+  lo_response = lo_rest_client->if_rest_client~get_response_entity( ).
+
+* HTTP return status
+  lv_http_status = lo_response->get_header_field( '~status_code' ).
+
+  WRITE: /5 'Result (HTTP Status):', lv_http_status.
+
+* --- DOWNLOAD --------------------------------------------------------------------------------------------------------------
+* GET: /webPDF/rest/documents/{docID}
+  lv_rest_url = lv_webpdf_url && '/webPDF/rest/documents/' && lv_docID.
+  WRITE: / '5. DOWNLOAD', /5(7) 'GET:', lv_rest_url.
+
+* Clear request entity
+  lo_rest_client->REFRESH_REQUEST( ).
+
+* Set token
+  CALL METHOD lo_rest_client->if_rest_client~set_request_header
+    exporting
+      iv_name  = 'token'
+      iv_value = lv_token.
+
+* URL
+  cl_http_utility=>set_request_uri(
+    exporting
+      request = lo_http_client->request
+      uri     = lv_rest_url
+  ).
+
+* HTTP GET
+  lo_rest_client->if_rest_client~get( ).
+
+* HTTP response
+  lo_response = lo_rest_client->if_rest_client~get_response_entity( ).
+
+* HTTP return status
+  lv_http_status = lo_response->get_header_field( '~status_code' ).
+
+* HTTP return binary string
+  lv_xstring_pdf = lo_response->GET_BINARY_DATA( ).
+
+* Save Result PDF
+  CALL FUNCTION 'SCMS_XSTRING_TO_BINARY'
+  exporting
+    buffer        = lv_xstring_pdf
+  importing
+    output_length = lv_bin_size_save
+  tables
+    binary_tab    = lt_data_tab_save
+  exceptions
+    OTHERS                 = 1.
+  if sy-subrc <> 0.
+    message id sy-msgid type sy-msgty number sy-msgno
+              with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  endif.
+
+* Save dialog
+  lv_filename = lv_filename && '.pdf'.
+  cl_gui_frontend_services=>FILE_SAVE_DIALOG(
+    exporting
+*      WINDOW_TITLE              =     " Fenstertitel
+      DEFAULT_EXTENSION         =     'pdf' " Vorschlagserweiterung
+      DEFAULT_FILE_NAME         =     lv_filename " Vorschlagsdateiname
+*      WITH_ENCODING             =
+      FILE_FILTER               =     '*.pdf'" Filter Tabelle für Dateityp
+      INITIAL_DIRECTORY         =     lv_filename_path " Ausgangsverzeichnis
+*      PROMPT_ON_OVERWRITE       = 'X'
+    changing
+      FILENAME                  =     lv_filename " Dateiname für Sichern
+      PATH                      =     lv_filename_path " Pfad zu Datei
+      FULLPATH                  =     lv_filename_full " Pfad + Dateiname
+      USER_ACTION               =     rc " Benutzeraktion ( K.Konst. ACTION_OK, ACTION_OVERWRITE usw.)
+*      FILE_ENCODING             =
+    exceptions
+      CNTL_ERROR                = 1
+      ERROR_NO_GUI              = 2
+      NOT_SUPPORTED_BY_GUI      = 3
+      INVALID_DEFAULT_FILE_NAME = 4
+      OTHERS                    = 5
+  ).
+  if sy-subrc <> 0.
+    message id sy-msgid type sy-msgty number sy-msgno
+              with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  endif.
+
+  if rc = CL_GUI_FRONTEND_SERVICES=>ACTION_CANCEL.
+    EXIT.
+  endif.
+
+* Download file
+  CALL FUNCTION 'GUI_DOWNLOAD'
+    exporting
+      bin_filesize = lv_bin_size_save
+      filename     = lv_filename_full
+      filetype     = 'BIN'
+    tables
+      data_tab     = lt_data_tab_save
+    exceptions
+      OTHERS                 = 1.
+  if sy-subrc <> 0.
+    message id sy-msgid type sy-msgty number sy-msgno
+              with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  endif.
+
+  WRITE: /5 'Result (Binary Data):', lv_bin_size_save, 'Bytes'.
+
+* --- LOGOUT --------------------------------------------------------------------------------------------------------------
+* /webPDF/rest/authentication/user/logout
+  lv_rest_url = lv_webpdf_url && '/webPDF/rest/authentication/user/logout'.
+  WRITE: / '6. LOGOUT', /5(7) 'GET:', lv_rest_url.
+
+* Clear request entity
+  lo_rest_client->REFRESH_REQUEST( ).
+
+* Set token
+  CALL METHOD lo_rest_client->if_rest_client~set_request_header
+    exporting
+      iv_name  = 'token'
+      iv_value = lv_token.
+
+* URL
+  cl_http_utility=>set_request_uri(
+    exporting
+      request = lo_http_client->request
+      uri     = lv_rest_url
+  ).
+
+* HTTP GET
+  lo_rest_client->if_rest_client~get( ).
+
+* HTTP response
+  lo_response = lo_rest_client->if_rest_client~get_response_entity( ).
+
+* HTTP return status
+  lv_http_status = lo_response->get_header_field( '~status_code' ).
+
+  WRITE: /5 'Result (HTTP Status):', lv_http_status.
+
+* --- SHOW PDF FILE (ShellExecute) --------------------------------------------------------------------------------------------------------------
+  WRITE: / '7. SHOW PDF FILE'.
+  WRITE: /5 'File name:', lv_filename_full.
+
+  cl_gui_frontend_services=>EXECUTE(
+    exporting
+      DOCUMENT               =     lv_filename_full" Pfad+Dokumentname
+*      APPLICATION            =     " Pfad + Anwendungsname
+*      PARAMETER              =     " Parameter für Anwendung
+*      DEFAULT_DIRECTORY      =     " Vorschlagsverzeichnis
+*      MAXIMIZED              =     " Fenster maximiert anzeigen
+*      MINIMIZED              =     " Fenster minimiert anzeigen
+*      SYNCHRONOUS            =     " Wenn 'X': die Anwendung läuft synchron
+      OPERATION              = 'OPEN'    " Reserviert: Verb für ShellExecute
+    exceptions
+      CNTL_ERROR             = 1
+      ERROR_NO_GUI           = 2
+      BAD_PARAMETER          = 3
+      FILE_NOT_FOUND         = 4
+      PATH_NOT_FOUND         = 5
+      FILE_EXTENSION_UNKNOWN = 6
+      ERROR_EXECUTE_FAILED   = 7
+      SYNCHRONOUS_FAILED     = 8
+      NOT_SUPPORTED_BY_GUI   = 9
+      OTHERS                 = 10
+  ).
+  if sy-subrc <> 0.
+   message id sy-msgid type sy-msgty number sy-msgno
+              with sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+  endif.
+
+CATCH cx_root INTO DATA(e_text).
+      WRITE: /.
+      WRITE: / 'Exception:', e_text->get_text( ).
+ENDTRY.

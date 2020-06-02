@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Konfiguration des Services über den SOA Manager</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Konfiguration des Services über den SOA Manager</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Öffnen Sie den SOA Manager über das Befehlsfeld dem Transaktioncode &quot;/</text><text styleclass="Command" translate="true">osoamanager</text><text styleclass="Normal" translate="true">&quot;</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="se80_soamanager_open_1.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Wählen Sie aus dem im Browser geöffneten SOA Manager unter &quot;</text><text styleclass="Command" translate="true">Service-Administration</text><text styleclass="Normal" translate="true">&quot; den Punkt &quot;</text><text styleclass="Command" translate="true">Web-Service-Konfiguration</text><text styleclass="Normal" translate="true">&quot; aus.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="soamanager_menu_1.png" scale="-90.00%" width="1094" height="485" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Suchen Sie nach dem von Ihnen zuvor erstellten Consumer-Proxy Objekt, durch Eingabe des Suchbegriffs &quot;</text><text styleclass="Command" translate="true">CONVERTER</text><text styleclass="Normal" translate="true">&quot; und einem Klick auf den Schalter &quot;</text><text styleclass="Command" translate="true">Suche</text><text styleclass="Normal" translate="true">&quot;.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal"><image src="soamanager_search_1.png" scale="-90.00%" width="877" height="383" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Klicken Sie auf den Eintrag &quot;</text><text styleclass="Command" translate="true">ZCO_CONVERTER</text><text styleclass="Normal" translate="true">&quot; und wählen Sie danach in dem erscheinenden Dialog unter &quot;</text><text styleclass="Command" translate="true">Konfiguration</text><text styleclass="Normal" translate="true">&quot;, &quot;</text><text styleclass="Command" translate="true">Anlegen-&gt;WSDL-basierte Konfiguration</text><text styleclass="Normal" translate="true">&quot; aus.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="soamanager_config_1.png" scale="-90.00%" width="416" height="341" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Fügen Sie in den folgenden Dialog einen logischen Port-Namen ein (z.B. &quot;</text><text styleclass="Command" translate="true">ZWEBPDF_LOGICAL_PORT</text><text styleclass="Normal" translate="true">&quot;) und aktivieren Sie die Checkbox &quot;</text><text styleclass="Command" translate="true">Logischer Port ist Standard</text><text styleclass="Normal" translate="true">&quot;.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="soamanager_config_2.png" scale="-90.00%" width="833" height="231" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Klicken Sie auf &quot;</text><text styleclass="Command" translate="true">Weiter</text><text styleclass="Normal" translate="true">&quot; und wählen Sie im nächsten Schritt bei den WSDL-Zugriffseinstellungen &quot;</text><text styleclass="Command" translate="true">Über HTTP-Zugriff</text><text styleclass="Normal" translate="true">&quot; aus. Danach geben Sie die bekannte URL für das WSDL des Converter-Services an.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Command"><text styleclass="Command" translate="true">http://&lt;Adresse&gt;:8080/webPDF/soap/converter?wsdl</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Für &quot;</text><text styleclass="Command" translate="true">&lt;Adresse&gt;</text><text styleclass="Normal" translate="true">&quot; setzen Sie die IP-Adresse des Servers ein.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="soamanager_config_3.png" scale="-90.00%" width="582" height="385" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Die folgenden Schritte &quot;</text><text styleclass="Command" translate="true">Binding-Auswahl</text><text styleclass="Normal" translate="true">&quot; und &quot;</text><text styleclass="Command" translate="true">Consumer-Sicherheit</text><text styleclass="Normal" translate="true">&quot; können Sie jeweils mit &quot;</text><text styleclass="Command" translate="true">Weiter</text><text styleclass="Normal" translate="true">&quot; überspringen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="soamanager_config_3a.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="soamanager_config_3b.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><text styleclass="Normal" translate="true">Im Schritt &quot;</text><text styleclass="Command" translate="true">HTTP-Einstellungen</text><text styleclass="Normal" translate="true">&quot; können Sie dann Ihre Angaben überprüfen, ohne weiter Eingaben zu machen.</text></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="soamanager_config_4.png" scale="-90.00%" width="718" height="559" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">In Schritt &quot;</text><text styleclass="Command" translate="true">SOAP-Protokoll</text><text styleclass="Normal" translate="true">&quot; müssen Sie lediglich darauf achten, dass &quot;</text><text styleclass="Command" translate="true">Message-ID-Protokoll</text><text styleclass="Normal" translate="true">&quot; auf &quot;</text><text styleclass="Command" translate="true">ID-Übertragung unterdrücken</text><text styleclass="Normal" translate="true">&quot; steht.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><image src="soamanager_config_6.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Klicken Sie auf &quot;</text><text styleclass="Command" translate="true">Fertig</text><text styleclass="Normal" translate="true">&quot; um die Konfiguration abzuschließen. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="soamanager_config_7.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Stellen Sie in der darauf folgenden Ansicht sicher, dass der Service konfiguriert und aktiviert ist.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="soamanager_config_5.png" scale="-90.00%" width="1094" height="218" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Nun können Sie Ihren Browser schließen und zurück in den SAP Client wechseln.</text></para>
+  </body>
+</topic>

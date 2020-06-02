@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Links</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Links</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><table styleclass="Default" rowcount="15" colcount="2">
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Website</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://www.webpdf.de</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+        </td>
+        <td style="vertical-align:top; width:977px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Dokumentation</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://www.webpdf.de/dokumentation.html</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Addressen</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://portal.webpdf.de/webPDF/help/doc/de/adressen.htm</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Webservices</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://portal.webpdf.de/webPDF/help/doc/de/webservice_general.htm</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+        </td>
+        <td style="vertical-align:top; width:977px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Installation für Windows</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://download.softvision.de/?product=webpdf</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Pakete für Linux</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="https://packages.softvision.de/" styleclass="Normal" translate="true">https://packages.softvision.de/</link><text styleclass="Normal" translate="true">&#32;</text></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Docker Container</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="https://github.com/softvision-dev/webpdf-docker" styleclass="Normal" translate="true">https://github.com/softvision-dev/webpdf-docker</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">VMware Image</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="https://download.softvision.de/?product=webpdf_vm" styleclass="Normal" translate="true">https://download.softvision.de/?product=webpdf_vm</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+        </td>
+        <td style="vertical-align:top; width:977px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">webPDF-Portal (Live Demo)</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://portal.webpdf.de/webPDF/</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">Support</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://www.webpdf.de/support</link></para>
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+        </td>
+        <td style="vertical-align:top; width:977px;">
+        </td>
+      </tr>
+      <tr style="vertical-align:top">
+        <td style="width:278px;">
+          <para styleclass="Normal"><text styleclass="Normal" translate="true">SoftVision Development Website</text></para>
+        </td>
+        <td style="vertical-align:top; width:977px;">
+          <para styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://www.softvision.de</link></para>
+        </td>
+      </tr>
+    </table></para>
+    <para styleclass="Normal"></para>
+  </body>
+</topic>

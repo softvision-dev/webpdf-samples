@@ -1,0 +1,232 @@
+*&---------------------------------------------------------------------*
+*& Report Z_WEBPDF_SOAP_CONVERT_FILE
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+REPORT Z_WEBPDF_SOAP_CONVERT_FILE.
+
+* Proxy Klasse
+DATA lo_converter  TYPE REF TO zco_converter.
+
+DATA input TYPE zexecute1.
+DATA ouput TYPE zexecute_response1.
+DATA is_use_office_bridge TYPE zoffice_bridge_type.
+
+* File Dialog
+DATA: it_file_table         TYPE filetable.
+DATA: is_file_table         TYPE file_table.
+DATA: rc                    TYPE i.
+
+* Files and Downloads
+DATA lv_filename_path   TYPE string.
+DATA lv_filename_full   TYPE string.
+DATA lv_filename        TYPE string.
+DATA lv_dirlen          TYPE i.
+DATA lt_data_tab        TYPE TABLE OF x255.
+DATA lv_bin_size        TYPE i.
+DATA lv_xstring_docx    TYPE xstring.
+DATA lv_xstring_pdf     TYPE xstring.
+DATA lt_data_tab_save   TYPE TABLE OF x255.
+DATA lv_bin_size_save   TYPE i.
+
+* Filesave Dialog
+DATA: it_data_tab_save TYPE TABLE OF x255.
+DATA: bin_size_save TYPE i.
+
+TRY.
+
+* --- 01. OPEN FILE DIALOG --------------------------------------------------------------------------------------------------------------
+    cl_gui_frontend_services=>file_open_dialog(
+*    exporting
+*      WINDOW_TITLE            =     " Titel des Datei-Öffnen Dialogs
+*      DEFAULT_EXTENSION       =     " Vorschlagserweiterung
+*      DEFAULT_FILENAME        =     " Vorschlagsdateiname
+*      FILE_FILTER             =     " Filterstring für Dateierweiterung
+*      WITH_ENCODING           =     " file encoding
+*      INITIAL_DIRECTORY       =     " Ausgangsverzeichnis
+*      MULTISELECTION          =     " Mehrfachselektion möglich
+    CHANGING
+      " Tabelle, die selektierte Dateien enthält
+      file_table              = it_file_table
+      " Rückgabewert: Anzahl Dateien oder -1 falls Fehler auftritt
+      rc                      = rc
+*    USER_ACTION             =     " Benutzeraktion( s. Kl.konstanten ACTION_OK, ACTION_CANCEL)
+*    FILE_ENCODING           =
+    EXCEPTIONS
+      file_open_dialog_failed = 1
+      cntl_error              = 2
+      error_no_gui            = 3
+      not_supported_by_gui    = 4
+      OTHERS                  = 5
+    ).
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+                 WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    ENDIF.
+
+* Only one file selected?
+    IF rc <> 1.
+      EXIT.
+    ENDIF.
+
+* Get file name
+    LOOP AT it_file_table INTO is_file_table.
+      MOVE is_file_table-filename TO lv_filename_full.
+    ENDLOOP.
+
+* load file from client
+    CALL FUNCTION 'GUI_UPLOAD'
+      EXPORTING
+        filename   = lv_filename_full
+        filetype   = 'BIN'
+      IMPORTING
+        filelength = lv_bin_size
+*       HEADER     =
+      TABLES
+        data_tab   = lt_data_tab.
+
+* get xstring
+    CALL FUNCTION 'SCMS_BINARY_TO_XSTRING'
+      EXPORTING
+        input_length = lv_bin_size
+      IMPORTING
+        buffer       = lv_xstring_docx
+      TABLES
+        binary_tab   = lt_data_tab.
+
+* --- 02. CONVERT --------------------------------------------------------------------------------------------------------------
+
+* Create LO_CONVERTER
+    CREATE OBJECT lo_converter
+      EXPORTING
+        logical_port_name = 'ZWEBPDF_LOGICAL_PORT'.
+
+* Set parameter
+    input-parameters-operation-converter-pages = '*'.
+    input-parameters-operation-converter-office_bridge = is_use_office_bridge.
+    input-parameters-operation-converter-compression = abap_true.
+
+* Set content
+    input-parameters-file_content = lv_xstring_docx.
+    "INPUT-PARAMETERS-FILE_CONTENT = 'SGVsbG8gV2ViUERGIQ=='.
+
+* Convert operation
+    lo_converter->execute(
+      EXPORTING
+        input                    = input
+      IMPORTING
+        output                   = ouput
+    ).
+*      catch CX_AI_SYSTEM_FAULT.    "
+*      catch ZCX_WEBSERVICE_EXCEPTION.    "
+
+* Result Stream
+    lv_xstring_pdf = ouput-parameters-return.
+
+* --- 03. DOWNLOAD RESULT FILE --------------------------------------------------------------------------------------------------------------
+
+* get filename and path
+    lv_filename = lv_filename_full.
+    WHILE lv_filename CA ':\/'.
+      ADD 1 TO sy-fdpos.
+      ADD sy-fdpos TO lv_dirlen.
+      SHIFT lv_filename LEFT BY sy-fdpos PLACES.
+    ENDWHILE.
+    lv_filename_path = lv_filename_full+0(lv_dirlen).
+
+* Save dialog
+    lv_filename = lv_filename && '.pdf'.
+    cl_gui_frontend_services=>file_save_dialog(
+      EXPORTING
+*      WINDOW_TITLE              =     " Fenstertitel
+        default_extension         =     'pdf' " Vorschlagserweiterung
+        default_file_name         =     lv_filename " Vorschlagsdateiname
+*      WITH_ENCODING             =
+        file_filter               =     '*.pdf'" Filter Tabelle für Dateityp
+        initial_directory         =     lv_filename_path " Ausgangsverzeichnis
+*      PROMPT_ON_OVERWRITE       = 'X'
+      CHANGING
+        filename                  =     lv_filename " Dateiname für Sichern
+        path                      =     lv_filename_path " Pfad zu Datei
+        fullpath                  =     lv_filename_full " Pfad + Dateiname
+        user_action               =     rc " Benutzeraktion ( K.Konst. ACTION_OK, ACTION_OVERWRITE usw.)
+*      FILE_ENCODING             =
+      EXCEPTIONS
+        cntl_error                = 1
+        error_no_gui              = 2
+        not_supported_by_gui      = 3
+        invalid_default_file_name = 4
+        OTHERS                    = 5
+    ).
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+                WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    ENDIF.
+
+* Check user action
+    IF rc = cl_gui_frontend_services=>action_cancel.
+      EXIT.
+    ENDIF.
+
+* Get xstring
+    CALL FUNCTION 'SCMS_XSTRING_TO_BINARY'
+      EXPORTING
+        buffer        = lv_xstring_pdf
+      IMPORTING
+        output_length = lv_bin_size_save
+      TABLES
+        binary_tab    = lt_data_tab_save
+      EXCEPTIONS
+        OTHERS        = 1.
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+                WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    ENDIF.
+
+* Download file
+    CALL FUNCTION 'GUI_DOWNLOAD'
+      EXPORTING
+        bin_filesize = lv_bin_size_save
+        filename     = lv_filename_full
+        filetype     = 'BIN'
+      TABLES
+        data_tab     = lt_data_tab_save
+      EXCEPTIONS
+        OTHERS       = 1.
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+                WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    ENDIF.
+
+* Show pdf file (ShellExecute)
+    cl_gui_frontend_services=>execute(
+      EXPORTING
+        document               = lv_filename_full  " Pfad+Dokumentname
+*      application            =                  " Pfad + Anwendungsname
+*      parameter              =                  " Parameter für Anwendung
+*      default_directory      =                  " Vorschlagsverzeichnis
+*      maximized              =                  " Fenster maximiert anzeigen
+*      minimized              =                  " Fenster minimiert anzeigen
+*      synchronous            =                  " Wenn 'X': die Anwendung läuft synchron
+        operation              = 'OPEN'           " Reserviert: Verb für ShellExecute
+      EXCEPTIONS
+        cntl_error             = 1                " Controlfehler
+        error_no_gui           = 2                " Kein GUI verfügbar
+        bad_parameter          = 3                " Falsche Parameterkombination
+        file_not_found         = 4                " Datei nicht gefunden
+        path_not_found         = 5                " Pfad nicht gefunden
+        file_extension_unknown = 6                " Anwendung für angegebene Erweiterung wurde nicht gefunden
+        error_execute_failed   = 7                " Durchführung der Anwendung oder des Dokuments fehlgeschlagen
+        synchronous_failed     = 8                " Synchroner Aufruf der Applikation nicht möglich
+        not_supported_by_gui   = 9                " Nicht unterstützt von GUI
+        OTHERS                 = 10
+    ).
+    IF sy-subrc <> 0.
+      MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
+        WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
+    ENDIF.
+
+  CATCH cx_root INTO DATA(e_text).
+    WRITE: /.
+    WRITE: / 'Exception:', e_text->get_text( ).
+ENDTRY.

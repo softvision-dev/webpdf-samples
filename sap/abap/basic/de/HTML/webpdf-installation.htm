@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Installation webPDF</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link type="text/css" href="font-awesome.min.css" rel="stylesheet" />
+   <link type="text/css" href="style.css" rel="stylesheet" />
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "webpdf-installation.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;" id="content">
+
+
+<div id="navigation">                           
+   <script> 
+      function getCookie(cname) {
+         var name = cname + '=';
+         var ca = document.cookie.split(';');
+         for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+         }
+         return '';
+      }
+
+      function setCookie(cname, cvalue, exdays) {
+         var d = new Date();
+         d.setTime(d.getTime() + (exdays*24*60*60*1000));
+         var expires = "expires="+d.toUTCString();
+         document.cookie = cname + "=" + cvalue + "; " + expires +  '; path=/';
+      }
+
+      var cookie = getCookie('webpdf_help_history');
+      if(cookie === '' || parseInt(cookie) === -1) {
+         setCookie('webpdf_help_history', 0, 1);
+      }
+      else{
+         setCookie('webpdf_help_history', parseInt(cookie)+1, 1);
+      }
+
+      function goBack(event) {
+         event.preventDefault();
+         var cookie = parseInt(getCookie('webpdf_help_history'));
+
+         if(cookie > 0){
+            setCookie('webpdf_help_history', cookie-2, 1);
+            window.history.back();
+         }
+      }
+      
+      function goForward(event) {
+         event.preventDefault();
+         window.history.forward();
+      }
+      
+      $(function() {
+         $('#goBack').click(goBack);
+         $('#goForward').click(goForward);
+      });
+   </script>                                   
+   <a href="#" id="goBack" title="Eine Seite zurück"><span class="fa fa-reply"></span></a>             
+   <a href="requirements.htm" title="Zurück blättern"><span class="fa fa-arrow-left"></span></a>
+   <a href="application_portal_page.htm" title="Startseite"><span class="fa fa-home"></span></a>
+   <a href="sap-demo-system.htm" title="Vor blättern"><span class="fa fa-arrow-right"></span></a>
+   <a href="#" id="goForward" title="Eine Seite vorwärts"><span class="fa fa-mail-forward"></span></a>  
+</div>
+<div id="topic-header"><h1 class="p_Heading1"><span class="f_Heading1">webPDF Installation</span></h1>
+</div>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Für die nachfolgenden SOAP- und REST-Beispiele wird eine vorhandene webPDF-Installation benötigt. Sie finden den Download für eine Testinstallation unter <a href="https://download.softvision.de/?product=webpdf" class="weblink">https://download.softvision.de/?product=webpdf</a>.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Für eine Installation unter Linux finden sie unter <a href="https://packages.softvision.de/" class="weblink">https://packages.softvision.de/</a> die entsprechenden Informationen.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Sie können webPDF auch als virtuelle Maschine (<a href="https://download.softvision.de/?product=webpdf_vm" class="weblink">https://download.softvision.de/?product=webpdf_vm</a>) oder als Docker Container (<a href="https://github.com/softvision-dev/webpdf-docker" class="weblink">https://github.com/softvision-dev/webpdf-docker</a>) ausführen.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal"><span style="font-weight: bold;">Wichtig ist, das webPDF ausgeführt wird und von ihrem SAP Server aus erreichbar ist!</span> </p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Dass webPDF läuft und erreichbar ist, können Sie über zwei Wege testen:</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin-left: 24px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">1.</span>Aufruf des Portals</p><p class="p_Normal" style="text-indent: 0; padding-left: 20px; margin-left: 24px;"><span class="f_Normal" style="display:inline-block;width:20px;margin-left:-20px">2.</span>Aufruf eines Endpunkts</p><p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Bitte beachten Sie, das die dies vom Rechner aus gemacht werden sollte, von dem aus auch die SAP-Installation auf den webPDF-Server zugreift.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">1. Aufruf des Portals</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Rufen Sie mittels eines Browsers die Startseite des webPDF-Portals auf und führen Sie beispielhaft eine Konvertierung durch.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Command"><span class="f_Command">http://&lt;Adresse&gt;:8080/webPDF</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Ersetzen Sie in o.g. URL den Wert &quot;&lt;Adresse&gt;&quot; durch die IP-Adresse des Rechners, auf dem Sie webPDF installiert haben.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Wenn Sie unter Linux sind, so können Sie per Command Line mit CURL den Zugriff auf den Server testen. Eine einfach Form, in der <span class="f_Command">&lt;Adresse&gt;</span> durch die IP-Adresse des Servers zu ersetzen ist, wäre </p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Command"><span class="f_Command">curl -Is http://&lt;Adresse&gt;:8080/webPDF/ | head -n 1</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">wo der Server mit einem HTTP Status-Code &quot;<span class="f_Command">200 OK</span>&quot; im Erfolgsfall antwortet oder einem entsprechenden Fehlercode, wenn der Zugriff nicht möglich ist.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">2. Aufruf eines Endpunkts</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Rufen Sie mittels eines Browsers die WSDL-Informationen des SOAP-Webservice &quot;Converter&quot; ab.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Command"><span class="f_Command">http://&lt;Adresse&gt;:8080/webPDF/soap/converter?wsdl</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Bei einem Aufruf sollte Ihnen die WSDL-Struktur für den Converter angezeigt werden.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_CodeExample" style="margin: 0 0 0 39px;"><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">definitions</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:wsu</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:wsp</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://www.w3.org/ns/ws-policy</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:wsp1_2</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schemas.xmlsoap.org/ws/2004/09/policy</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:wsam</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://www.w3.org/2007/05/addressing/metadata</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:soap12</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schemas.xmlsoap.org/wsdl/soap12/</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:tns</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schema.webpdf.de/1.0/soap/converter</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:xsd</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://www.w3.org/2001/XMLSchema</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schemas.xmlsoap.org/wsdl/</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">targetNamespace</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schema.webpdf.de/1.0/soap/converter</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">name</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">ConverterService</span><span class="f_CodeExample" style="font-style: italic;">&quot;&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">wsp:Policy</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">wsu:Id</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">ConverterPortBinding_MTOM_Policy</span><span class="f_CodeExample" style="font-style: italic;">&quot;&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">ns1:OptimizedMimeSerialization</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-weight: bold; color: #660e7a;">xmlns:ns1</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">wsp:Optional</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">true</span><span class="f_CodeExample" style="font-style: italic;">&quot;/&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;/</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">wsp:Policy</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">types</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">xsd:schema</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">xsd:import</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">namespace</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schema.webpdf.de/1.0/soap/converter</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">schemaLocation</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://localhost:8080/webPDF/soap/converter?xsd=1</span><span class="f_CodeExample" style="font-style: italic;">&quot;/&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;/</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">xsd:schema</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">xsd:schema</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">xsd:import</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">namespace</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://schema.webpdf.de/1.0/operation</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><br />
+<span class="f_CodeExample"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">schemaLocation</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://localhost:8080/webPDF/soap/converter?xsd=2</span><span class="f_CodeExample" style="font-style: italic;">&quot;/&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;/</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">xsd:schema</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;/</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">types</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-style: italic;">&nbsp;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;">...</span><br />
+<span class="f_CodeExample" style="font-weight: bold;">...</span><br />
+<span class="f_CodeExample" style="font-weight: bold;">&nbsp;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">service</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">name</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">ConverterService</span><span class="f_CodeExample" style="font-style: italic;">&quot;&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">port</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">name</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">ConverterPort</span><span class="f_CodeExample" style="font-style: italic;">&quot;</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">binding</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">tns:ConverterPortBinding</span><span class="f_CodeExample" style="font-style: italic;">&quot;&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">soap12:address</span><span class="f_CodeExample"> </span><span class="f_CodeExample" style="font-weight: bold; color: #0000ff;">location</span><span class="f_CodeExample" style="font-style: italic;">=&quot;</span><span class="f_CodeExample" style="font-weight: bold; color: #008000;">http://localhost:8080/webPDF/soap/converter</span><span class="f_CodeExample" style="font-style: italic;">&quot;/&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp; &nbsp; &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;/</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">port</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-weight: bold;"> &nbsp;  </span><span class="f_CodeExample" style="font-style: italic;">&lt;/</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">service</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span><br />
+<span class="f_CodeExample" style="font-style: italic;">&lt;/</span><span class="f_CodeExample" style="font-weight: bold; color: #000080;">definitions</span><span class="f_CodeExample" style="font-style: italic;">&gt;</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Wenn Sie unter Linux sind, so können Sie per Command Line mit CURL den Zugriff auf den Server testen. Eine einfach Form, in der <span class="f_Command">&lt;Adresse&gt;</span> durch die IP-Adresse des Servers zu ersetzen ist, wäre </p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Command"><span class="f_Command">curl -Is http://&lt;Adresse&gt;:8080/webPDF/soap/converter?wsdl | head -n 1</span></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">wo der Server mit einem HTTP Status-Code &quot;<span class="f_Command">200 OK</span>&quot; im Erfolgsfall antwortet oder einem entsprechenden Fehlercode, wenn der Zugriff nicht möglich ist.</p>
+<p style="background: #ffffff; margin: 0 0 0 0;"><span style="font-family: Arial,Helvetica,sans-serif; color: #000000; background-color: #ffffff;">&nbsp;</span></p>
+<p class="p_Normal">Sie können die Ausgaben der Prüfung auch genre mit unserem Live-Server im Web vergleichen, wenn sie sicher sein wollen, das ihr lokaler Abruf die korrekten Daten liefert:</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">webPDF-Portal: <a href="https://portal.webpdf.de/webPDF/" class="weblink">https://portal.webpdf.de/webPDF/</a></p>
+<p class="p_Normal">webPDF SOAP 1.1 WSDL: <a href="https://portal.webpdf.de/webPDF/soap/converter?wsdl" class="weblink">https://portal.webpdf.de/webPDF/soap/converter?wsdl</a></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Sollte webPDF bei Ihnen noch nicht laufen, finden Sie alle Informationen zur Einrichtung in der <a href="https://portal.webpdf.de/webPDF/help/doc/de/welcome.htm" target="_blank" class="weblink" title="webPDF-Dokumentation">Dokumentation</a>.</p>
+
+</td></tr></table>
+
+</body>
+</html>

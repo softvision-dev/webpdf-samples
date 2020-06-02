@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Was ist webPDF?</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <link type="text/css" href="font-awesome.min.css" rel="stylesheet" />
+   <link type="text/css" href="style.css" rel="stylesheet" />
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "what-is-webpdf.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;" id="content">
+
+
+<div id="navigation">                           
+   <script> 
+      function getCookie(cname) {
+         var name = cname + '=';
+         var ca = document.cookie.split(';');
+         for(var i=0; i<ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+         }
+         return '';
+      }
+
+      function setCookie(cname, cvalue, exdays) {
+         var d = new Date();
+         d.setTime(d.getTime() + (exdays*24*60*60*1000));
+         var expires = "expires="+d.toUTCString();
+         document.cookie = cname + "=" + cvalue + "; " + expires +  '; path=/';
+      }
+
+      var cookie = getCookie('webpdf_help_history');
+      if(cookie === '' || parseInt(cookie) === -1) {
+         setCookie('webpdf_help_history', 0, 1);
+      }
+      else{
+         setCookie('webpdf_help_history', parseInt(cookie)+1, 1);
+      }
+
+      function goBack(event) {
+         event.preventDefault();
+         var cookie = parseInt(getCookie('webpdf_help_history'));
+
+         if(cookie > 0){
+            setCookie('webpdf_help_history', cookie-2, 1);
+            window.history.back();
+         }
+      }
+      
+      function goForward(event) {
+         event.preventDefault();
+         window.history.forward();
+      }
+      
+      $(function() {
+         $('#goBack').click(goBack);
+         $('#goForward').click(goForward);
+      });
+   </script>                                   
+   <a href="#" id="goBack" title="Eine Seite zurück"><span class="fa fa-reply"></span></a>             
+   <a href="introduction.htm" title="Zurück blättern"><span class="fa fa-arrow-left"></span></a>
+   <a href="application_portal_page.htm" title="Startseite"><span class="fa fa-home"></span></a>
+   <a href="requirements.htm" title="Vor blättern"><span class="fa fa-arrow-right"></span></a>
+   <a href="#" id="goForward" title="Eine Seite vorwärts"><span class="fa fa-mail-forward"></span></a>  
+</div>
+<div id="topic-header"><h1 class="p_Heading1"><span class="f_Heading1">Was ist webPDF?</span></h1>
+</div>
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">webPDF ist eine serverseitige Lösung für Windows und Linux, die Funktionen für die Konvertierung von Dateiformaten nach PDF und für die Verarbeitung von bestehenden PDF-Dokumenten bereitstellt. Die Lösung basiert auf einem Browser-basierten Portal und einer SOAP- und REST Webservice-Schnittstelle.</p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Allgemeine Informationen zu webPDF finden Sie unter <a href="https://www.webpdf.de" target="_blank" class="weblink">https://www.webpdf.de</a></p>
+<p class="p_Normal">&nbsp;</p>
+<p class="p_Normal">Technische Informationen zur webPDF finden Sie unter <a href="https://portal.webpdf.de/webPDF/help/doc/de/welcome.htm" class="weblink">https://portal.webpdf.de/webPDF/help/doc/de/welcome.htm</a></p>
+<p class="p_Normal">&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

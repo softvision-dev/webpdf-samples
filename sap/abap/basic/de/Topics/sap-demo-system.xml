@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">SAP Entwickler-System (als Demo-System)</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">SAP Entwickler-System (als Demo-System)</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Für die nachfolgenden Beispiele können Sie entweder Ihr vorhandenes SAP-System oder die Entwickler-Version des &quot;ABAP application server on ASE 16.0&quot; verwenden. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" style="font-weight:bold; color:#ff0000;" translate="true">Hinweis:</text><text styleclass="Normal" translate="true"> Dieses Dokument verwendet für die nachfolgenden Beispiele ein SAP Entwicklersystem als Demo-System, das gemäß dem Blog-Artikel </text><link displaytype="text" defaultstyle="true" type="weblink" href="https://blogs.sap.com/2019/07/01/as-abap-752-sp04-developer-edition-to-download/" styleclass="Normal" translate="true">https://blogs.sap.com/2019/07/01/as-abap-752-sp04-developer-edition-to-download/</link><text styleclass="Normal" translate="true"> eingerichtet wurde. Der Artikel beschreibt ausführlich die die Einrichtung einer solchen Demo-Umgebung.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Diese Installation stellt die folgenden Komponenten zur Verfügung:</text></para>
+    <para styleclass="Normal"></para>
+    <list id="2" type="ul" listtype="bullet" formatstring="&#183;" format-charset="SYMBOL_CHARSET" levelreset="true" legalstyle="false" startfrom="1" styleclass="Normal" style="font-family:Symbol; font-size:10pt; color:#000000;">
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">SAP AS ABAP 7.52 SP04</text></li>
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">SAP GUI for the Java 7.5 and SAP GUI for Windows 7.50</text></li>
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">SAP Sybase ASE 16.0 SP02</text></li>
+    </list>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Mit diesen Komponenten können Sie die nachfolgenden Beispiele nachvollziehen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Eine entsprechende Anleitung zur Installation eines SAP-Systems steht für VirtualBox und VMware zur Verfügung:</text></para>
+    <para styleclass="Normal"></para>
+    <list id="3" type="ul" listtype="bullet" formatstring="&#183;" format-charset="SYMBOL_CHARSET" levelreset="true" legalstyle="false" startfrom="1" styleclass="Normal" style="font-family:Symbol; font-size:10pt; color:#000000;">
+      <li styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="https://www.sap.com/documents/2019/09/32638f18-687d-0010-87a3-c30de2ffd8ff.html" styleclass="Normal" translate="true">Installing SAP AS ABAP 752 SP04 on Linux – Virtual Box</link></li>
+      <li styleclass="Normal"><link displaytype="text" defaultstyle="true" type="weblink" href="https://www.sap.com/documents/2019/09/c86f9218-687d-0010-87a3-c30de2ffd8ff.html" styleclass="Normal" translate="true">Installing SAP AS ABAP 7.52 SP04 on Linux – VMWare</link></li>
+    </list>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Für diese Dokumentation wurde ein Demo-System nach der Anleitung &quot;</text><link displaytype="text" defaultstyle="true" type="weblink" href="https://www.sap.com/documents/2019/09/32638f18-687d-0010-87a3-c30de2ffd8ff.html" styleclass="Normal" translate="true">Installing SAP AS ABAP 752 SP04 on Linux – Virtual Box</link><text styleclass="Normal" translate="true">&quot; erstellt.</text></para>
+    <para styleclass="Normal" style="page-break-before:always;"></para>
+  </body>
+</topic>

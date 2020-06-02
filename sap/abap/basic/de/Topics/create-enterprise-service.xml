@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Erstellung eines Enterprise Services</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Erstellung eines Enterprise Services</text></para>
+    </header>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">In dem angelegtem Paket erstellen Sie nun einen &quot;</text><text styleclass="Command" translate="true">Enterprise Service</text><text styleclass="Normal" translate="true">&quot;. </text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"><text styleclass="Normal" translate="true">Dies wird mit einem Rechtsklick auf &quot;</text><text styleclass="Command" translate="true">Z_WEBPDF</text><text styleclass="Normal" translate="true">&quot; und dem erscheinenden Kontextmenü unter &quot;</text><text styleclass="Command" translate="true">Anlegen-&gt;Enterprise Service</text><text styleclass="Normal" translate="true">&quot; gemacht.</text></para>
+    <para styleclass="Normal" style="page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_service_create.png" scale="-90.00%" width="624" height="283" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Es erscheint Dialog, in dem mehrere Punkte eingestellt werden müssen. Wählen Sie wie nachfolgende beschrieben die entsprechenden Optionen und klicken Sie dann jeweils auf &quot;</text><text styleclass="Command" translate="true">Weiter</text><text styleclass="Normal" translate="true">&quot;.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Als &quot;</text><text styleclass="Command" translate="true">Objekttyp</text><text styleclass="Normal" translate="true">&quot; wählen Sie nun &quot;</text><text styleclass="Command" translate="true">Service-Consumer</text><text styleclass="Normal" translate="true">&quot; aus.</text></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_service_create_1.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><text styleclass="Normal" translate="true">Als &quot;</text><text styleclass="Command" translate="true">Generierungsquelle</text><text styleclass="Normal" translate="true">&quot; wählen Sie &quot;</text><text styleclass="Command" translate="true">Externe(s) WSDL/Schema aus</text><text styleclass="Normal" translate="true">&quot;.</text></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_service_create_2.png" scale="100.00%" styleclass="Image Caption"><title translate="true">Als Generierungsquelle wählen Sie &apos;Externe(s) WSDL/Schema aus&apos;.</title></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><text styleclass="Normal" translate="true">Als &quot;</text><text styleclass="Command" translate="true">Datenquelle</text><text styleclass="Normal" translate="true">&quot; wählen Sie &quot;</text><text styleclass="Command" translate="true">URL</text><text styleclass="Normal" translate="true">&quot; aus.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><image src="se80_service_create_3.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Als &quot;</text><text styleclass="Command" translate="true">URL</text><text styleclass="Normal" translate="true">&quot; wählen die WSDL-Adresse des webPDF Converter Services aus (mit dieser haben Sie zuvor geprüft ,ob webPDF erreichbar ist).</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Command"><text styleclass="Command" translate="true">http://&lt;Adresse&gt;:8080/webPDF/soap/converter?wsdl</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Für &quot;</text><text styleclass="Command" translate="true">&lt;Adresse&gt;</text><text styleclass="Normal" translate="true">&quot; setzen Sie die IP-Adresse des Servers ein.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="se80_service_create_4.png" scale="100.00%" styleclass="Normal"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal" style="white-space:nowrap; page-break-inside:avoid;"><text styleclass="Normal" translate="true">Wählen Sie bei &quot;</text><text styleclass="Command" translate="true">Transportieren</text><text styleclass="Normal" translate="true">&quot; ihr Paket &quot;</text><text styleclass="Command" translate="true">Z_WEBPDF</text><text styleclass="Normal" translate="true">&quot; und den passenden Auftrag aus.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="se80_service_create_5.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Nun können Sie den Vorgang durch &quot;</text><text styleclass="Command" translate="true">Fertigstellen</text><text styleclass="Normal" translate="true">&quot; oder &quot;</text><text styleclass="Command" translate="true">Weiter-&gt;Fertigstellen</text><text styleclass="Normal" translate="true">&quot; abschließen.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="se80_service_create_finish.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Am Ende aktivieren Sie das erstellte &quot;</text><text styleclass="Command" translate="true">Service Consumer</text><text styleclass="Normal" translate="true">&quot;-Objekt noch.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="se80_service_activate.png" scale="-90.00%" width="1063" height="494" styleclass="Image Caption"></image></para>
+  </body>
+</topic>

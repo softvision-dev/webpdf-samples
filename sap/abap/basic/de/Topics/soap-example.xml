@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">SOAP-Beispiel</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">SOAP-Beispiel</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Das nachfolgende Beispiel zeigt, wie Sie die SOAP 1.1 Webservices von webPDF aus SAP heraus verwenden können.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Das Beispiel zeigt dies an Hand des SOAP 1.1 Webservice &quot;Converter&quot;. </text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Dieses Beispiel kann leicht auf die anderen Webservice Endpunkte übertragen werden.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Um dieses Beispiel zu verwenden, starten Sie bitte den SAP Business Client (des </text><link displaytype="text" defaultstyle="true" type="topiclink" href="webpdf-installation" styleclass="Normal" translate="true">Demo-Systems<title translate="true">sap-demo-system</title></link><text styleclass="Normal" translate="true">) und melden sich am SAP-System an.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="sap-client-logon.png" scale="68.98%" width="726" height="627" styleclass="Image Caption"></image></para>
+  </body>
+</topic>

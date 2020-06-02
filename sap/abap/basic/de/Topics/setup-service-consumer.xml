@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Einbindung als Service-Consumer</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Einbindung als Service-Consumer</text></para>
+      <para styleclass="Normal"></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Starten Sie den SAP Client und öffnen Sie danach den &quot;Object Navigator&quot;.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Diesen können Sie über das Befehlsfeld mit dem Transaktionscode &quot;</text><text styleclass="Command" translate="true">se80</text><text styleclass="Normal" translate="true">&quot; (&quot;</text><text styleclass="Command" translate="true">/nse80</text><text styleclass="Normal" translate="true">&quot;) machen</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="se80_open_1.PNG" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">oder über das SAP Menü.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><image src="se80_open_2.PNG" scale="100.00%" styleclass="Image Caption"></image></para>
+  </body>
+</topic>

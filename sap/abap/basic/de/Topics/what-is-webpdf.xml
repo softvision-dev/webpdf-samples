@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" lasteditedby="be" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Was ist webPDF?</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Was ist webPDF?</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">webPDF ist eine serverseitige Lösung für Windows und Linux, die Funktionen für die Konvertierung von Dateiformaten nach PDF und für die Verarbeitung von bestehenden PDF-Dokumenten bereitstellt. Die Lösung basiert auf einem Browser-basierten Portal und einer SOAP- und REST Webservice-Schnittstelle.</text></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Allgemeine Informationen zu webPDF finden Sie unter </text><link displaytype="text" defaultstyle="true" type="weblink" href="&lt;%LINK_CAPTION%&gt;" target="_blank" styleclass="Normal" translate="true">https://www.webpdf.de</link></para>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" translate="true">Technische Informationen zur webPDF finden Sie unter </text><link displaytype="text" defaultstyle="true" type="weblink" href="https://portal.webpdf.de/webPDF/help/doc/de/welcome.htm" styleclass="Normal" translate="true">https://portal.webpdf.de/webPDF/help/doc/de/welcome.htm</link></para>
+    <para styleclass="Normal" style="page-break-before:always;"></para>
+  </body>
+</topic>

@@ -26,6 +26,9 @@ The repository contains language-specific directories that contain the samples.
     
 - C#
     * [Basic SOAP sample](c%23/basic/soap/)
+    
+- SAP
+    * [Basic SOAP and REST usage via ABAP](sap/abap/basic/)    
 
 ## Installation
 You can clone this repository with 'Git' to your local system to get all sample projects. 

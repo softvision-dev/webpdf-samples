@@ -1,0 +1,145 @@
+body#content {
+    padding-top: 42px;
+    overflow: scroll;
+}
+
+table table{
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #c89b00;
+}
+
+#navigation {
+    border-bottom: 1px solid;
+    display: block;
+    padding: 5px 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    background: white;
+    z-index: 100;
+}
+
+#navigation a {
+    font-size: 20px;
+    color: gray;
+    margin: 0 5px;
+}
+
+#navigation a:hover {
+    color: black;
+}
+
+#topic-header, .navtitle {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 15px 0 0 10px;
+}
+
+.navbar {
+    color: transparent;
+    font-size: 1px;
+    margin: 10px;
+}
+
+.navbar a, .navbar b {
+    padding: 10px 15px;
+    font-weight: normal;
+    border-radius: 4px;
+    color: black;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.navbar b {
+    background: #fbc200;
+    cursor: pointer;
+}
+
+.navbar a:hover {
+    background: #ffe795;
+}
+
+#toc li {
+    margin: 7px;
+}
+
+#idx {
+    margin: 0 0 20px 0;
+}
+
+#idx .idxkeyword {
+    margin: 5px 0 5px 25px;
+}
+
+#idx .idxsection {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 20px 0 5px 10px;
+}
+
+.submit {
+    font-size: 14px;
+    margin: 10px;
+}
+
+.zoom_searchform {
+    padding: 5px 10px;
+}
+
+.zoom_searchform #zoom_searchbox {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    display: block;
+    font-size: 14px;
+    line-height: 1.42857;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 50%;
+    margin: 0 10px 10px 0;
+    display: inline;
+}
+
+.zoom_searchform #zoom_searchbox:focus {
+    border-color: #666;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 102, 102, 0.6);
+}
+
+.zoom_searchform .zoom_button {
+    border: 1px solid;
+    background: #ddd;
+    border-radius: 4px;
+    padding: 7px 10px;
+    cursor: pointer;
+    border-color: #bbb;
+    display: inline;
+}
+
+.zoom_searchform .zoom_button:hover {
+    background: #ffe795;
+}
+
+.zoom_searchform .zoom_results_per_page, .zoom_searchform .zoom_match {
+    margin: 0;
+    display: block;
+}
+
+.zoom_searchform .zoom_match input {
+    margin: 0px 3px 0px 0;
+    display: inline-block;
+    position: relative;
+    bottom: -3px;
+}
+
+.searchheading, .summary, .result_pagescount, .results, .result_pages {
+    margin: 0 0 0 10px;
+}
+
+.p_ImageCaption{
+    margin: 0 0 0 24px;
+}
